@@ -7,7 +7,8 @@ Team members:
 - Emily Jap
 - Cecilia Ho
 
-## Design Rationale
+## Design Rationale and UML Diagrams
+https://drive.google.com/drive/folders/1nDTIeROyflXLNbbijZYXxr4HSaciFz61?usp=sharing
 
 ## Contribution Log
 https://docs.google.com/spreadsheets/d/1P5NYMNDIMPKrGxL84ujp_dLowLSokCifTviPHa00ARs/edit?usp=sharing
