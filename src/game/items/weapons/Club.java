@@ -1,8 +1,7 @@
-package game;
+package game.items.weapons;
 
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.SellAction;
 
 /**
  * A simple weapon that can be used to attack the enemy.
@@ -21,6 +20,4 @@ public class Club extends WeaponItem {
         super("Club", '!', 103, "bonks", 80);
     }
 
-    @Override
-    public void tick(Location currentLocation, Actor actor) {}
 }
