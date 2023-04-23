@@ -29,7 +29,7 @@ public abstract class SpawningGround extends Ground {
         NumberRange mapWidthRange = location.map().getXRange();
 
         for (Actor actor : actorsThatSpawn.keySet()){
-            if (RandomNumberGenerator.getChance(actorsThatSpawn.get(actor)) && !location.containsAnActor()){
+            if (RandomNumberGenerator.getRandomChance(actorsThatSpawn.get(actor)) && !location.containsAnActor()){
                 if (actor.hasCapability(SpawnLocation.WEST) && location.x() < (mapWidthRange.max()/2))
                     location.addActor(actor);
                 else if (actor.hasCapability(SpawnLocation.EAST) && location.x() > (mapWidthRange.max()/2)) {
