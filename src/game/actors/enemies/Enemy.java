@@ -1,4 +1,4 @@
-package game;
+package game.actors.enemies;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -6,25 +6,30 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.behaviours.FollowBehaviour;
+import game.Status;
+import game.behaviours.WanderBehaviour;
+import game.actions.AttackAction;
+import game.behaviours.AttackBehaviour;
+import game.behaviours.Behaviour;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
-/**
- * BEHOLD, DOG!
- *
- * Created by:
- * @author Adrian Kristanto
- * Modified by:
- *
- */
-public class LoneWolf extends Actor {
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
+public abstract class Enemy extends Actor {
 
-    public LoneWolf() {
-        super("Lone Wolf", 'h', 102);
-        this.behaviours.put(999, new WanderBehaviour());
+    protected Map<Integer, Behaviour> behaviours = new TreeMap<>();
+
+    /**
+     * Constructor.
+     *
+     * @param name        the name of the Actor
+     * @param displayChar the character that will represent the Actor in the display
+     * @param hitPoints   the Actor's starting hit points
+     */
+    public Enemy(String name, char displayChar, int hitPoints) {
+        super(name, displayChar, hitPoints);
+        behaviours.put(999, new WanderBehaviour());
     }
 
     /**
@@ -47,7 +52,7 @@ public class LoneWolf extends Actor {
     }
 
     /**
-     * The lone wolf can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
+     * An enemy can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
      *
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
@@ -55,19 +60,22 @@ public class LoneWolf extends Actor {
      * @return
      */
     @Override
-    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
+        // these behaviours occur when there are other actors in the surrounding area
+        behaviours.put(998, new FollowBehaviour(otherActor));
+        behaviours.put(500, new AttackBehaviour());
+
+        // actions the player can do to an enemy
         ActionList actions = new ActionList();
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
-            // HINT 1: The AttackAction above allows you to attak the enemy with your intrinsic weapon.
-            // HINT 1: How would you attack the enemy with a weapon?
+
+            if(otherActor.getWeaponInventory() != null){
+                for(int i = 0; i<otherActor.getWeaponInventory().size(); i++){
+                    actions.add(new AttackAction(this, direction, otherActor.getWeaponInventory().get(i)));
+                }
+            }
         }
         return actions;
-    }
-
-
-    @Override
-    public IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(97, "bites", 95);
     }
 }
