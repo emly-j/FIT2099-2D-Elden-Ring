@@ -1,6 +1,7 @@
 package game.actors.enemies;
 
-import game.actors.Type;
+import game.Status;
+import game.actors.AttackType;
 import game.behaviours.BecomePileOfBonesBehaviour;
 
 public abstract class Skeleton extends Enemy{
@@ -13,8 +14,9 @@ public abstract class Skeleton extends Enemy{
      */
     public Skeleton(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
-        addCapability(Type.IS_SKELETON);
-        behaviours.put(10,new BecomePileOfBonesBehaviour());
+        addCapability(AttackType.CANNOT_ATTACK_SKELETONS);
+        addCapability(Status.REVIVABLE);
+        behaviours.put(1,new BecomePileOfBonesBehaviour());
     }
 
 }
