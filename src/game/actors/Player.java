@@ -52,5 +52,11 @@ public class Player extends Actor implements Resettable {
 	}
 
 	@Override
-	public void reset() {}
+	public void reset() {
+		this.heal(getMaxHp());
+	}
+
+    public int getHealth() {
+		return this.hitPoints;
+    }
 }
