@@ -6,12 +6,10 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.behaviours.FollowBehaviour;
+import game.actors.AttackType;
+import game.behaviours.*;
 import game.Status;
-import game.behaviours.WanderBehaviour;
 import game.actions.AttackAction;
-import game.behaviours.AttackBehaviour;
-import game.behaviours.Behaviour;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -30,6 +28,7 @@ public abstract class Enemy extends Actor {
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         behaviours.put(999, new WanderBehaviour());
+        behaviours.put(500, new AttackBehaviour());
     }
 
     /**
@@ -48,6 +47,9 @@ public abstract class Enemy extends Actor {
             if(action != null)
                 return action;
         }
+
+        // TODO: Implement 10% chance of despawning
+
         return new DoNothingAction();
     }
 
@@ -63,7 +65,6 @@ public abstract class Enemy extends Actor {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
         // these behaviours occur when there are other actors in the surrounding area
         behaviours.put(998, new FollowBehaviour(otherActor));
-        behaviours.put(500, new AttackBehaviour());
 
         // actions the player can do to an enemy
         ActionList actions = new ActionList();

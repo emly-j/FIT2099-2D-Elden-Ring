@@ -8,5 +8,4 @@ public interface Breakable {
 
     String broken(Actor by, Location at);
 
-    Action getBreakAction();
 }

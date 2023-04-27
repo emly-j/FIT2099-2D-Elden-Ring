@@ -24,6 +24,7 @@ public class PileOfBones extends Item implements Breakable{
         this.location = location;
         addAction(new BreakAction(this, location));
         addCapability(AttackType.CANNOT_ATTACK_SKELETONS);
+        addCapability(Status.BREAKABLE);
         counter = 0;
     }
 
@@ -43,11 +44,6 @@ public class PileOfBones extends Item implements Breakable{
         }
 
         return resultString;
-    }
-
-    @Override
-    public Action getBreakAction() {
-        return new BreakAction(this, location);
     }
 
     @Override

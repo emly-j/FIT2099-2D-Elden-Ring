@@ -1,6 +1,7 @@
 package game.environments;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.ActorLocationsIterator;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.NumberRange;
@@ -27,7 +28,8 @@ public abstract class SpawningGround extends Ground {
 
     public void tick(Location location){
         for (Actor actor : actorsThatSpawn.keySet()){
-            if (RandomNumberGenerator.getRandomChance(actorsThatSpawn.get(actor)) && !location.containsAnActor()){
+            int actorSpawnChance = actorsThatSpawn.get(actor);
+            if (RandomNumberGenerator.getRandomChance(actorSpawnChance) && !location.containsAnActor()){
                 spawnActor(location);
             }
         }

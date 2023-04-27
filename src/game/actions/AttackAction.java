@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.Status;
 
 /**
  * An Action to attack another Actor.
@@ -82,7 +83,10 @@ public class AttackAction extends Action {
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
 		if (!target.isConscious()) {
-			result += new DeathAction(actor).execute(target, map);
+			// if actor has capability revivable, wait for target turn, otherwise go straight to death action
+			if (!target.hasCapability(Status.REVIVABLE)){
+				result += new DeathAction(actor).execute(target, map);
+			}
 		}
 
 		return result;

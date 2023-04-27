@@ -1,6 +1,6 @@
 package game.actors.enemies;
 
-import game.actors.Type;
+import game.actors.AttackType;
 
 public abstract class Crustacean extends Enemy {
     /**
@@ -12,6 +12,6 @@ public abstract class Crustacean extends Enemy {
      */
     public Crustacean(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
-        addCapability(Type.IS_CRUSTACEAN);
+        addCapability(AttackType.CANNOT_ATTACK_CRUSTACEANS);
     }
 }

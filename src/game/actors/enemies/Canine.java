@@ -1,6 +1,6 @@
 package game.actors.enemies;
 
-import game.actors.Type;
+import game.actors.AttackType;
 
 public abstract class Canine extends Enemy {
     /**
@@ -12,6 +12,6 @@ public abstract class Canine extends Enemy {
      */
     public Canine(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
-        addCapability(Type.IS_CANINE);
+        addCapability(AttackType.CANNOT_ATTACK_CANINES);
     }
 }
