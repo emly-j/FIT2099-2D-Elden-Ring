@@ -20,4 +20,9 @@ public class LoneWolf extends Canine {
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(97, "bites", 95);
     }
+
+    @Override
+    public void reset() {
+        
+    }
 }

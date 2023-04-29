@@ -44,4 +44,9 @@ public class GiantCrab extends Crustacean {
 
         return actions;
     }
+
+    @Override
+    public void reset() {
+
+    }
 }

@@ -7,7 +7,7 @@ import game.actors.AttackType;
 import game.behaviours.FollowBehaviour;
 import game.Status;
 import game.actions.AttackAction;
-import game.behaviours.AreaAttackBehaviour;
+//import game.behaviours.AreaAttackBehaviour;
 import game.behaviours.AttackBehaviour;
 import game.items.weapons.Grossmesser;
 //import game.items.weapons.Grossmesser;
@@ -46,5 +46,10 @@ public class HeavySkeletalSwordsman extends Skeleton {
         // TODO: add area attack action which anyone can do
 
         return actions;
+    }
+
+    @Override
+    public void reset() {
+
     }
 }

@@ -1,7 +1,7 @@
 package game.items.weapons;
 
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.SellAction;
+//import game.actions.SellAction;
 
 /**
  * A simple weapon that can be used to attack the enemy.

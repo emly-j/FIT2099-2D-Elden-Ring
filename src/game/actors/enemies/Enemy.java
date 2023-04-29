@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Resettable;
 import game.actors.AttackType;
 import game.behaviours.*;
 import game.Status;
@@ -14,7 +15,7 @@ import game.actions.AttackAction;
 import java.util.Map;
 import java.util.TreeMap;
 
-public abstract class Enemy extends Actor {
+public abstract class Enemy extends Actor implements Resettable {
 
     protected Map<Integer, Behaviour> behaviours = new TreeMap<>();
 

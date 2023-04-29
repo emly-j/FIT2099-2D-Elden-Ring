@@ -8,7 +8,9 @@ package game;
 public enum Status {
     HOSTILE_TO_ENEMY,
     RESPAWNABLE,
-    RESTING,
+    RESTED,
+    RESETTABLE,
+    DROPPED,
     REVIVABLE,
     BREAKABLE
 }
