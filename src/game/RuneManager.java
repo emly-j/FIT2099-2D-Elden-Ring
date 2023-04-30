@@ -54,12 +54,13 @@ public class RuneManager {
     }
 
     /**
-     * adds an actor to the hashmap
+     * adds a RuneSource to the hashmap
      * @param owner the actor who owns and holds the runes
+     * @param runeAmount the amount of runes the actor holds
      */
-    public void addRuneOwner(RuneSource owner) {
+    public void addRuneOwner(RuneSource owner, int runeAmount) {
         if (runeOwner.get(owner) == null) {
-            runeOwner.put(owner, 0);
+            runeOwner.put(owner, runeAmount);
         }
     }
 

@@ -19,7 +19,7 @@ public class RuneFloor extends Ground implements RuneSource {
      */
     public RuneFloor() {
         super('$');
-        RuneManager.getInstance().addRuneOwner(this);
+        addRuneSource();
         counter = 1;
     }
 
@@ -47,7 +47,10 @@ public class RuneFloor extends Ground implements RuneSource {
         } return actions;
     }
 
-    @Override
+    public void addRuneSource(){
+        RuneManager.getInstance().addRuneOwner(this, 0);
+    }
+
     public void addRunes(int amount) {
         RuneManager.getInstance().addRunes(this, amount);
     }
