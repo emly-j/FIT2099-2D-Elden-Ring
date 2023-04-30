@@ -8,5 +8,5 @@ import edu.monash.fit2099.engine.items.Item;
 public interface Sellable {
     int getSellPrice();
 
-    void sellItem(Actor actor);
+    Action getSellAction();
 }
