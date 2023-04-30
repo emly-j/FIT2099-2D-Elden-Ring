@@ -5,7 +5,6 @@
 Team members:
 - Hayden Tran
 - Emily Jap
-- Cecilia Ho
 
 ## Design Rationale
 https://docs.google.com/document/d/1Luxnsy4Xi8rebOxiNjKPKRIOrf7Uuf2Xij9YzWyVUuY/edit
