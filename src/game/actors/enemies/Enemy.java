@@ -7,15 +7,13 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.ResetManager;
-import game.Resettable;
+import game.*;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.Utils;
 import game.actions.AreaAttackAction;
 import game.actions.DeathAction;
 import game.actions.DespawnAction;
 import game.actors.AttackType;
 import game.behaviours.*;
-import game.Status;
 import game.actions.AttackAction;
 
 import java.util.HashMap;
@@ -54,11 +52,6 @@ public abstract class Enemy extends Actor implements Resettable {
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
-//        Random random = new Random();
-//        int tenPercent = random.nextInt(9);
-//        if (tenPercent == 1){
-//            return new DespawnAction();
-//        }
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
 
@@ -66,8 +59,6 @@ public abstract class Enemy extends Actor implements Resettable {
                 return action;
             }
         }
-
-        // TODO: Implement 10% chance of despawning
 
         return new DoNothingAction();
     }
