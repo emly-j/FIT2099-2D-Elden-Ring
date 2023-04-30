@@ -6,10 +6,13 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.ResetManager;
 import game.Resettable;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Utils;
 import game.actions.AreaAttackAction;
+import game.actions.DeathAction;
+import game.actions.DespawnAction;
 import game.actors.AttackType;
 import game.behaviours.*;
 import game.Status;
@@ -17,6 +20,7 @@ import game.actions.AttackAction;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.TreeMap;
 
 public abstract class Enemy extends Actor implements Resettable {
@@ -34,6 +38,8 @@ public abstract class Enemy extends Actor implements Resettable {
         super(name, displayChar, hitPoints);
         behaviours.put(999, new WanderBehaviour());
         behaviours.put(500, new AttackBehaviour());
+        behaviours.put(511, new DespawnBehaviour());
+        ResetManager.getInstance().registerResettable(this);
     }
 
     /**
@@ -47,10 +53,18 @@ public abstract class Enemy extends Actor implements Resettable {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+
+//        Random random = new Random();
+//        int tenPercent = random.nextInt(9);
+//        if (tenPercent == 1){
+//            return new DespawnAction();
+//        }
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
-            if(action != null)
+
+            if(action != null) {
                 return action;
+            }
         }
 
         // TODO: Implement 10% chance of despawning
@@ -69,7 +83,7 @@ public abstract class Enemy extends Actor implements Resettable {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
         // these behaviours occur when there are other actors in the surrounding area
-        behaviours.put(998, new FollowBehaviour(otherActor));
+        behaviours.put(510, new FollowBehaviour(otherActor));
 
         // actions the player can do to an enemy
         ActionList actions = new ActionList();
@@ -97,5 +111,10 @@ public abstract class Enemy extends Actor implements Resettable {
             }
         }
         return actions;
+    }
+
+    @Override
+    public void reset() {
+        this.addCapability(Status.RESETTABLE);
     }
 }

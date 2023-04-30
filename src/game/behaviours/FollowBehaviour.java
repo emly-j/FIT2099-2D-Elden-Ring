@@ -7,6 +7,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.actions.MoveActorAction;
 
+import java.util.Random;
+
 /**
  * A class that figures out a MoveAction that will move the actor one step 
  * closer to a target Actor.
@@ -32,9 +34,10 @@ public class FollowBehaviour implements Behaviour {
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		if(!map.contains(target) || !map.contains(actor))
+		if (!map.contains(target) || !map.contains(actor)) { //this runs when theres no targetss/actors
 			return null;
-		
+		}
+
 		Location here = map.locationOf(actor);
 		Location there = map.locationOf(target);
 
@@ -48,7 +51,6 @@ public class FollowBehaviour implements Behaviour {
 				}
 			}
 		}
-
 		return null;
 	}
 

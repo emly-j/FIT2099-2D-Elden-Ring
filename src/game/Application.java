@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
 import game.actors.enemies.LoneWolf;
 import game.environments.*;
+import game.items.consumable.FlaskOfCrimsonTears;
 
 /**
  * The main class to start the game.
@@ -67,8 +68,10 @@ public class Application {
 		gameMap.at(23, 17).addActor(new LoneWolf());
 		gameMap.at(30,10).setGround(new TheFirstStep());
 
+
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300);
+		player.addItemToInventory(new FlaskOfCrimsonTears());
 		world.addPlayer(player, gameMap.at(36, 10));
 
 		world.run();

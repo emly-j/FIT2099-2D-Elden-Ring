@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.ResetManager;
 import game.RuneManager;
 import game.Resettable;
@@ -90,7 +91,10 @@ public class Player extends Actor implements Resettable, RuneSource {
 		return this.getRespawnY();
 	}
 
-
+	@Override
+	public IntrinsicWeapon getIntrinsicWeapon() {
+		return new IntrinsicWeapon(11, "punches", 100);
+	}
 
 	@Override
 	public void reset() {

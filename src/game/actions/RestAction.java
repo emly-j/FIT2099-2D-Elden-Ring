@@ -16,7 +16,7 @@ public class RestAction extends Action {
         System.out.println(actor.hasCapability(Status.RESTED));
 
 
-        return "Game has been reset: actor is moved to The First Step";
+        return "Game has been reset: " + actor + " has been moved to The First Step";
     }
 
     @Override

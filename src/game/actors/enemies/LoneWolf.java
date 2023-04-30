@@ -1,6 +1,7 @@
 package game.actors.enemies;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.Status;
 
 /**
  * BEHOLD, DOG!
@@ -23,6 +24,9 @@ public class LoneWolf extends Canine {
 
     @Override
     public void reset() {
-        
+        this.addCapability(Status.RESETTABLE);
+
     }
+
+
 }

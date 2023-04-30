@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.NumberRange;
 import game.actors.enemies.HeavySkeletalSwordsman;
 //import game.actors.enemies.SkeletalBandit;
 import game.actors.enemies.LoneWolf;
+import game.actors.enemies.SkeletalBandit;
 import game.actors.enemies.Skeleton;
 
 public class Graveyard extends SpawningGround {
@@ -16,7 +17,7 @@ public class Graveyard extends SpawningGround {
     public Graveyard() {
         super('n');
         this.addActorThatSpawns(new HeavySkeletalSwordsman(), 27);
-        //this.addActorThatSpawns(new SkeletalBandit(), 27);
+        this.addActorThatSpawns(new SkeletalBandit(), 27);
     }
 
     @Override
