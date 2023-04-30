@@ -6,15 +6,20 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Resettable;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.Utils;
+import game.actions.AreaAttackAction;
 import game.actors.AttackType;
 import game.behaviours.*;
 import game.Status;
 import game.actions.AttackAction;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-public abstract class Enemy extends Actor {
+public abstract class Enemy extends Actor implements Resettable {
 
     protected Map<Integer, Behaviour> behaviours = new TreeMap<>();
 
@@ -74,6 +79,20 @@ public abstract class Enemy extends Actor {
             if(otherActor.getWeaponInventory() != null){
                 for(int i = 0; i<otherActor.getWeaponInventory().size(); i++){
                     actions.add(new AttackAction(this, direction, otherActor.getWeaponInventory().get(i)));
+                }
+            }
+        }
+
+        // If player has a weapon with area attack capability, put area attack on list of allowable actions
+        if(otherActor.hasCapability(Status.PERFORM_AREA_ATTACK)){
+            HashMap<Actor, String> targets = Utils.getSurroundingActors(otherActor, map);
+            // check for AOE weapons, otherwise use intrinsic weapon
+            if(otherActor.getWeaponInventory() != null){
+                for(int i = 0; i<otherActor.getWeaponInventory().size(); i++){
+                    WeaponItem weapon = otherActor.getWeaponInventory().get(i);
+                    if (weapon.hasCapability(Status.PERFORM_AREA_ATTACK)){
+                        actions.add(new AreaAttackAction(targets, weapon));
+                    }
                 }
             }
         }

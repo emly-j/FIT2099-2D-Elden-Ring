@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.items.PileOfBones;
+import game.actors.enemies.PileOfBones;
 
 public class BecomePileOfBonesAction extends Action {
 
@@ -19,7 +19,7 @@ public class BecomePileOfBonesAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         map.removeActor(revivableActor);
-        revivableActorLocation.addItem(new PileOfBones(revivableActor, revivableActorLocation));
+        revivableActorLocation.addActor(new PileOfBones(revivableActor));
 
         return revivableActor + " becomes a Pile of Bones ";
     }
