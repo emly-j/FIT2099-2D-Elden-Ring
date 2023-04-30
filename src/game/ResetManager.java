@@ -11,6 +11,9 @@ import java.util.List;
  *
  */
 public class ResetManager {
+    /**
+     * we create a list of resettable instances here (players, items, runes)
+     */
     private List<Resettable> resettables;
     private static ResetManager instance;
 
@@ -18,14 +21,14 @@ public class ResetManager {
      * HINT 1: where have we seen a private constructor before?
      * HINT 2: see the instance attribute above.
      */
-
-    /**
-     * gets the instance of reset manager
-     */
-    private ResetManager() {
+    private ResetManager() { //we saw this used in purchase manager
         this.resettables = new ArrayList<>();
     }
 
+    /**
+     * gets single instance of reset amanger
+     * @return returns single instant of reset manager
+     */
     public static ResetManager getInstance(){
         if (instance == null) {
             instance = new ResetManager();
@@ -34,16 +37,16 @@ public class ResetManager {
     }
 
     /**
-     * resets game by going through all resettable objects in the list
+     * resets the game by going through all resettable objects in the list
      */
-    public void run() {
+    public void runReset() {
         for (Resettable object : this.resettables){
             object.reset();
         }
     }
 
     /**
-     * adds resettable instance to the list
+     * adds the instance of resttable to the list
      * @param resettable
      */
     public void registerResettable(Resettable resettable) {
@@ -51,7 +54,7 @@ public class ResetManager {
     }
 
     /**
-     * remove resettable instance from the list
+     * remove the resttable instance from the list
      * @param resettable
      */
     public void removeResettable(Resettable resettable) {

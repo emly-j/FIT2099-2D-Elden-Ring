@@ -4,8 +4,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.actors.Player;
-import game.items.consumable.FlaskOfCrimsonTears;;
+import game.items.consumable.FlaskOfCrimsonTears;
 
 /**
  * action executed when an item is consumed
@@ -15,7 +14,6 @@ import game.items.consumable.FlaskOfCrimsonTears;;
  */
 public class ConsumeFlaskOfCrimsonTearsAction extends Action {
     private final FlaskOfCrimsonTears flaskOfCrimsonTears;
-
 
     /**
      *
@@ -38,7 +36,7 @@ public class ConsumeFlaskOfCrimsonTearsAction extends Action {
         if (flaskOfCrimsonTears.getCharges() > 0) {
             actor.heal(250);
             flaskOfCrimsonTears.decrementCharges();
-            return actor + " is now" + ((Player) actor).getHealth() + " HP";
+            return actor + " healed for 250 HP";
         } else {
             return "Tried to heal but failed.";
         }
