@@ -3,7 +3,7 @@ package game.environments;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.NumberRange;
 import game.actors.enemies.GiantCrab;
-//import game.actors.enemies.GiantCrayfish;
+import game.actors.enemies.GiantCrayfish;
 
 public class PuddleOfWater extends SpawningGround {
 
@@ -13,7 +13,7 @@ public class PuddleOfWater extends SpawningGround {
     public PuddleOfWater() {
         super('~');
         this.addActorThatSpawns(new GiantCrab(), 2);
-        //this.addActorThatSpawns(new GiantCrayfish(), 1);
+        this.addActorThatSpawns(new GiantCrayfish(), 1);
     }
 
     @Override
@@ -24,8 +24,8 @@ public class PuddleOfWater extends SpawningGround {
 
         if (isWestSide) {
             location.addActor(new GiantCrab());
-//        }else if (isEastSide) {
-//            location.addActor(new GiantCrayfish());
+        }else if (isEastSide) {
+            location.addActor(new GiantCrayfish());
         }
     }
 }

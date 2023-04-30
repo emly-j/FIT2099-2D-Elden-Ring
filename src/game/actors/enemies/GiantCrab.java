@@ -5,6 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.RandomNumberGenerator;
+import game.RuneManager;
 import game.Status;
 import game.Utils;
 import game.actions.AreaAttackAction;
@@ -24,6 +26,8 @@ public class GiantCrab extends Crustacean {
     public GiantCrab() {
         super("Giant Crab", 'C', 407);
         this.addCapability(Status.PERFORM_AREA_ATTACK);
+        RuneManager.getInstance().addRuneOwner(this, RandomNumberGenerator.getRandomInt(318,4961));
+        System.out.println("I big crab" + RuneManager.getInstance().getRunes(this));
     }
 
     @Override
@@ -63,10 +67,6 @@ public class GiantCrab extends Crustacean {
         return actions;
     }
 
-    @Override
-    public void reset() {
-
-    }
 
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {

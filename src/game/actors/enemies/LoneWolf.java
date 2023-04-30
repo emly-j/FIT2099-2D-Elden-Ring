@@ -1,6 +1,9 @@
 package game.actors.enemies;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.RandomNumberGenerator;
+import game.RuneManager;
+import game.RuneSource;
 import game.Status;
 
 /**
@@ -15,6 +18,9 @@ public class LoneWolf extends Canine {
 
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
+        RuneManager.getInstance().addRuneOwner(this, RandomNumberGenerator.getRandomInt(55,1470));
+        System.out.println("I am doggy" + RuneManager.getInstance().getRunes(this));
+
     }
 
     @Override
@@ -22,11 +28,9 @@ public class LoneWolf extends Canine {
         return new IntrinsicWeapon(97, "bites", 95);
     }
 
-    @Override
-    public void reset() {
-        this.addCapability(Status.RESETTABLE);
 
-    }
-
-
+//    @Override
+//    public void addRuneSource() {
+//
+//    }
 }

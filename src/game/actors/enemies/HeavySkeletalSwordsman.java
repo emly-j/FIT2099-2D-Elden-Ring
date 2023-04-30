@@ -4,6 +4,8 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.RandomNumberGenerator;
+import game.RuneManager;
 import game.Utils;
 import game.actions.AreaAttackAction;
 import game.actors.AttackType;
@@ -26,6 +28,8 @@ public class HeavySkeletalSwordsman extends Skeleton {
     public HeavySkeletalSwordsman() {
         super("Heavy Skeletal Swordsman", 'q', 153);
         addWeaponToInventory(new Grossmesser());
+        RuneManager.getInstance().addRuneOwner(this, RandomNumberGenerator.getRandomInt(35,892));
+        System.out.println("I SKELTON SWORDMAN" + RuneManager.getInstance().getRunes(this));
     }
 
     @Override

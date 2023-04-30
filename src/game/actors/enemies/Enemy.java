@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
 
-public abstract class Enemy extends Actor implements Resettable {
+public abstract class Enemy extends Actor implements Resettable, RuneSource {
 
     protected Map<Integer, Behaviour> behaviours = new TreeMap<>();
 
@@ -107,5 +107,10 @@ public abstract class Enemy extends Actor implements Resettable {
     @Override
     public void reset() {
         this.addCapability(Status.RESETTABLE);
+    }
+
+    @Override
+    public void addRuneSource() {
+
     }
 }

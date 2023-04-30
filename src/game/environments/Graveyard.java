@@ -28,8 +28,8 @@ public class Graveyard extends SpawningGround {
 
         if (isWestSide) {
             location.addActor(new HeavySkeletalSwordsman());
-//        }else if (isEastSide) {
-//            location.addActor(new SkeletalBandit());
+        }else if (isEastSide) {
+            location.addActor(new SkeletalBandit());
         }
     }
 }
