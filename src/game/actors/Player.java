@@ -44,8 +44,7 @@ public class Player extends Actor implements Resettable, RuneSource {
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addWeaponToInventory(new Club());
 		ResetManager.getInstance().registerResettable(this);
-		RuneManager.getInstance().addRuneOwner(this);
-		this.addRunes(1000);
+		addRuneSource();
 		System.out.println(RuneManager.getInstance().getRunes(this));
 	}
 
@@ -103,8 +102,8 @@ public class Player extends Actor implements Resettable, RuneSource {
 	}
 
 	@Override
-	public void addRunes(int amount) {
-		RuneManager.getInstance().addRunes(this, amount);
+	public void addRuneSource() {
+		RuneManager.getInstance().addRunes(this, 0);
 	}
 
 }
