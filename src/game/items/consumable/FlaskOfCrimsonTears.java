@@ -1,39 +1,41 @@
 package game.items.consumable;
 
-
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
-import game.Resettable;
+import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeFlaskOfCrimsonTearsAction;
+import game.ResetManager;
+import game.Resettable;
+import game.Status;
 
-/**
- * An item that has a consume method which will heal 250 HP
- * cannot be dropped and has 2 uses
- */
 public class FlaskOfCrimsonTears extends Item implements Resettable {
 
     private int charges;
     private final int MAX_USES = 2;
-
-    /***
-     * Constructor.
-     *  @param name the name of this Item
-     * @param displayChar the character to use to represent this item if it is on the ground
-     * @param portable true if and only if the Item can be picked up
-     */
-    public FlaskOfCrimsonTears(String name, char displayChar, boolean portable) {
+    public FlaskOfCrimsonTears(){
         super("Flask Of Crimson Tears", 'c', false);
-        this.addAction(new ConsumeFlaskOfCrimsonTearsAction(this)); //makes an action which takes this in as a parameter to use
+        this.addAction(new ConsumeFlaskOfCrimsonTearsAction(this));
+        this.charges = MAX_USES;
+        ResetManager.getInstance().registerResettable(this);
     }
 
+
+    public void tick(Location currentLocation, Actor actor) {
+        if (this.hasCapability(Status.RESETTABLE)){
+            this.charges = MAX_USES;
+            this.removeCapability(Status.RESETTABLE);
+            System.out.println(this + "' charges has been reset");
+        }
+    }
     public int decrementCharges() {
         return this.charges -= 1;
     }
     public int getCharges() {
         return charges;
     }
+
     @Override
     public void reset() {
-        this.charges = MAX_USES;
+        this.addCapability(Status.RESETTABLE);
     }
 }
-

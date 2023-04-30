@@ -1,7 +1,7 @@
 package game;
 
 
-import edu.monash.fit2099.engine.actors.Actor;
+import game.RuneSource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +16,7 @@ public class RuneManager {
     /**
      * hash map which will tell us who holds teh runes and how many
      */
-    private Map<Actor, Integer> runeOwner;
+    private Map<RuneSource, Integer> runeOwner;
     private static RuneManager instance = null;
 
     private RuneManager() {
@@ -37,18 +37,18 @@ public class RuneManager {
      * getter for the runeOwner hashmap
      * @return
      */
-    public Map<Actor, Integer> getRuneOwner() {
+    public Map<RuneSource, Integer> getRuneOwner() {
         return runeOwner;
     }
 
     /**
      * Gets number of runes actor is holding
-     * @param actor checking how many runes they are holding (if possible)
+     * @param source checking how many runes they are holding (if possible)
      * @return runes that this actor is holding
      */
-    public int getRunes(Actor actor) {
-        if (canActorHoldRunes(actor) == true) { //we check if THIS actor is in the runeOwner Hashmap
-            return runeOwner.get(actor);
+    public int getRunes(RuneSource source) {
+        if (canActorHoldRunes(source) == true) { //we check if THIS actor is in the runeOwner Hashmap
+            return runeOwner.get(source);
         }
         return 0;
     }
@@ -57,7 +57,7 @@ public class RuneManager {
      * adds an actor to the hashmap
      * @param owner the actor who owns and holds the runes
      */
-    public void addRuneOwner(Actor owner) {
+    public void addRuneOwner(RuneSource owner) {
         if (runeOwner.get(owner) == null) {
             runeOwner.put(owner, 0);
         }
@@ -66,11 +66,11 @@ public class RuneManager {
     /**
      * checking if our hashmap contains our parameter 'actor' determining if it can hold runes or not
      * If it is, return true
-     * @param actor
+     * @param
      * @return
      */
-    public boolean canActorHoldRunes(Actor actor) {
-        return runeOwner.containsKey(actor);
+    public boolean canActorHoldRunes(RuneSource source) {
+        return runeOwner.containsKey(source);
     }
 
     /**
@@ -80,13 +80,13 @@ public class RuneManager {
      * @param amountAdded
      */
 
-    public void addRunes(Actor runeHolder, int amountAdded) {
+    public void addRunes(RuneSource runeHolder, int amountAdded) {
         if (!(runeOwner.get(runeHolder) == null)){ //checks if the amount of runes set to null, indicating an empty set/ this runeholder has no runes
             int updatedAmount = runeOwner.get(runeHolder) + amountAdded;
             runeOwner.put(runeHolder, updatedAmount);
         }
     }
-    public void subtractRunes(Actor runeHolder, int amountSubtracted) {
+    public void subtractRunes(RuneSource runeHolder, int amountSubtracted) {
         if (!(runeOwner.get(runeHolder) == null)) { // no extra condition here because we should check it in the purchases that we make
             int updatedAmount = runeOwner.get(runeHolder) - amountSubtracted;
             runeOwner.put(runeHolder, updatedAmount);
