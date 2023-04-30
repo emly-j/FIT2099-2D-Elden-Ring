@@ -10,7 +10,6 @@ import game.Resettable;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Utils;
 import game.actions.AreaAttackAction;
-import game.Resettable;
 import game.actors.AttackType;
 import game.behaviours.*;
 import game.Status;
