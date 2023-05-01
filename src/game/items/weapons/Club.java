@@ -20,4 +20,13 @@ public class Club extends WeaponItem {
         super("Club", '!', 103, "bonks", 80);
     }
 
+    @Override
+    public int getSellPrice() {
+        return 100;
+    }
+
+    @Override
+    public Action getSellAction() {
+        return new SellAction(this);
+    }
 }

@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actors.enemies.Enemy;
 import game.environments.RuneFloor;
 import game.ResetManager;
 import game.RuneManager;
@@ -56,11 +57,12 @@ public class DeathAction extends Action {
 //            for (Action drop : dropActions)
 //                drop.execute(target, map);
             if (!target.hasCapability(Status.RESTED)){ //checks if actor has rested, this runs if NOT rested
-                runesHeld = RuneManager.getInstance().getRunes((RuneSource) target); //use to print amount dropped
+                runesHeld = RuneManager.getInstance().getRunes(target); //use to print amount dropped
                 RuneFloor droppedRune = new RuneFloor(); // create new runefloor to hold the runes from our player when we die
-                RuneManager.getInstance().addRunes(droppedRune, RuneManager.getInstance().getRunes((RuneSource) target)); //update the amount of runes that player has to be the floor has
+                // TODO: find another way of storing runeFloor
+                //RuneManager.getInstance().addRunes(droppedRune, RuneManager.getInstance().getRunes(target)); //update the amount of runes that player has to be the floor has
                 map.at(map.locationOf(target).x(), map.locationOf(target).y()).setGround(droppedRune); //setground to the runefloor at location of the player
-                RuneManager.getInstance().subtractRunes((RuneSource) target, RuneManager.getInstance().getRunes((RuneSource) target)); // subtract all the runes of player to = 0
+                RuneManager.getInstance().subtractRunes(target, RuneManager.getInstance().getRunes(target)); // subtract all the runes of player to = 0
                 target.addCapability(Status.DROPPED);
                 map.moveActor(target, map.at(30, 10)); //when die, want to move them to coords of siteoflostgrace
                 ResetManager.getInstance().runReset(); //reset the game state as required
@@ -73,6 +75,12 @@ public class DeathAction extends Action {
             return System.lineSeparator() + YOU_DIED;
 //            return System.lineSeparator() + menuDescription(target);
         } else { //otherwise it is enemy who has death action and drops everything
+
+            if(attacker.hasCapability(Status.HOSTILE_TO_ENEMY)){
+                RuneManager runeManager = RuneManager.getInstance();
+                runeManager.transfer(attacker, target);
+            }
+
             for (Item item : target.getItemInventory())
                 dropActions.add(item.getDropAction(target));
             for (WeaponItem weapon : target.getWeaponInventory())

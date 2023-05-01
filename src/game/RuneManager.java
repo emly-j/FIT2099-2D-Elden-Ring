@@ -1,9 +1,11 @@
 package game;
 
 
-import game.RuneSource;
+import edu.monash.fit2099.engine.actors.Actor;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,13 +16,20 @@ public class RuneManager {
 
 
     /**
-     * hash map which will tell us who holds teh runes and how many
+     * Hash map of actors that hold runes in the game and how many runes they carry.
      */
-    private Map<RuneSource, Integer> runeOwner;
+    private HashMap<Actor, Integer> runeOwners;
+
+    /**
+     * A list of rune sources in the game. Rune sources can generate Runes or allow such transfer.
+     */
+    private ArrayList<RuneSource> runeSources;
+
     private static RuneManager instance = null;
 
     private RuneManager() {
-        this.runeOwner = new HashMap<>();
+        this.runeOwners = new HashMap<>();
+        this.runeSources = new ArrayList<>();
     }
 
     /**
@@ -37,64 +46,124 @@ public class RuneManager {
      * getter for the runeOwner hashmap
      * @return
      */
-    public Map<RuneSource, Integer> getRuneOwner() {
-        return runeOwner;
+    public Map<Actor, Integer> getRuneOwners() {
+        return runeOwners;
+    }
+
+    /**
+     * getter for the runeSources list
+     * @return
+     */
+    public List<RuneSource> getRuneSources() {
+        return runeSources;
     }
 
     /**
      * Gets number of runes actor is holding
-     * @param source checking how many runes they are holding (if possible)
+     * @param source the actor that we are check the runes of
      * @return runes that this actor is holding
      */
-    public int getRunes(RuneSource source) {
+    public int getRunes(Actor source) {
         if (canActorHoldRunes(source) == true) { //we check if THIS actor is in the runeOwner Hashmap
-            return runeOwner.get(source);
+            return runeOwners.get(source);
         }
         return 0;
     }
 
     /**
-     * adds a RuneSource to the hashmap
+     * adds a RuneOwner to the hashmap
      * @param owner the actor who owns and holds the runes
      * @param runeAmount the amount of runes the actor holds
      */
-    public void addRuneOwner(RuneSource owner, int runeAmount) {
-        if (runeOwner.get(owner) == null) {
-            runeOwner.put(owner, runeAmount);
+    public void addRuneOwner(Actor owner, int runeAmount) {
+        if (runeOwners.get(owner) == null) {
+            runeOwners.put(owner, runeAmount);
         }
+    }
+
+    /**
+     * adds a RuneSource to the list of rune sources
+     *
+     * @param runeSource a RuneSource object that is a source of runes
+     */
+    public void addRuneSource(RuneSource runeSource) {
+        runeSources.add(runeSource);
+    }
+
+    /**
+     * Removes a RuneOwner from the hashmap
+     * @param owner the actor who owns and holds the runes
+     */
+    public void removeRuneOwner(Actor owner) {
+        runeOwners.remove(owner);
+    }
+
+    /**
+     * Removes a RuneSource from the list
+     * @param source the rune source to be removed
+     */
+    public void removeRuneSource(RuneSource source) {
+        runeSources.remove(source);
     }
 
     /**
      * checking if our hashmap contains our parameter 'actor' determining if it can hold runes or not
      * If it is, return true
-     * @param
-     * @return
+     *
+     * @param actor
      */
-    public boolean canActorHoldRunes(RuneSource source) {
-        return runeOwner.containsKey(source);
+    public boolean canActorHoldRunes(Actor actor) {
+        return runeOwners.containsKey(actor);
     }
 
     /**
-     * adding and subtracting methods for runes,
-     * checks if the key is empty or not then adds/subtracts as required if can hold runes
-     * @param runeHolder
+     * Checks if an actor is a rune source
+     * @param actor
+     * @return
+     */
+    public boolean actorIsRuneSource(Actor actor) {return runeSources.contains(actor);}
+
+    /**
+     * Adds runes to a rune owner
+     * checks if the key is empty or not then adds as required if can hold runes
+     * @param runeOwner
      * @param amountAdded
      */
 
-    public void addRunes(RuneSource runeHolder, int amountAdded) {
-        if (!(runeOwner.get(runeHolder) == null)){ //checks if the amount of runes set to null, indicating an empty set/ this runeholder has no runes
-            int updatedAmount = runeOwner.get(runeHolder) + amountAdded;
-            runeOwner.put(runeHolder, updatedAmount);
-        }
-    }
-    public void subtractRunes(RuneSource runeHolder, int amountSubtracted) {
-        if (!(runeOwner.get(runeHolder) == null)) { // no extra condition here because we should check it in the purchases that we make
-            int updatedAmount = runeOwner.get(runeHolder) - amountSubtracted;
-            runeOwner.put(runeHolder, updatedAmount);
+    public void addRunes(Actor runeOwner, int amountAdded) {
+        if (!(runeOwners.get(runeOwner) == null)){ //checks if the amount of runes set to null, indicating an empty set/ this runeholder has no runes
+            int updatedAmount = runeOwners.get(runeOwner) + amountAdded;
+            runeOwners.put(runeOwner, updatedAmount);
         }
     }
 
+    /**
+     * Subtracts runes from a rune owner
+     * checks if the key is empty or not then adds as required if can hold runes
+     * @param runeOwner
+     * @param amountSubtracted
+     */
+    public void subtractRunes(Actor runeOwner, int amountSubtracted) {
+        if (!(runeOwners.get(runeOwner) == null)) { // no extra condition here because we should check it in the purchases that we make
+            int updatedAmount = runeOwners.get(runeOwner) - amountSubtracted;
+            runeOwners.put(runeOwner, updatedAmount);
+        }
+    }
 
+    /**
+     * Transfer runes between two actors that are rune sources
+     */
+    public void transfer(Actor attacker, Actor target){
+        // identify runeSource (target)
+        if (actorIsRuneSource(target)){
+            // add runes to attacker
+            int runesToTransfer = getRunes(target);
+            int existingRunes = getRunes(attacker);
+            addRunes(attacker, runesToTransfer + existingRunes);
 
+            // remove runesource from hashmap
+            removeRuneOwner(target);
+        }
+    }
 
 }
