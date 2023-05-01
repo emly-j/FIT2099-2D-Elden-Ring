@@ -4,12 +4,11 @@ package game.items;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
-import game.ResetManager;
-import game.Resettable;
-import game.Status;
+import game.controllers.Resettable;
+import game.controllers.ResetManager;
 import game.actions.RetrieveAction;
 import game.actions.RetrieveRuneAction;
-import game.actors.Player;
+import game.utils.Status;
 
 public class Rune extends Item implements Resettable {
     private int value;

@@ -2,9 +2,9 @@ package game.actions;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.Status;
-import game.RuneManager;
+import game.controllers.RuneManager;
 import game.items.Rune;
+import game.utils.Status;
 
 
 public class RetrieveRuneAction extends RetrieveAction {

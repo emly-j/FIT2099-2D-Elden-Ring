@@ -6,15 +6,12 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actors.enemies.Enemy;
-//import game.environments.RuneFloor;
-import game.ResetManager;
-import game.RuneManager;
-import game.RuneSource;
-import game.Status;
+import game.controllers.ResetManager;
+import game.controllers.RuneManager;
+import game.utils.Status;
 import game.items.Rune;
 
-import static game.FancyMessage.YOU_DIED;
+import static game.utils.FancyMessage.YOU_DIED;
 
 /**
  * An action executed if an actor is killed.
@@ -78,7 +75,7 @@ public class DeathAction extends Action {
 
             if(attacker.hasCapability(Status.HOSTILE_TO_ENEMY)){
                 RuneManager runeManager = RuneManager.getInstance();
-                runeManager.transfer(attacker, target);
+                result += runeManager.transfer(attacker, target);
             }
 
             for (Item item : target.getItemInventory())

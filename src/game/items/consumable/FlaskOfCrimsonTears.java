@@ -4,9 +4,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeFlaskOfCrimsonTearsAction;
-import game.ResetManager;
-import game.Resettable;
-import game.Status;
+import game.controllers.ResetManager;
+import game.controllers.Resettable;
+import game.utils.Status;
 
 public class FlaskOfCrimsonTears extends Item implements Resettable {
 

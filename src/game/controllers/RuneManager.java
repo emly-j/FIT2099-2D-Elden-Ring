@@ -1,4 +1,4 @@
-package game;
+package game.controllers;
 
 
 import edu.monash.fit2099.engine.actors.Actor;
@@ -153,17 +153,22 @@ public class RuneManager {
     /**
      * Transfer runes between two actors that are rune sources
      */
-    public void transfer(Actor attacker, Actor target){
+    public String transfer(Actor attacker, Actor target){
+        String result = null;
+
         // identify runeSource (target)
         if (actorIsRuneSource(target)){
             // add runes to attacker
             int runesToTransfer = getRunes(target);
             int existingRunes = getRunes(attacker);
+            result += "\n" + runesToTransfer + " runes were dropped and transferred to " + attacker;
             addRunes(attacker, runesToTransfer + existingRunes);
 
             // remove runesource from hashmap
             removeRuneOwner(target);
         }
+
+        return result;
     }
 
 }

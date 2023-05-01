@@ -2,11 +2,12 @@ package game.items.weapons;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.Status;
-import game.actions.AreaAttackAction;
+import game.utils.Status;
 import game.actions.AttackAction;
 //import game.actions.SellAction;
+import game.actions.SellAction;
 import game.items.Sellable;
 //import game.items.Tradeable;
 
@@ -25,6 +26,13 @@ public class Grossmesser extends WeaponItem implements Sellable {
         super("Grossmesser", '?', 115, "slashes", 85);
         //this.addCapability(Tradeable.SELLABLE);
         this.addCapability(Status.PERFORM_AREA_ATTACK);
+    }
+
+    @Override
+    public void tick(Location currentLocation, Actor actor){
+        // check if there is a trader nearby
+        // if there is, add getSellAction to allowableActions
+        // else, remove sellAction from allowable actions
     }
 
     @Override

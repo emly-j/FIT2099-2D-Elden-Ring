@@ -7,11 +7,11 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.ResetManager;
-import game.RuneManager;
-import game.Resettable;
-import game.RuneSource;
-import game.Status;
+import game.controllers.ResetManager;
+import game.controllers.RuneManager;
+import game.controllers.Resettable;
+import game.controllers.RuneSource;
+import game.utils.Status;
 import game.items.weapons.Club;
 
 /**

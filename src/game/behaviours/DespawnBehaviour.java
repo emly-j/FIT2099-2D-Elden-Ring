@@ -3,10 +3,8 @@ package game.behaviours;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.RandomNumberGenerator;
+import game.utils.RandomNumberGenerator;
 import game.actions.DespawnAction;
-
-import java.util.Random;
 
 public class DespawnBehaviour implements Behaviour{
 

@@ -6,19 +6,17 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.ResetManager;
-import game.*;
+import game.controllers.ResetManager;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AreaAttackAction;
-import game.actions.DeathAction;
-import game.actions.DespawnAction;
-import game.actors.AttackType;
 import game.behaviours.*;
 import game.actions.AttackAction;
+import game.controllers.Resettable;
+import game.utils.Status;
+import game.utils.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.TreeMap;
 
 public abstract class Enemy extends Actor implements Resettable {
