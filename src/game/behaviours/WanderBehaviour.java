@@ -11,10 +11,12 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.behaviours.Behaviour;
 
 /**
+ * Class that represents the Wanderbehaviour in NPCs that figures out where they move
  * Created by:
  * @author Riordan D. Alfredo
  * Modified by:
- *
+ * @author Emily Jap
+ * @version 1.0.0
  */
 public class WanderBehaviour implements Behaviour {
 	

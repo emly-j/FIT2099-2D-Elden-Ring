@@ -6,6 +6,12 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.ResetManager;
 import game.Status;
 
+/**
+ * An class that represents the 'rest action' implemented when standing on The First Step
+ * @see game.environments.TheFirstStep
+ * @author Hayden Tran
+ * @version 1.0.0
+ */
 public class RestAction extends Action {
 
 

@@ -15,6 +15,12 @@ import game.behaviours.FollowBehaviour;
 
 import java.util.HashMap;
 
+/**
+ * Class that represents the GiantCrab actor
+ * @author Hayden Tran
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class GiantCrab extends Crustacean implements RuneSource {
     /**
      * Constructor.
@@ -63,10 +69,6 @@ public class GiantCrab extends Crustacean implements RuneSource {
         return actions;
     }
 
-    @Override
-    public void reset() {
-
-    }
 
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {

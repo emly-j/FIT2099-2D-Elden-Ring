@@ -4,6 +4,11 @@ import game.Status;
 import game.actors.AttackType;
 import game.behaviours.BecomePileOfBonesBehaviour;
 
+/**
+ * Abstract class that will hold the general behaviours of Skeletons
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public abstract class Skeleton extends Enemy{
     /**
      * Constructor.

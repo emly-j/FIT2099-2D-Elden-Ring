@@ -6,6 +6,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.enemies.PileOfBones;
 
+/**
+ * Class that represents the action for become pile of boners
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class BecomePileOfBonesAction extends Action {
 
     private Actor revivableActor;

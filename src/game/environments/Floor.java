@@ -9,7 +9,9 @@ import game.Status;
  * Created by:
  * @author Riordan D. Alfredo
  * Modified by:
- *
+ * @author Hayden Tran
+ * @author Emily Jap
+ * @version 1.0.0
  */
 public class Floor extends Ground {
 	public Floor() {

@@ -11,14 +11,31 @@ import game.actions.RetrieveAction;
 import game.actions.RetrieveRuneAction;
 import game.actors.Player;
 
+
+/**
+ * Rune class represents a generic Rune which will be on the floor, mainly used for the Death Action, RetrieveRuneAction
+ * @author Hayden Tran
+ * @version 1.0.0
+ */
 public class Rune extends Item implements Resettable {
+    /**
+     * How much the rune holds
+     */
     private int value;
+    /**
+     * Counter to decrement when (so that runes despawn after a turn)
+     */
     private int counter;
+    /**
+     * instance of player to dedicate the rune to
+     */
     private Actor player;
 
 
-    /***
-     * Constructor.
+    /**
+     * Constructor for Rune class
+     * @param value value of device
+     * @param player player that the rune is linked to
      */
     public Rune(int value, Actor player) {
         super("Rune", '$', false);
@@ -30,6 +47,8 @@ public class Rune extends Item implements Resettable {
     /**
      * Inform an Item on the ground of the passage of time.
      * This method is called once per turn, if the item rests upon the ground.
+     * If has capability resettable, the item will be removed from the ground
+     * If an actor is on the item and doesnt have the CAN_RETRIEVE capability, will add the getRetrieveAction
      * @param currentLocation The location of the ground on which we lie.
      */
     public void tick(Location currentLocation) {
@@ -45,18 +64,35 @@ public class Rune extends Item implements Resettable {
         }
     }
 
+    /**
+     * getter for value
+     * @return the value as an integer
+     */
     public int getValue(){
         return value;
     }
 
+    /**
+     * setter for counter
+     * @param counter when called will update the counter
+     */
     public void setCounter(int counter) {
         this.counter = counter;
     }
 
+    /**
+     * When called will give the RetrieveRuneAction to the actor
+     * @param actor
+     * @return
+     */
     public RetrieveAction getRetrieveAction(Actor actor) {
         return new RetrieveRuneAction(this);
     }
 
+    /**
+     * Counter decrements when player has Status.PLAYERDIEDTWICE
+     * @see game.actions.DeathAction
+     */
     @Override
     public void reset() {
 

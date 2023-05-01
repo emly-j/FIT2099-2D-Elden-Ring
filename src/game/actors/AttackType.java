@@ -2,7 +2,7 @@ package game.actors;
 
 /**
  * Use this enum class to give actors factions.
- * @author Emily J
+ * @author Emily Jap
  */
 public enum AttackType {
     CANNOT_ATTACK_SKELETONS,

@@ -4,6 +4,10 @@ package game;
  * Use this enum class to give `buff` or `debuff`.
  * Created by:
  * @author Riordan D. Alfredo
+ * Modified by:
+ * @author Hayden Tran
+ * @author Emily Jap
+ * @version 1.0.0
  */
 public enum Status {
     HOSTILE_TO_ENEMY,

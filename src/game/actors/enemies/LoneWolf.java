@@ -8,14 +8,19 @@ import game.Status;
 
 /**
  * BEHOLD, DOG!
+ * Class that represents the LoneWolf actor in the game
  *
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
- *
+ * @author Emily Jap
+ * @version 1.0.0
  */
 public class LoneWolf extends Canine implements RuneSource {
 
+    /**
+     * Constructor which instantiates the attributes for an enemy and adds it to be a runesource
+     */
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
         addRuneSource();

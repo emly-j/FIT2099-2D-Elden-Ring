@@ -5,10 +5,19 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 
+/**
+ * abstract class that represents all items that may be retrieved
+ * @author Hayden Tran
+ * @version 1.0.0
+ */
 public abstract class RetrieveAction extends Action {
 
     private final Item item;
 
+    /**
+     * Constructor that has item as an input and sets it
+     * @param item
+     */
     public RetrieveAction(Item item){
         this.item = item;
     }

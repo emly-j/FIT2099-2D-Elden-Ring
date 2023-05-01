@@ -21,7 +21,9 @@ import static game.FancyMessage.YOU_DIED;
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
- *
+ * @author Hayden Tran
+ * @author Emily Jap
+ * @version 1.0.0
  */
 public class DeathAction extends Action {
     private Actor attacker;

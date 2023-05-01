@@ -17,21 +17,31 @@ import java.util.Random;
  * Created by:
  * @author Riordan D. Alfredo
  * Modified by:
- *
+ * @author Emily Jap
+ * @version 1.0.0
  */
 public class FollowBehaviour implements Behaviour {
 
+	/**
+	 * The actor that the NPC will follow
+	 */
 	private final Actor target;
 
 	/**
-	 * Constructor.
-	 * 
+	 * Constructor that instantiates the target
 	 * @param subject the Actor to follow
 	 */
 	public FollowBehaviour(Actor subject) {
 		this.target = subject;
 	}
 
+
+	/**
+	 *
+	 * @param actor the Actor acting
+	 * @param map the GameMap containing the Actor
+	 * @return
+	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		if (!map.contains(target) || !map.contains(actor)) { //this runs when theres no targetss/actors

@@ -8,6 +8,11 @@ import edu.monash.fit2099.engine.weapons.Weapon;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Class that represents the area attack action
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class AreaAttackAction extends Action {
     /**
      * Weapon used for the attack

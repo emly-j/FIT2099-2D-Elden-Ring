@@ -6,9 +6,14 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
 import game.items.Sellable;
 
+/**
+ * Class that represents the Scimitar weapon
+ * @author Hayden Tran
+ * @version 1.0.0
+ */
 public class Scimitar extends WeaponItem implements Sellable {
     /***
-     * Constructor.
+     * Constructor that instantiates the weapon and adds its capability
      */
     public Scimitar() {
         super("Scimitar", 's', 118, "schiing", 88);

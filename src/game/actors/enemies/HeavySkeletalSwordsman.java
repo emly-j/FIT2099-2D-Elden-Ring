@@ -11,17 +11,21 @@ import game.behaviours.AreaAttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.Status;
 import game.actions.AttackAction;
-//import game.behaviours.AreaAttackBehaviour;
 import game.behaviours.AttackBehaviour;
 import game.items.weapons.Grossmesser;
 
 import java.util.HashMap;
-//import game.items.weapons.Grossmesser;
 
+
+/**
+ * Class that represents the Heavy Skeletal Swordsman extending from a skeleton
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class HeavySkeletalSwordsman extends Skeleton {
 
     /**
-     * Constructor.
+     * Constructor that instantiates the actor with its starting weapon
      */
     public HeavySkeletalSwordsman() {
         super("Heavy Skeletal Swordsman", 'q', 153);
@@ -65,8 +69,4 @@ public class HeavySkeletalSwordsman extends Skeleton {
         return actions;
     }
 
-    @Override
-    public void reset() {
-
-    }
 }

@@ -10,6 +10,12 @@ import game.actors.AttackType;
 
 import java.util.List;
 
+
+/**
+ * Class that represents the attackbehaviour used by NPCS
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class AttackBehaviour implements Behaviour {
 
     /**

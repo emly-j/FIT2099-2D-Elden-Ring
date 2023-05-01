@@ -9,6 +9,11 @@ import game.actions.AreaAttackAction;
 
 import java.util.HashMap;
 
+/**
+ * Class the represents the area attack behaviour used by certain enemies or weapons
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class AreaAttackBehaviour implements Behaviour {
 
     /**

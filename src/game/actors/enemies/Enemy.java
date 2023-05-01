@@ -10,24 +10,25 @@ import game.ResetManager;
 import game.*;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AreaAttackAction;
-import game.actions.DeathAction;
-import game.actions.DespawnAction;
-import game.actors.AttackType;
 import game.behaviours.*;
 import game.actions.AttackAction;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.TreeMap;
 
+/**
+ * Class the represents the base enemy class and instantiates the behaviours that are similar to all enemies
+ * @author Hayden Tran
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public abstract class Enemy extends Actor implements Resettable {
 
     protected Map<Integer, Behaviour> behaviours = new TreeMap<>();
 
     /**
-     * Constructor.
-     *
+     * Constructor that instantiates the base Enemy behaviours and being a resettable instance
      * @param name        the name of the Actor
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points

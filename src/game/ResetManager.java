@@ -8,7 +8,8 @@ import java.util.List;
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
- *
+ * @author Hayden Tran
+ * @version 1.0.0
  */
 public class ResetManager {
     /**
