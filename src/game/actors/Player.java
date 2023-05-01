@@ -103,7 +103,7 @@ public class Player extends Actor implements Resettable, RuneSource {
 
 	@Override
 	public void addRuneSource() {
-		RuneManager.getInstance().addRunes(this, 0);
+		RuneManager.getInstance().addRuneOwner(this, 0);
 	}
 
 }

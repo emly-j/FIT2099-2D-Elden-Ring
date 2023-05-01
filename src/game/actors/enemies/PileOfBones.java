@@ -2,22 +2,24 @@ package game.actors.enemies;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.Weapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.Status;
-import game.Utils;
+import game.*;
 import game.actions.AreaAttackAction;
 import game.actions.AttackAction;
 import game.actions.DeathAction;
 import game.actors.AttackType;
+import game.items.Rune;
 
 import java.util.HashMap;
 
-public class PileOfBones extends Actor{
+public class PileOfBones extends Skeleton implements RuneSource {
 
     private Actor revivableActor;
     private int counter;
@@ -28,10 +30,19 @@ public class PileOfBones extends Actor{
     public PileOfBones(Actor revivableActor) {
         super("Pile Of Bones", 'X', 1);
         this.revivableActor = revivableActor;
-        addCapability(AttackType.CANNOT_ATTACK_SKELETONS);
+        removeCapability(Status.REVIVABLE);
+        behaviours.remove(1); // remove BecomePileOfBonesBehaviour
+        behaviours.remove(999); // remove WanderBehaviour
+        behaviours.remove(500); // remove AttackBehaviour
+        addRuneSource();
 
         // transfer inventory (to be dropped when pile of bones dies)
-        addWeaponToInventory(revivableActor.getWeaponInventory().get(0)); // TODO: find another way to do this instead of hardcoding
+        for (WeaponItem weapon : revivableActor.getWeaponInventory()){
+            addWeaponToInventory(weapon);
+        }
+        for (Item item : revivableActor.getItemInventory()){
+            addItemToInventory(item);
+        }
 
         counter = 0;
     }
@@ -50,11 +61,11 @@ public class PileOfBones extends Actor{
 
         // if hit, drop weapon
         if (!isConscious()){
-            // TODO: runes transfer
+            RuneManager.getInstance().removeRuneSource(this);
             return new DeathAction(this);
         }
 
-        return null;
+        return new DoNothingAction();
     }
 
     @Override
@@ -85,5 +96,16 @@ public class PileOfBones extends Actor{
         }
 
         return actions;
+    }
+
+    @Override
+    public void reset() {
+
+    }
+
+    public void addRuneSource(){
+        RuneManager runeManager = RuneManager.getInstance();
+        runeManager.addRuneOwner(this, RandomNumberGenerator.getRandomInt(35, 892));
+        runeManager.addRuneSource(this);
     }
 }

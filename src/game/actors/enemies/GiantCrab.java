@@ -5,8 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.Status;
-import game.Utils;
+import game.*;
 import game.actions.AreaAttackAction;
 import game.actions.AttackAction;
 import game.actors.AttackType;
@@ -16,7 +15,7 @@ import game.behaviours.FollowBehaviour;
 
 import java.util.HashMap;
 
-public class GiantCrab extends Crustacean {
+public class GiantCrab extends Crustacean implements RuneSource {
     /**
      * Constructor.
      *
@@ -24,6 +23,7 @@ public class GiantCrab extends Crustacean {
     public GiantCrab() {
         super("Giant Crab", 'C', 407);
         this.addCapability(Status.PERFORM_AREA_ATTACK);
+        addRuneSource();
     }
 
     @Override
@@ -71,5 +71,12 @@ public class GiantCrab extends Crustacean {
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(208, "slams", 90);
+    }
+
+    @Override
+    public void addRuneSource() {
+        RuneManager runeManager = RuneManager.getInstance();
+        runeManager.addRuneOwner(this, RandomNumberGenerator.getRandomInt(318, 4961));
+        runeManager.addRuneSource(this);
     }
 }
