@@ -1,26 +1,35 @@
 package game.actions;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.environments.Dirt;
+import game.Status;
 import game.RuneManager;
-import game.RuneSource;
+import game.items.Rune;
 
-public class RetrieveRuneAction extends Action {
-    private int tempRune;
+
+public class RetrieveRuneAction extends RetrieveAction {
+
+    private final Rune rune;
+
+    public RetrieveRuneAction(Rune rune) {
+        super(rune);
+        this.rune = rune;
+    }
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        this.tempRune = RuneManager.getInstance().getRunes((RuneSource) map.locationOf(actor).getGround());
-        map.locationOf(actor).setGround(new Dirt());
-        RuneManager.getInstance().addRunes((RuneSource) actor, this.tempRune);
+        RuneManager.getInstance().addRunes(actor, rune.getValue());
+        map.locationOf(actor).removeItem(rune);
+        if (actor.hasCapability(Status.PLAYERDIED)) {
+            actor.removeCapability(Status.PLAYERDIED);
+        }
 
-        return actor + " retrieved " + this.tempRune + " runes (now holding " + RuneManager.getInstance().getRunes((RuneSource) actor) + ")";
+        return actor + " now has " + RuneManager.getInstance().getRunes(actor) + " runes";
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return "Retrieve Runes";
+        return "Retrieve runes (value: " + rune.getValue() + ")";
     }
 }
+
