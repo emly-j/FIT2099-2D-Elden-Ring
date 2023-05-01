@@ -20,6 +20,5 @@ public enum Status {
     CAN_RETRIEVE,
     PLAYERDIED,
     PLAYERDIEDTWICE,
-
-
+    IS_TRADER
 }
