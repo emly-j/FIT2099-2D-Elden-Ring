@@ -9,29 +9,24 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.*;
 import game.actions.AreaAttackAction;
 import game.actions.AttackAction;
 import game.actions.DeathAction;
+import game.controllers.RuneManager;
+import game.controllers.RuneSource;
+import game.utils.RandomNumberGenerator;
+import game.utils.Status;
+import game.utils.Utils;
 
 import java.util.HashMap;
 
-
-/**
- * Class that will represent the PileOfBones actor that is created when Skeletons die
- * @see game.actions.BecomePileOfBonesAction
- * @author Emily Jap
- * @version 1.0.0
- */
 public class PileOfBones extends Skeleton implements RuneSource {
 
     private Actor revivableActor;
     private int counter;
 
     /***
-     * Constructor that removes the behaviours of a 'moving enemy' and instantiates the actor
-     * Takes all the inventory of the actor that has turned into this that will be dropped once destroyed
-     * has a counter that will be incremented during the playturn, which if it lasts for 3 turns, will revive into the actor it died from
+     * Constructor.
      */
     public PileOfBones(Actor revivableActor) {
         super("Pile Of Bones", 'X', 1);
@@ -109,7 +104,6 @@ public class PileOfBones extends Skeleton implements RuneSource {
 
     }
 
-    @Override
     public void addRuneSource(){
         RuneManager runeManager = RuneManager.getInstance();
         runeManager.addRuneOwner(this, RandomNumberGenerator.getRandomInt(35, 892));

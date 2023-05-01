@@ -3,8 +3,8 @@ package game.items.weapons;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.Status;
 import game.items.Sellable;
+import game.utils.Status;
 
 /**
  * Class that represents the Scimitar weapon
@@ -30,7 +30,6 @@ public class Scimitar extends WeaponItem implements Sellable {
         return 100;
     }
 
-    @Override
     public void sellItem(Actor actor) {
 
     }

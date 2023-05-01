@@ -1,4 +1,4 @@
-package game;
+package game.controllers;
 
 import java.util.ArrayList;
 import java.util.List;

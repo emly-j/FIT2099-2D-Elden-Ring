@@ -11,6 +11,7 @@ import game.actors.Player;
 import game.actors.enemies.LoneWolf;
 import game.environments.*;
 import game.items.consumable.FlaskOfCrimsonTears;
+import game.utils.FancyMessage;
 
 /**
  * The main class to start the game.

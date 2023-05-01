@@ -1,13 +1,10 @@
 package game.environments;
 
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.actors.ActorLocationsIterator;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.positions.NumberRange;
-import game.RandomNumberGenerator;
+import game.utils.RandomNumberGenerator;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**

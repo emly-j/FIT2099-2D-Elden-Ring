@@ -3,8 +3,8 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.ResetManager;
-import game.Status;
+import game.controllers.ResetManager;
+import game.utils.Status;
 
 /**
  * An class that represents the 'rest action' implemented when standing on The First Step

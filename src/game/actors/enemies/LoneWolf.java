@@ -1,10 +1,10 @@
 package game.actors.enemies;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.RandomNumberGenerator;
-import game.RuneManager;
-import game.RuneSource;
-import game.Status;
+import game.utils.RandomNumberGenerator;
+import game.controllers.RuneManager;
+import game.controllers.RuneSource;
+import game.utils.Status;
 
 /**
  * BEHOLD, DOG!
