@@ -4,8 +4,6 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.Status;
-import game.Utils;
 import game.actions.AreaAttackAction;
 import game.actions.AttackAction;
 import game.actors.AttackType;
@@ -14,6 +12,8 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.items.weapons.Grossmesser;
 import game.items.weapons.Scimitar;
+import game.utils.Status;
+import game.utils.Utils;
 
 import java.util.HashMap;
 

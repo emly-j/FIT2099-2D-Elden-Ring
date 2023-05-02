@@ -6,10 +6,13 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.BuyAction;
 import game.actions.SellAction;
 import game.actors.Trader;
+import game.items.Buyable;
 import game.items.Sellable;
 import game.utils.Status;
+import game.utils.Utils;
 
 import java.util.List;
 
@@ -21,38 +24,28 @@ import java.util.List;
  * Modified by:
  *
  */
-public class Club extends WeaponItem implements Sellable {
+public class Club extends WeaponItem implements Sellable, Buyable {
+
+    private Action sellAction; // ensures there is one instance of SellAction at a time
 
     /**
      * Constructor
      */
     public Club() {
         super("Club", '!', 103, "bonks", 80);
+        sellAction = null;
     }
 
     @Override
     public void tick(Location currentLocation, Actor actor){
 
-        // check if there is a trader nearby
-        // TODO: consider making this a util method
-        List<Exit> exits = currentLocation.getExits();
-        boolean hasTrader = false;
-
-        for (Exit exit: exits){
-            if (exit.getDestination().getActor() != null){
-                if (exit.getDestination().getActor().hasCapability(Status.IS_TRADER)){
-                    hasTrader = true;
-                }
-            }
+        // if there is a trader nearby, allow this item to be sold
+        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))){
+            sellAction = getSellAction();
+            addAction(sellAction);
         }
-
-        // if there is, add getSellAction to allowableActions
-        // else, remove sellAction from allowable actions
-        if (hasTrader == true){
-            addAction(getSellAction());
-        }
-        else{
-            removeAction(getSellAction());
+        else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))){
+            removeAction(sellAction);
         }
     }
 
@@ -64,7 +57,7 @@ public class Club extends WeaponItem implements Sellable {
         return new SellAction(this);
     }
 
-    public Item getItem() {
+    public Item getSellableItem() {
         return this;
     }
 
@@ -73,4 +66,23 @@ public class Club extends WeaponItem implements Sellable {
     }
 
 
+    @Override
+    public int getBuyPrice() {
+        return 600;
+    }
+
+    @Override
+    public Action getBuyAction() {
+        return new BuyAction(this);
+    }
+
+    @Override
+    public Item getBuyableItem() {
+        return this;
+    }
+
+    @Override
+    public void addBuyableToInventory(Actor actor) {
+        actor.addWeaponToInventory(this);
+    }
 }

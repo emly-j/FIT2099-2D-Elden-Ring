@@ -1,9 +1,9 @@
 package game.actors.enemies;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.RandomNumberGenerator;
-import game.RuneManager;
-import game.RuneSource;
+import game.controllers.RuneManager;
+import game.controllers.RuneSource;
+import game.utils.RandomNumberGenerator;
 
 /**
  * Class that represents the GiantCrayfish actor

@@ -18,7 +18,7 @@ public class SellAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         // remove item from actor's inventory
-        Item item = itemToSell.getItem();
+        Item item = itemToSell.getSellableItem();
         itemToSell.removeSellableFromInventory(actor);
 
         // add runes to actor

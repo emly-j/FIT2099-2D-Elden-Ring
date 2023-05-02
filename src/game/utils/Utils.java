@@ -3,6 +3,7 @@ package game.utils;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,5 +23,20 @@ public class Utils {
         }
 
         return nearbyActors;
+    }
+
+    public static boolean isTraderNearby(Location currentLocation){
+        List<Exit> exits = currentLocation.getExits();
+        boolean hasTrader = false;
+
+        for (Exit exit: exits){
+            if (exit.getDestination().getActor() != null){
+                if (exit.getDestination().getActor().hasCapability(Status.IS_TRADER)){
+                    hasTrader = true;
+                }
+            }
+        }
+
+        return hasTrader;
     }
 }

@@ -2,14 +2,14 @@ package game.items.weapons;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.utils.Status;
 import game.actions.AttackAction;
-//import game.actions.SellAction;
 import game.actions.SellAction;
 import game.items.Sellable;
-//import game.items.Tradeable;
+import game.utils.Utils;
 
 /**
  * A weapon carried by HeavySkeletalSwordsman.
@@ -19,20 +19,29 @@ import game.items.Sellable;
  * @see WeaponItem
  */
 public class Grossmesser extends WeaponItem implements Sellable {
+
+    private Action sellAction; // ensures there is one instance of SellAction at a time
+
     /**
      * Constructor.
      */
     public Grossmesser() {
         super("Grossmesser", '?', 115, "slashes", 85);
-        //this.addCapability(Tradeable.SELLABLE);
         this.addCapability(Status.PERFORM_AREA_ATTACK);
     }
 
     @Override
     public void tick(Location currentLocation, Actor actor){
-        // check if there is a trader nearby
-        // if there is, add getSellAction to allowableActions
-        // else, remove sellAction from allowable actions
+        // TODO: check if there are targets nearby, if so allow the holder to perform area attack
+
+        // if there is a trader nearby, allow this item to be sold
+        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))){
+            sellAction = getSellAction();
+            addAction(sellAction);
+        }
+        else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))){
+            removeAction(sellAction);
+        }
     }
 
     @Override
@@ -48,6 +57,16 @@ public class Grossmesser extends WeaponItem implements Sellable {
     @Override
     public Action getSellAction() {
         return new SellAction(this);
+    }
+
+    @Override
+    public Item getSellableItem() {
+        return this;
+    }
+
+    @Override
+    public void removeSellableFromInventory(Actor actor) {
+        actor.removeWeaponFromInventory(this);
     }
 
 }

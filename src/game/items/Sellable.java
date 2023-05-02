@@ -13,7 +13,7 @@ public interface Sellable {
 
     Action getSellAction();
 
-    Item getItem();
+    Item getSellableItem();
 
     void removeSellableFromInventory(Actor actor);
 }
