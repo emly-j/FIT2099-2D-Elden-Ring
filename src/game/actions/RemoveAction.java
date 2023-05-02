@@ -4,15 +4,16 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
-
 /**
- * Class that represents the Despawn action which removes the actor from that map when executed
+ * Class that represents removal of actors when called
+ * @author Hayden Tran
+ * @version 1.0.0
  */
-public class DespawnAction extends Action {
+public class RemoveAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         map.removeActor(actor);
-        return actor + " has despawned";
+        return actor + " has been removed from the map.";
     }
 
     @Override

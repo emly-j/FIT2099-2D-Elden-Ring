@@ -1,7 +1,7 @@
 package game.utils;
 
 /**
- * Use this enum class to give `buff` or `debuff`.
+ * Use this enum class to represent certain capabilities within classes.
  * Created by:
  * @author Riordan D. Alfredo
  * Modified by:
@@ -11,10 +11,8 @@ package game.utils;
  */
 public enum Status {
     HOSTILE_TO_ENEMY,
-    RESPAWNABLE,
     RESTED,
     RESETTABLE,
-    DROPPED,
     REVIVABLE,
     PERFORM_AREA_ATTACK,
     CAN_RETRIEVE,

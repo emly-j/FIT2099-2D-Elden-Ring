@@ -10,9 +10,14 @@ import game.actions.BuyAction;
 import game.items.weapons.Club;
 import game.items.weapons.Scimitar;
 
+/**
+ * Class that represents Merchant Kale, a trader who allows the player to buy/sell items
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class MerchantK extends Trader{
     /**
-     * Constructor.
+     * Constructor instantiating this specific trader
      *
      */
     public MerchantK() {

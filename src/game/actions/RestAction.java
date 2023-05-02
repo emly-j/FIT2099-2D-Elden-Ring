@@ -19,7 +19,6 @@ public class RestAction extends Action {
     public String execute(Actor actor, GameMap map) {
         actor.addCapability(Status.RESTED);
         ResetManager.getInstance().runReset(); //runs everything to be reset from resetmanager
-        System.out.println(actor.hasCapability(Status.RESTED));
 
 
         return "Game has been reset: " + actor + " has been moved to The First Step";

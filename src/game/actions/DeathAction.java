@@ -68,7 +68,7 @@ public class DeathAction extends Action {
                 return System.lineSeparator() + YOU_DIED + System.lineSeparator() + target + " dropped " + runesHeld + " runes";
 
             }
-            map.moveActor(target, map.at(30, 10)); //when die, want to move them to coords of siteoflostgrace
+            map.moveActor(target, map.at(38, 11)); //when die, want to move them to coords of siteoflostgrace
             ResetManager.getInstance().runReset(); //reset the game state as required
 
             return System.lineSeparator() + YOU_DIED;

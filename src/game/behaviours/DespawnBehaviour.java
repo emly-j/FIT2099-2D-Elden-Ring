@@ -6,6 +6,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.utils.RandomNumberGenerator;
 import game.actions.DespawnAction;
 
+/**
+ * Class that represents the probablity that will return a new despawn action if it is met
+ * @author Hayden Tran
+ * @version 1.0.0
+ */
 public class DespawnBehaviour implements Behaviour{
 
 

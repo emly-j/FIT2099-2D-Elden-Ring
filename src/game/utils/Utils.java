@@ -8,6 +8,11 @@ import edu.monash.fit2099.engine.positions.Location;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * A class that represents the static methods that can be accesed in other classes for clartiy
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class Utils {
     public static HashMap<Actor, String> getSurroundingActors(Actor source, GameMap map) {
         HashMap<Actor, String> nearbyActors = new HashMap<>();

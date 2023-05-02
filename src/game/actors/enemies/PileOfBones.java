@@ -20,13 +20,19 @@ import game.utils.Utils;
 
 import java.util.HashMap;
 
+/**
+ * Class that represents the PileOfBones actor which will spawn when a Skeleton dies
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class PileOfBones extends Skeleton implements RuneSource {
 
     private Actor revivableActor;
     private int counter;
 
-    /***
-     * Constructor.
+    /**
+     * Constructor that instantiate sthe pile of bones, removing its capabilties of behaving like a normal alive actor
+     * @param revivableActor the actor which is a skeleton that turns into this pile of bones
      */
     public PileOfBones(Actor revivableActor) {
         super("Pile Of Bones", 'X', 1);
@@ -104,6 +110,7 @@ public class PileOfBones extends Skeleton implements RuneSource {
 
     }
 
+    @Override
     public void addRuneSource(){
         RuneManager runeManager = RuneManager.getInstance();
         runeManager.addRuneOwner(this, RandomNumberGenerator.getRandomInt(35, 892));

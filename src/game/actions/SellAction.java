@@ -7,9 +7,20 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.controllers.RuneManager;
 import game.items.Sellable;
 
+/**
+ * Class that represents the action to sell an item
+ * @author Emily Jap
+ * @version 1.0.0
+ */
+
 public class SellAction extends Action {
 
     private Sellable itemToSell;
+
+    /**
+     * sets item to sell to this particular instance
+     * @param itemToSell
+     */
 
     public SellAction(Sellable itemToSell) {
         this.itemToSell = itemToSell;
