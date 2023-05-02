@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.controllers.ResetManager;
+import game.controllers.RestLocationManager;
 import game.controllers.RuneManager;
 import game.utils.Status;
 import game.items.Rune;
@@ -61,14 +62,15 @@ public class DeathAction extends Action {
                 runesDropped.setCounter(1); //setting counter to 1, next reset will = 0 and disappear
                 RuneManager.getInstance().subtractRunes(target, runesHeld);
                 System.out.println("RUNES ARE HOLDING " + runesDropped.getValue());
-                map.moveActor(target, map.at(30, 10)); //when die, want to move them to coords of siteoflostgrace
+                map.moveActor(target, RestLocationManager.getLastRestedLocation());
+//                map.moveActor(target, map.at(30, 10)); //when die, want to move them to coords of siteoflostgrace
                 addCapabilityPlayerDeath(target);
                 ResetManager.getInstance().runReset(); //reset the game state as required
 
                 return System.lineSeparator() + YOU_DIED + System.lineSeparator() + target + " dropped " + runesHeld + " runes";
 
             }
-            map.moveActor(target, map.at(38, 11)); //when die, want to move them to coords of siteoflostgrace
+            map.moveActor(target, RestLocationManager.getLastRestedLocation());
             ResetManager.getInstance().runReset(); //reset the game state as required
 
             return System.lineSeparator() + YOU_DIED;
