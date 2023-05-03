@@ -2,6 +2,11 @@ package game.actors;
 import edu.monash.fit2099.engine.actors.Actor;
 import game.utils.Status;
 
+/**
+ * An abstract class which will have the base capabilities of all future Traders
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public abstract class Trader extends Actor {
 
     /**

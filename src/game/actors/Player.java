@@ -11,6 +11,7 @@ import game.controllers.ResetManager;
 import game.controllers.RuneManager;
 import game.controllers.Resettable;
 import game.controllers.RuneSource;
+import game.items.consumable.FlaskOfCrimsonTears;
 import game.utils.Status;
 import game.items.weapons.Club;
 
@@ -28,10 +29,6 @@ import game.items.weapons.Club;
 public class Player extends Actor implements Resettable, RuneSource {
 	private final Menu menu = new Menu();
 
-	private int respawnX;
-	private int respawnY;
-
-
 	/**
 	 * Constructor that instantiates the player, registering it as a resettable instance, making it capable of holding runes
 	 *
@@ -43,6 +40,7 @@ public class Player extends Actor implements Resettable, RuneSource {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addWeaponToInventory(new Club());
+		this.addItemToInventory(new FlaskOfCrimsonTears());
 		ResetManager.getInstance().registerResettable(this);
 		addRuneSource();
 	}

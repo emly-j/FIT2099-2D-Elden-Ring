@@ -4,12 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.FancyGroundFactory;
-import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.World;
+import edu.monash.fit2099.engine.positions.*;
 import game.actors.MerchantK;
 import game.actors.Player;
 import game.actors.enemies.LoneWolf;
+import game.controllers.RestLocationManager;
 import game.environments.*;
 import game.items.consumable.FlaskOfCrimsonTears;
 import game.utils.FancyMessage;
@@ -67,13 +66,14 @@ public class Application {
 			}
 		}
 
+
 		gameMap.at(38,11).setGround(new TheFirstStep());
+		RestLocationManager.storeLastLocation(gameMap.at(38,11));
 		gameMap.at(40,12).addActor(new MerchantK());
 
 
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300);
-		player.addItemToInventory(new FlaskOfCrimsonTears());
 		world.addPlayer(player, gameMap.at(36, 10));
 
 		world.run();

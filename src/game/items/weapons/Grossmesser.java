@@ -13,7 +13,6 @@ import game.utils.Utils;
 
 /**
  * A weapon carried by HeavySkeletalSwordsman.
- *
  * @author Emily
  * @version 1.0
  * @see WeaponItem
@@ -49,6 +48,7 @@ public class Grossmesser extends WeaponItem implements Sellable {
         return new AttackAction(target, direction);
     }
 
+
     @Override
     public int getSellPrice() {
         return 100;
@@ -68,5 +68,6 @@ public class Grossmesser extends WeaponItem implements Sellable {
     public void removeSellableFromInventory(Actor actor) {
         actor.removeWeaponFromInventory(this);
     }
+
 
 }

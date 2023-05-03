@@ -40,7 +40,7 @@ public class TheFirstStep extends Ground {
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
         if (location.containsAnActor()) {
-            actions.add(new RestAction());
+            actions.add(new RestAction(this, location));
         } return actions;
     }
 

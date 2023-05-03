@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 
 /**
- * @author Hayden Tran
+ * @author Emily Jap
  * @version 1.0.0
  */
 public interface Sellable {

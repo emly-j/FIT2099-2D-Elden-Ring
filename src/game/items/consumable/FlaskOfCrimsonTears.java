@@ -3,7 +3,8 @@ package game.items.consumable;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.ConsumeFlaskOfCrimsonTearsAction;
+import game.actions.ConsumeAction;
+import game.controllers.Consumable;
 import game.controllers.ResetManager;
 import game.controllers.Resettable;
 import game.utils.Status;
@@ -13,7 +14,7 @@ import game.utils.Status;
  * @author Hayden Tran
  * @version 1.0.0
  */
-public class FlaskOfCrimsonTears extends Item implements Resettable {
+public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable {
     /**
      * The amount of charges the item will have to use
      */
@@ -22,13 +23,14 @@ public class FlaskOfCrimsonTears extends Item implements Resettable {
      * The maximum amount of charges in our current implementation
      */
     private final int MAX_USES = 2;
+    private int health = 250;
 
     /**
      * Constructor that instantiates the item and adds the action and registers it as an instance of resettable
      */
     public FlaskOfCrimsonTears(){
         super("Flask Of Crimson Tears", 'c', false);
-        this.addAction(new ConsumeFlaskOfCrimsonTearsAction(this));
+        this.addAction(new ConsumeAction(this, health));
         this.charges = MAX_USES;
         ResetManager.getInstance().registerResettable(this);
     }
@@ -46,20 +48,19 @@ public class FlaskOfCrimsonTears extends Item implements Resettable {
         }
     }
 
-    /**
-     * Whenever item is used, will decrement the charge
-     * @return
-     */
-    public int decrementCharges() {
-        return this.charges -= 1;
-    }
-
-    /**
-     * return the amount of charges for user
-     * @return
-     */
+    @Override
     public int getCharges() {
         return charges;
+    }
+
+    @Override
+    public void reduceCharges() {
+        this.charges -= 1;
+    }
+
+    @Override
+    public String chargesString() {
+        return " (" + getCharges() + "/" + this.MAX_USES + ")";
     }
 
 

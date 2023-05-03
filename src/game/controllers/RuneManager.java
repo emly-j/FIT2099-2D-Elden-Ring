@@ -9,8 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * A class that represents RuneManager and will beable to be called in every other class due to being able to statically get any instance
  * @author Hayden Tran
+ * @author Emily Jap
+ * @version 1.0.0
  */
 public class RuneManager {
 

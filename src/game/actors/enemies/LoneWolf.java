@@ -1,6 +1,8 @@
 package game.actors.enemies;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.controllers.ResetManager;
+import game.controllers.Resettable;
 import game.utils.RandomNumberGenerator;
 import game.controllers.RuneManager;
 import game.controllers.RuneSource;
@@ -16,7 +18,7 @@ import game.utils.Status;
  * @author Emily Jap
  * @version 1.0.0
  */
-public class LoneWolf extends Canine implements RuneSource {
+public class LoneWolf extends Canine implements RuneSource{
 
     /**
      * Constructor which instantiates the attributes for an enemy and adds it to be a runesource
@@ -24,6 +26,7 @@ public class LoneWolf extends Canine implements RuneSource {
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
         addRuneSource();
+        ResetManager.getInstance().registerResettable(this);
     }
 
     @Override
@@ -43,4 +46,6 @@ public class LoneWolf extends Canine implements RuneSource {
         runeManager.addRuneOwner(this, RandomNumberGenerator.getRandomInt(55, 1470));
         runeManager.addRuneSource(this);
     }
+
+
 }
