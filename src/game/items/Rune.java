@@ -2,6 +2,7 @@ package game.items;
 
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import game.controllers.Resettable;
@@ -51,14 +52,16 @@ public class Rune extends Item implements Resettable {
      * @param currentLocation The location of the ground on which we lie.
      */
     public void tick(Location currentLocation) {
+        Display display = new Display();
+
         if (this.hasCapability(Status.RESETTABLE)){ //if resettable, remove the item
             currentLocation.removeItem(this);
-            System.out.println("Runes reset");
+            display.println("Runes reset");
         }
 
         if (currentLocation.containsAnActor() && !currentLocation.getActor().hasCapability(Status.CAN_RETRIEVE)){
             currentLocation.getActor().addCapability(Status.CAN_RETRIEVE);
-            System.out.println("ACTOR CAN NOW RETRIEVE");
+            display.println("ACTOR CAN NOW RETRIEVE");
             addAction(this.getRetrieveAction(currentLocation.getActor()));
         }
     }
@@ -94,16 +97,17 @@ public class Rune extends Item implements Resettable {
      */
     @Override
     public void reset() {
+        Display display = new Display();
 
         if (this.player.hasCapability(Status.PLAYERDIEDTWICE)) {
-            System.out.println("PLAYEER DIED TWICE CHECK");
+            display.println("PLAYEER DIED TWICE CHECK");
             this.counter -= 1;
         }
 
         if (this.counter == 0){
-            System.out.println("RUNE COUNTER " + this.counter);
+            display.println("RUNE COUNTER " + this.counter);
             this.addCapability(Status.RESETTABLE);
-            System.out.println("RUNES ARE NOW RESETTABLE");
+            display.println("RUNES ARE NOW RESETTABLE");
         }
     }
 }

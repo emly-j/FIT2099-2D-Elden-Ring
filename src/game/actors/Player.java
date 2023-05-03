@@ -53,7 +53,7 @@ public class Player extends Actor implements Resettable, RuneSource {
 		// Handle multi-turn Actions
 		if (this.hasCapability(Status.RESETTABLE)){
 			this.removeCapability(Status.RESETTABLE);
-			System.out.println(this + " has been reset");
+			display.println(this + " has been reset");
 
 		}
 		if (lastAction.getNextAction() != null)

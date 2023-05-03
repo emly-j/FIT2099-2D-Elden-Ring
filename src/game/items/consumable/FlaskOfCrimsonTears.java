@@ -1,6 +1,7 @@
 package game.items.consumable;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
@@ -44,7 +45,8 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable 
         if (this.hasCapability(Status.RESETTABLE)){
             this.charges = MAX_USES;
             this.removeCapability(Status.RESETTABLE);
-            System.out.println(this + "' charges has been reset");
+            Display display = new Display();
+            display.println(this + "' charges has been reset");
         }
     }
 

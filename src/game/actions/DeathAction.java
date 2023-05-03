@@ -82,6 +82,7 @@ public class DeathAction extends Action {
 
         } else { //otherwise it is enemy who has death action and drops everything
 
+            // transfer runes to player when they kill a target
             if(attacker.hasCapability(Status.HOSTILE_TO_ENEMY)){
                 RuneManager runeManager = RuneManager.getInstance();
                 result += runeManager.transfer(attacker, target);
