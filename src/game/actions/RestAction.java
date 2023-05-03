@@ -11,10 +11,11 @@ import game.controllers.RestLocationManager;
 import game.utils.Status;
 
 /**
- * An class that represents the 'rest action' implemented when standing on The First Step
+ * A class that represents the 'rest action' implemented when standing on The First Step
  * @see game.environments.TheFirstStep
  * @author Hayden Tran
  * @version 1.0.0
+ * @see Action
  */
 public class RestAction extends Action {
 
@@ -22,6 +23,11 @@ public class RestAction extends Action {
     private Location location;
 
 
+    /**
+     * Constructor.
+     * @param ground
+     * @param location
+     */
     public RestAction(Ground ground, Location location){
         this.ground = ground;
         this.location = location;

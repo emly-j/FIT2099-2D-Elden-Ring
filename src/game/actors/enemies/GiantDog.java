@@ -65,6 +65,9 @@ public class GiantDog extends Canine implements RuneSource {
                     }
                 }
             }
+            else {
+                actions.add(new AreaAttackAction(targets, otherActor.getIntrinsicWeapon()));
+            }
         }
 
         return actions;

@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * A class that represents the static methods that can be accesed in other classes for clartiy
+ * A class that represents the static methods that can be accessed in other classes for clarity
  * @author Emily Jap
  * @version 1.0.0
  */

@@ -21,12 +21,18 @@ import java.util.List;
  * It deals 103 damage with 80% hit rate
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Emily Jap
+ * @see WeaponItem
+ * @see Buyable
+ * @see Sellable
  *
  */
 public class Club extends WeaponItem implements Sellable, Buyable {
 
-    private Action sellAction; // ensures there is one instance of SellAction at a time
+    /**
+     * SellAction for the Club. Ensures there is one instance of SellAction at a time.
+     */
+    private Action sellAction;
 
     /**
      * Constructor
@@ -49,22 +55,25 @@ public class Club extends WeaponItem implements Sellable, Buyable {
         }
     }
 
+    @Override
     public int getSellPrice() {
         return 100;
     }
 
+    @Override
     public Action getSellAction() {
         return new SellAction(this);
     }
 
+    @Override
     public Item getSellableItem() {
         return this;
     }
 
+    @Override
     public void removeSellableFromInventory(Actor actor) {
         actor.removeWeaponFromInventory(this);
     }
-
 
     @Override
     public int getBuyPrice() {

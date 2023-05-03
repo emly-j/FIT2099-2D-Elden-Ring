@@ -6,6 +6,7 @@ import game.actors.AttackType;
  * Abstract class that will represent the base Canines (currently Lone Wolf and Giant Dog)
  * @author Emily Jap
  * @version 1.0.0
+ * @see Enemy
  */
 public abstract class Canine extends Enemy {
     /**

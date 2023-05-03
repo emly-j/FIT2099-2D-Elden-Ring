@@ -7,6 +7,7 @@ import game.actors.AttackType;
  * Abstract class represent the base crustacean actors
  * @author Emily Jap
  * @version 1.0.0
+ * @see Enemy
  */
 public abstract class Crustacean extends Enemy {
     /**

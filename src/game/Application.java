@@ -17,7 +17,7 @@ import game.utils.FancyMessage;
  * The main class to start the game.
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Emily Jap
  *
  */
 public class Application {

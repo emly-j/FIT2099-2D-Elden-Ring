@@ -7,12 +7,11 @@ import game.utils.RandomNumberGenerator;
 import game.actions.DespawnAction;
 
 /**
- * Class that represents the probablity that will return a new despawn action if it is met
+ * Class that that will return a new despawn action if the probablity is met
  * @author Hayden Tran
  * @version 1.0.0
  */
 public class DespawnBehaviour implements Behaviour{
-
 
     @Override
     public Action getAction(Actor actor, GameMap map) {

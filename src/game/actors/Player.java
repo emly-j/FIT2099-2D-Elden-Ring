@@ -47,10 +47,8 @@ public class Player extends Actor implements Resettable, RuneSource {
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-		System.out.println("(" + this.getHealth() + "/" + this.maxHitPoints + ")");
-		System.out.println(this + " has: " + RuneManager.getInstance().getRunes(this) + " runes");
-
-
+		display.print(this + " (" + this.getHealth() + "/" + this.maxHitPoints + "), ");
+		display.println("runes: " + RuneManager.getInstance().getRunes(this));
 
 		// Handle multi-turn Actions
 		if (this.hasCapability(Status.RESETTABLE)){

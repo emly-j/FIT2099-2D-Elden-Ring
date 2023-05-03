@@ -10,12 +10,25 @@ import game.actors.enemies.PileOfBones;
  * Class that represents the action for become pile of boners
  * @author Emily Jap
  * @version 1.0.0
+ * @see Action
  */
 public class BecomePileOfBonesAction extends Action {
 
+    /**
+     * The actor the PileOfBones will revive into when it is not hit.
+     */
     private Actor revivableActor;
+
+    /**
+     * The location where the pile of bones will spawn.
+     */
     private Location revivableActorLocation;
 
+    /**
+     * Constructor
+     * @param revivableActor actor the pile of bones revives into
+     * @param revivableActorLocation location where the pile of bones will spawn
+     */
     public BecomePileOfBonesAction(Actor revivableActor, Location revivableActorLocation) {
         this.revivableActor = revivableActor;
         this.revivableActorLocation = revivableActorLocation;

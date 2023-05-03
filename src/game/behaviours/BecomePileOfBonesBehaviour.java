@@ -12,13 +12,6 @@ import game.actions.BecomePileOfBonesAction;
  * @version 1.0.0
  */
 public class BecomePileOfBonesBehaviour implements Behaviour {
-    /**
-     * Overwritting the getaction method that checks if the actor is alive, if not well return the pile of bones action
-     * @see BecomePileOfBonesAction
-     * @param actor the Actor acting
-     * @param map the GameMap containing the Actor
-     * @return
-     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         if (!actor.isConscious()){

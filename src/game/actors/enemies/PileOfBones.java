@@ -24,15 +24,23 @@ import java.util.HashMap;
  * Class that represents the PileOfBones actor which will spawn when a Skeleton dies
  * @author Emily Jap
  * @version 1.0.0
+ * @see Skeleton
  */
 public class PileOfBones extends Skeleton implements RuneSource {
 
+    /**
+     * The actor the PileOfBones will revive into when it is not hit.
+     */
     private Actor revivableActor;
+
+    /**
+     * A counter for keeping track of the number of turns before it revives.
+     */
     private int counter;
 
     /**
-     * Constructor that instantiate sthe pile of bones, removing its capabilties of behaving like a normal alive actor
-     * @param revivableActor the actor which is a skeleton that turns into this pile of bones
+     * Constructor that instantiates the pile of bones, removing its capabilties of behaving like a normal alive actor.
+     * @param revivableActor the actor the pile of bones will revive into when it is not hit
      */
     public PileOfBones(Actor revivableActor) {
         super("Pile Of Bones", 'X', 1);
@@ -43,7 +51,7 @@ public class PileOfBones extends Skeleton implements RuneSource {
         behaviours.remove(500); // remove AttackBehaviour
         addRuneSource();
 
-        // transfer inventory (to be dropped when pile of bones dies)
+        // transfer inventory from revivable actor (to be dropped when pile of bones dies)
         for (WeaponItem weapon : revivableActor.getWeaponInventory()){
             addWeaponToInventory(weapon);
         }
@@ -103,11 +111,6 @@ public class PileOfBones extends Skeleton implements RuneSource {
         }
 
         return actions;
-    }
-
-    @Override
-    public void reset() {
-
     }
 
     @Override

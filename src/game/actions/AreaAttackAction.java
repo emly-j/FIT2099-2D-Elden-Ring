@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Class that represents the area attack action
+ * An action to perform an area attack
  * @author Emily Jap
  * @version 1.0.0
  */

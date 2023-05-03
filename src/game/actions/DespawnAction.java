@@ -7,6 +7,9 @@ import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
  * Class that represents the Despawn action which removes the actor from that map when executed
+ * @author Hayden Tran
+ * @version 1.0.0
+ * @see Action
  */
 public class DespawnAction extends Action {
     @Override

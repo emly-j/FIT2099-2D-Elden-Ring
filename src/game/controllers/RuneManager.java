@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * A class that represents RuneManager and will beable to be called in every other class due to being able to statically get any instance
+ * A class that keeps track of RuneSources in the game and manages transfer of runes
  * @author Hayden Tran
  * @author Emily Jap
  * @version 1.0.0
@@ -29,14 +29,17 @@ public class RuneManager {
 
     private static RuneManager instance = null;
 
+    /**
+     * Constructor.
+     */
     private RuneManager() {
         this.runeOwners = new HashMap<>();
         this.runeSources = new ArrayList<>();
     }
 
     /**
-     * Checks if we have instance not, if not create and return it, otherwise just return the instance we have
-     * @return
+     * A factory method that generates or returns the instance of RuneManager
+     * @return a RuneManager instance
      */
     public static RuneManager getInstance() {
         if (instance == null)
@@ -45,25 +48,25 @@ public class RuneManager {
     }
 
     /**
-     * getter for the runeOwner hashmap
-     * @return
+     * Getter for the runeOwner hashmap
+     * @return hashmap of rune owners in the game
      */
-    public Map<Actor, Integer> getRuneOwners() {
+    public HashMap<Actor, Integer> getRuneOwners() {
         return runeOwners;
     }
 
     /**
-     * getter for the runeSources list
-     * @return
+     * Getter for the runeSources list
+     * @return list of rune sources in the game
      */
-    public List<RuneSource> getRuneSources() {
+    public ArrayList<RuneSource> getRuneSources() {
         return runeSources;
     }
 
     /**
-     * Gets number of runes actor is holding
-     * @param source the actor that we are check the runes of
-     * @return runes that this actor is holding
+     * Gets number of runes an actor is holding
+     * @param source the actor that we want to check the runes of
+     * @return integer representing runes that this actor is holding
      */
     public int getRunes(Actor source) {
         if (canActorHoldRunes(source) == true) { //we check if THIS actor is in the runeOwner Hashmap
@@ -73,9 +76,9 @@ public class RuneManager {
     }
 
     /**
-     * adds a RuneOwner to the hashmap
+     * Adds a RuneOwner to the hashmap
      * @param owner the actor who owns and holds the runes
-     * @param runeAmount the amount of runes the actor holds
+     * @param runeAmount the amount of runes the actor initially holds
      */
     public void addRuneOwner(Actor owner, int runeAmount) {
         if (runeOwners.get(owner) == null) {
@@ -84,8 +87,7 @@ public class RuneManager {
     }
 
     /**
-     * adds a RuneSource to the list of rune sources
-     *
+     * Adds a RuneSource to the list of rune sources
      * @param runeSource a RuneSource object that is a source of runes
      */
     public void addRuneSource(RuneSource runeSource) {
@@ -101,7 +103,7 @@ public class RuneManager {
     }
 
     /**
-     * Removes a RuneSource from the list
+     * Removes a RuneSource from the rune source list
      * @param source the rune source to be removed
      */
     public void removeRuneSource(RuneSource source) {
@@ -109,10 +111,9 @@ public class RuneManager {
     }
 
     /**
-     * checking if our hashmap contains our parameter 'actor' determining if it can hold runes or not
-     * If it is, return true
-     *
-     * @param actor
+     * Checks if an actor is a rune owner
+     * @param actor actor we want to check
+     * @return boolean indicating if the actor is a rune owner
      */
     public boolean canActorHoldRunes(Actor actor) {
         return runeOwners.containsKey(actor);
@@ -120,18 +121,17 @@ public class RuneManager {
 
     /**
      * Checks if an actor is a rune source
-     * @param actor
-     * @return
+     * @param actor actor we want to check
+     * @return boolean indicating if the actor is a rune source
      */
     public boolean actorIsRuneSource(Actor actor) {return runeSources.contains(actor);}
 
     /**
-     * Adds runes to a rune owner
-     * checks if the key is empty or not then adds as required if can hold runes
-     * @param runeOwner
-     * @param amountAdded
+     * Adds runes to a rune owner.
+     * checks if the actor exists as a rune owner then adds as required
+     * @param runeOwner actor we want to add runes to
+     * @param amountAdded amount of runes to add
      */
-
     public void addRunes(Actor runeOwner, int amountAdded) {
         if (!(runeOwners.get(runeOwner) == null)){ //checks if the amount of runes set to null, indicating an empty set/ this runeholder has no runes
             int updatedAmount = runeOwners.get(runeOwner) + amountAdded;
@@ -140,10 +140,10 @@ public class RuneManager {
     }
 
     /**
-     * Subtracts runes from a rune owner
-     * checks if the key is empty or not then adds as required if can hold runes
-     * @param runeOwner
-     * @param amountSubtracted
+     * Subtracts runes from a rune owner.
+     * checks if the actor exists as a rune owner then subtracts as required
+     * @param runeOwner actor we want to subtract runes from
+     * @param amountSubtracted amount of runes to subtract
      */
     public void subtractRunes(Actor runeOwner, int amountSubtracted) {
         if (!(runeOwners.get(runeOwner) == null)) { // no extra condition here because we should check it in the purchases that we make
@@ -153,7 +153,10 @@ public class RuneManager {
     }
 
     /**
-     * Transfer runes between two actors that are rune sources
+     * Transfer runes between two actors.
+     * @param attacker the actor who will receive runes
+     * @param target the actor who will lose runes
+     * @return string indicating the result
      */
     public String transfer(Actor attacker, Actor target){
         String result = null;

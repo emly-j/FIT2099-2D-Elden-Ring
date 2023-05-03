@@ -14,6 +14,7 @@ import game.items.weapons.Scimitar;
  * Class that represents Merchant Kale, a trader who allows the player to buy/sell items
  * @author Emily Jap
  * @version 1.0.0
+ * @see Trader
  */
 public class MerchantK extends Trader{
     /**

@@ -106,6 +106,8 @@ public abstract class Enemy extends Actor implements Resettable {
                         actions.add(new AreaAttackAction(targets, weapon));
                     }
                 }
+            }else {
+                actions.add(new AreaAttackAction(targets, otherActor.getIntrinsicWeapon()));
             }
         }
         return actions;

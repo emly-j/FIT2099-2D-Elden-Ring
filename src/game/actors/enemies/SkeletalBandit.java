@@ -22,6 +22,7 @@ import java.util.HashMap;
  * This class represents a base Skeletal Bandit
  * @author Hayden Tran
  * @version 1.0.0
+ * @see Skeleton
  */
 public class SkeletalBandit extends Skeleton{
     /**
@@ -38,7 +39,7 @@ public class SkeletalBandit extends Skeleton{
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return action list of allowable actions
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map){

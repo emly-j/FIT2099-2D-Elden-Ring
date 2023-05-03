@@ -21,6 +21,7 @@ import java.util.HashMap;
  * Class that represents the Heavy Skeletal Swordsman extending from a skeleton
  * @author Emily Jap
  * @version 1.0.0
+ * @see Skeleton
  */
 public class HeavySkeletalSwordsman extends Skeleton {
 
@@ -63,6 +64,8 @@ public class HeavySkeletalSwordsman extends Skeleton {
                         actions.add(new AreaAttackAction(targets, weapon));
                     }
                 }
+            } else {
+                actions.add(new AreaAttackAction(targets, otherActor.getIntrinsicWeapon()));
             }
         }
 

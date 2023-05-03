@@ -16,10 +16,14 @@ import game.utils.Utils;
  * @author Emily
  * @version 1.0
  * @see WeaponItem
+ * @see Sellable
  */
 public class Grossmesser extends WeaponItem implements Sellable {
 
-    private Action sellAction; // ensures there is one instance of SellAction at a time
+    /**
+     * SellAction for the Grossmesser. Ensures there is one instance of SellAction at a time.
+     */
+    private Action sellAction;
 
     /**
      * Constructor.
@@ -31,7 +35,6 @@ public class Grossmesser extends WeaponItem implements Sellable {
 
     @Override
     public void tick(Location currentLocation, Actor actor){
-        // TODO: check if there are targets nearby, if so allow the holder to perform area attack
 
         // if there is a trader nearby, allow this item to be sold
         if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))){
@@ -47,7 +50,6 @@ public class Grossmesser extends WeaponItem implements Sellable {
     public Action getSkill(Actor target, String direction) {
         return new AttackAction(target, direction);
     }
-
 
     @Override
     public int getSellPrice() {

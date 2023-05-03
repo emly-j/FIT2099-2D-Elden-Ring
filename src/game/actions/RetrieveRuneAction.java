@@ -10,6 +10,7 @@ import game.utils.Status;
  * Class that represents a retrieve rune action
  * @author Hayden Tran
  * @version 1.0.0
+ * @see RetrieveAction
  */
 public class RetrieveRuneAction extends RetrieveAction {
     private final Rune rune;

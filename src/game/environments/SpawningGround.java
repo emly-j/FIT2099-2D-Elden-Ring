@@ -8,7 +8,7 @@ import game.utils.RandomNumberGenerator;
 import java.util.HashMap;
 
 /**
- * A class that represents the abstract class SpawninGround, representing all ground that will spawn an actor
+ * A class that represents the abstract class SpawningGround, representing all ground that will spawn an actor.
  * @author Emily Jap
  * @version 1.0.0
  */
@@ -28,32 +28,40 @@ public abstract class SpawningGround extends Ground {
     }
 
     /**
-     * a method adds an actor that spawns into the hashmap with the .put() method
-     * @param actor
-     * @param actorSpawnChance
+     * Adds an actor that spawns from the SpawningGround
+     * @param actor actor that spawns
+     * @param actorSpawnChance the chance of the actor spawning from 0 to 100
      */
     public void addActorThatSpawns(Actor actor, int actorSpawnChance){
         actorsThatSpawn.put(actor, actorSpawnChance);
     }
 
     /**
-     * Updating the tick method that iterates over the actorsThatSpawn HashMap
-     * and checks if a random probability is met and the location doesn't contain an actor,
-     * spawn the actor at that location
-     * @param location The location of the Ground
+     * Returns the hashmap of actors that spawn on the SpawningGround
+     * @return hashmap of actors that spawn
      */
+    public HashMap<Actor, Integer> getActorsThatSpawn(){
+        return actorsThatSpawn;
+    }
+
+    /**
+     * Iterates over the actorsThatSpawn HashMap at each turn.
+     * If the location doesn't contain an actor, then potentially spawn an actor at that location.
+     * @param location The location of the SpawningGround
+     */
+    @Override
     public void tick(Location location){
         for (Actor actor : actorsThatSpawn.keySet()){
-            int actorSpawnChance = actorsThatSpawn.get(actor);
-            if (RandomNumberGenerator.getRandomChance(actorSpawnChance) && !location.containsAnActor()){
-                spawnActor(location);
+            if (!location.containsAnActor()){
+                spawnActor(actor, location);
             }
         }
     }
 
     /**
-     * A factory method to spawn actors
-     * @param location
+     * A factory method to spawn actors depending on their chance of spawning and the location on the map.
+     * @param actor actor that may potentially spawn
+     * @param location location where the actor will spawn
      */
-    public abstract void spawnActor(Location location);
+    public abstract void spawnActor(Actor actor, Location location);
 }

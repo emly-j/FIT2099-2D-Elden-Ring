@@ -17,7 +17,7 @@ import java.util.Random;
  * Created by:
  * @author Riordan D. Alfredo
  * Modified by:
- * @author Emily Jap
+ * @author
  * @version 1.0.0
  */
 public class FollowBehaviour implements Behaviour {

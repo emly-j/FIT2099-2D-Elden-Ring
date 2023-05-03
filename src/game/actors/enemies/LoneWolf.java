@@ -17,6 +17,7 @@ import game.utils.Status;
  * Modified by:
  * @author Emily Jap
  * @version 1.0.0
+ * @see Canine
  */
 public class LoneWolf extends Canine implements RuneSource{
 

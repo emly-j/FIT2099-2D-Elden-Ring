@@ -9,7 +9,7 @@ import game.items.Rune;
 
 /**
  * An action to allow actors to buy items that are buyable
- * @author Emily
+ * @author Emily Jap
  * @see Action
  */
 public class BuyAction extends Action {

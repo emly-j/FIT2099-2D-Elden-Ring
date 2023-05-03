@@ -67,6 +67,8 @@ public class GiantCrab extends Crustacean implements RuneSource {
                         actions.add(new AreaAttackAction(targets, weapon));
                     }
                 }
+            } else {
+                actions.add(new AreaAttackAction(targets, otherActor.getIntrinsicWeapon()));
             }
         }
 

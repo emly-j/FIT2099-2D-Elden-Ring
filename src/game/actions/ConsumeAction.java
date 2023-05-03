@@ -9,6 +9,7 @@ import game.controllers.Consumable;
  * A consume action which represents all item that should be consumed
  * @author Hayden Tran
  * @version 1.0.0
+ * @see Action
  */
 public class ConsumeAction extends Action {
 

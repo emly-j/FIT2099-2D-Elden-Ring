@@ -22,11 +22,16 @@ import static game.utils.FancyMessage.YOU_DIED;
  * @author Hayden Tran
  * @author Emily Jap
  * @version 1.0.0
+ * @see Action
  */
 public class DeathAction extends Action {
     private Actor attacker;
     private int runesHeld;
 
+    /**
+     * Constructor.
+     * @param actor
+     */
     public DeathAction(Actor actor) {
         this.attacker = actor;
     }
@@ -95,6 +100,11 @@ public class DeathAction extends Action {
             return result;
         }
     }
+
+    /**
+     * A method that adds capabilities when the player has died
+     * @param target
+     */
     public void addCapabilityPlayerDeath(Actor target){
         if (!target.hasCapability(Status.PLAYERDIED) && !target.hasCapability(Status.PLAYERDIEDTWICE)) {
             target.addCapability(Status.PLAYERDIED); //indicate that player has died once.

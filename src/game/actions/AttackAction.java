@@ -13,7 +13,7 @@ import game.utils.Status;
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
- * @author Hayden Tran
+ * @author Emily Jap
  * @version 1.0.0
  */
 public class AttackAction extends Action {

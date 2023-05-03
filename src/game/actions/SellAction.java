@@ -11,17 +11,20 @@ import game.items.Sellable;
  * Class that represents the action to sell an item
  * @author Emily Jap
  * @version 1.0.0
+ * @see Action
  */
 
 public class SellAction extends Action {
 
+    /**
+     * Item to be sold.
+     */
     private Sellable itemToSell;
 
     /**
-     * sets item to sell to this particular instance
+     * Constructor.
      * @param itemToSell
      */
-
     public SellAction(Sellable itemToSell) {
         this.itemToSell = itemToSell;
     }
