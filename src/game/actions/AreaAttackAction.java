@@ -42,6 +42,7 @@ public class AreaAttackAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
+        String result = actor + " performs area attack \n";
 
         // get intrinsic weapon if possible
         if (weapon == null) {
@@ -51,10 +52,10 @@ public class AreaAttackAction extends Action {
         // go through list of targets and create attack action for each
         for(Actor target: targets.keySet()){
             AttackAction attackAction = new AttackAction(target, targets.get(target), weapon);
-            attackAction.execute(actor, map);
+            result += attackAction.execute(actor, map) + "\n";
         }
 
-        return actor + " performs area attack ";
+        return result;
     }
 
     @Override

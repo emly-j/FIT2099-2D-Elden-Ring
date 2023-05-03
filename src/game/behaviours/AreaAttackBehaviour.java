@@ -46,10 +46,8 @@ public class AreaAttackBehaviour implements Behaviour {
             weapon = actor.getIntrinsicWeapon();
         }
 
-        // TODO: Need to check that the weapon can perform an area attack?
-
         // return area attack action
-        return new AreaAttackAction(nearbyActors);
+        return new AreaAttackAction(nearbyActors, weapon);
 
     }
 }
