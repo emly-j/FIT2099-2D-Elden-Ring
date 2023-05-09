@@ -1,44 +1,53 @@
-package game.actors.enemies;
+package game.actors.enemies.skeleton;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.utils.Utils;
 import game.actions.AreaAttackAction;
-import game.actors.AttackType;
-import game.behaviours.AreaAttackBehaviour;
-import game.behaviours.FollowBehaviour;
-import game.utils.Status;
 import game.actions.AttackAction;
+import game.actors.AttackType;
+import game.actors.enemies.skeleton.Skeleton;
+import game.behaviours.AreaAttackBehaviour;
 import game.behaviours.AttackBehaviour;
+import game.behaviours.FollowBehaviour;
 import game.items.weapons.Grossmesser;
+import game.items.weapons.Scimitar;
+import game.utils.Status;
+import game.utils.Utils;
 
 import java.util.HashMap;
 
 
 /**
- * Class that represents the Heavy Skeletal Swordsman extending from a skeleton
- * @author Emily Jap
+ * This class represents a base Skeletal Bandit
+ * @author Hayden Tran
  * @version 1.0.0
  * @see Skeleton
  */
-public class HeavySkeletalSwordsman extends Skeleton {
-
+public class SkeletalBandit extends Skeleton {
     /**
-     * Constructor that instantiates the actor with its starting weapon
+     * Constructor that adds the required weapon Scimitar and instantiates the properties of the skeletal bandit
      */
-    public HeavySkeletalSwordsman() {
-        super("Heavy Skeletal Swordsman", 'q', 153);
-        addWeaponToInventory(new Grossmesser());
+    public SkeletalBandit() {
+        super("Skeletal Bandit", 'b', 184);
+        addWeaponToInventory(new Scimitar());
     }
 
+    /**
+     * adds the required behaviours expected of an enemie
+     * adds new actions based on the capability that the other actors have
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return action list of allowable actions
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
 
         // these behaviours occur when there are other actors in the surrounding area
         behaviours.put(998, new FollowBehaviour(otherActor));
-        behaviours.put(10, new AttackBehaviour(new Grossmesser()));
+        behaviours.put(10, new AttackBehaviour());
         behaviours.put(11, new AreaAttackBehaviour(new Grossmesser()));
 
         ActionList actions= new ActionList();
@@ -64,12 +73,12 @@ public class HeavySkeletalSwordsman extends Skeleton {
                         actions.add(new AreaAttackAction(targets, weapon));
                     }
                 }
-            } else {
-                actions.add(new AreaAttackAction(targets, otherActor.getIntrinsicWeapon()));
             }
         }
 
         return actions;
     }
+
+
 
 }

@@ -1,8 +1,7 @@
-package game.actors.enemies;
+package game.actors.enemies.canine;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.controllers.ResetManager;
-import game.controllers.Resettable;
 import game.utils.RandomNumberGenerator;
 import game.controllers.RuneManager;
 import game.controllers.RuneSource;

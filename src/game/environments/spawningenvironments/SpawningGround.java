@@ -1,4 +1,4 @@
-package game.environments;
+package game.environments.spawningenvironments;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
@@ -42,6 +42,15 @@ public abstract class SpawningGround extends Ground {
      */
     public HashMap<Actor, Integer> getActorsThatSpawn(){
         return actorsThatSpawn;
+    }
+
+    /**
+     * Returns the spawn chance of an actor
+     * @param actor the actor we want to find the spawn chance of
+     * @return an integer from 0 to 100 representing the spawn chance
+     */
+    public int getActorSpawnChance(Actor actor){
+        return actorsThatSpawn.get(actor);
     }
 
     /**

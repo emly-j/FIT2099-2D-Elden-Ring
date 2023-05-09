@@ -1,12 +1,10 @@
-package game.environments;
+package game.environments.spawningenvironments;
 
 import edu.monash.fit2099.engine.actors.Actor;
-import game.actors.enemies.GiantCrab;
-import game.actors.enemies.GiantCrayfish;
-import game.actors.enemies.GiantDog;
+import game.actors.enemies.canine.GiantDog;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.NumberRange;
-import game.actors.enemies.LoneWolf;
+import game.actors.enemies.canine.LoneWolf;
 import game.utils.RandomNumberGenerator;
 
 /**
@@ -32,8 +30,7 @@ public class GustOfWind extends SpawningGround {
         boolean isWestSide = location.x() <= (mapWidthRange.max()/2);
         boolean isEastSide = location.x() > (mapWidthRange.max()/2);
 
-        int actorSpawnChance = getActorsThatSpawn().get(actor);
-        boolean canSpawn = RandomNumberGenerator.getRandomChance(actorSpawnChance);
+        boolean canSpawn = RandomNumberGenerator.getRandomChance(getActorSpawnChance(actor));
 
         if (isWestSide && canSpawn) {
             location.addActor(new LoneWolf());

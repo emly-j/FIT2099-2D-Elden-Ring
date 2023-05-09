@@ -1,4 +1,4 @@
-package game.actors.enemies;
+package game.actors.enemies.skeleton;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -24,7 +24,7 @@ import java.util.HashMap;
  * Class that represents the PileOfBones actor which will spawn when a Skeleton dies
  * @author Emily Jap
  * @version 1.0.0
- * @see Skeleton
+ * @see skeleton
  */
 public class PileOfBones extends Skeleton implements RuneSource {
 

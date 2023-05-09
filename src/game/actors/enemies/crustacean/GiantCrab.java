@@ -1,4 +1,4 @@
-package game.actors.enemies;
+package game.actors.enemies.crustacean;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -11,26 +11,27 @@ import game.actors.AttackType;
 import game.behaviours.AreaAttackBehaviour;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
-import game.utils.RandomNumberGenerator;
 import game.controllers.RuneManager;
 import game.controllers.RuneSource;
+import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 import game.utils.Utils;
+
 import java.util.HashMap;
 
 /**
- * Class that represents the GiantCrayfish actor
+ * Class that represents the GiantCrab actor
  * @author Hayden Tran
  * @author Emily Jap
  * @version 1.0.0
  */
-
-public class GiantCrayfish extends Crustacean implements RuneSource {
+public class GiantCrab extends Crustacean implements RuneSource {
     /**
-     * Constructor that instantiates the actor
+     * Constructor.
+     *
      */
-    public GiantCrayfish() {
-        super("Giant Crayfish", 'R', 4803);
+    public GiantCrab() {
+        super("Giant Crab", 'C', 407);
         this.addCapability(Status.PERFORM_AREA_ATTACK);
         addRuneSource();
     }
@@ -45,8 +46,7 @@ public class GiantCrayfish extends Crustacean implements RuneSource {
 
         ActionList actions= new ActionList();
         // actions the player or other enemy types can do to this actor
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) && !otherActor.hasCapability(
-            AttackType.CANNOT_ATTACK_CRUSTACEANS)){
+        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) && !otherActor.hasCapability(AttackType.CANNOT_ATTACK_CRUSTACEANS)){
             actions.add(new AttackAction(this, direction));
 
             if(otherActor.getWeaponInventory() != null){
@@ -75,15 +75,16 @@ public class GiantCrayfish extends Crustacean implements RuneSource {
         return actions;
     }
 
+
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(527, "pincer slams", 100);
+        return new IntrinsicWeapon(208, "slams", 90);
     }
 
     @Override
     public void addRuneSource() {
         RuneManager runeManager = RuneManager.getInstance();
-        runeManager.addRuneOwner(this, RandomNumberGenerator.getRandomInt(500, 2374));
+        runeManager.addRuneOwner(this, RandomNumberGenerator.getRandomInt(318, 4961));
         runeManager.addRuneSource(this);
     }
 }

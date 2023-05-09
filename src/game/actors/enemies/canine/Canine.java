@@ -1,6 +1,7 @@
-package game.actors.enemies;
+package game.actors.enemies.canine;
 
 import game.actors.AttackType;
+import game.actors.enemies.Enemy;
 
 /**
  * Abstract class that will represent the base Canines (currently Lone Wolf and Giant Dog)

@@ -1,8 +1,9 @@
-package game.actors.enemies;
+package game.actors.enemies.canine;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AreaAttackAction;
 import game.actions.AttackAction;
@@ -10,48 +11,39 @@ import game.actors.AttackType;
 import game.behaviours.AreaAttackBehaviour;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
-import game.items.weapons.Grossmesser;
-import game.items.weapons.Scimitar;
+import game.controllers.RuneManager;
+import game.controllers.RuneSource;
+import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 import game.utils.Utils;
 
 import java.util.HashMap;
 
-
 /**
- * This class represents a base Skeletal Bandit
- * @author Hayden Tran
+ * Class that represents the Giant Dog actor
+ * @author Emily Jap
  * @version 1.0.0
- * @see Skeleton
  */
-public class SkeletalBandit extends Skeleton{
+public class GiantDog extends Canine implements RuneSource {
     /**
-     * Constructor that adds the required weapon Scimitar and instantiates the properties of the skeletal bandit
+     * Constructor that instantiates the actor with being able to hold a random amount of runes
      */
-    public SkeletalBandit() {
-        super("Skeletal Bandit", 'b', 184);
-        addWeaponToInventory(new Scimitar());
+    public GiantDog() {
+        super("Giant Dog", 'G', 693);
+        addRuneSource();
     }
 
-    /**
-     * adds the required behaviours expected of an enemie
-     * adds new actions based on the capability that the other actors have
-     * @param otherActor the Actor that might be performing attack
-     * @param direction  String representing the direction of the other Actor
-     * @param map        current GameMap
-     * @return action list of allowable actions
-     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
 
-        // these behaviours occur when there are other actors in the surrounding area
+        // these behaviours can occur when there are other actors in the surrounding area
         behaviours.put(998, new FollowBehaviour(otherActor));
-        behaviours.put(10, new AttackBehaviour());
-        behaviours.put(11, new AreaAttackBehaviour(new Grossmesser()));
+        behaviours.put(2, new AttackBehaviour());
+        behaviours.put(3, new AreaAttackBehaviour());
 
         ActionList actions= new ActionList();
         // actions the player or other enemy types can do to this actor
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) && !otherActor.hasCapability(AttackType.CANNOT_ATTACK_SKELETONS)){
+        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) && !otherActor.hasCapability(AttackType.CANNOT_ATTACK_CRUSTACEANS)){
             actions.add(new AttackAction(this, direction));
 
             if(otherActor.getWeaponInventory() != null){
@@ -73,6 +65,9 @@ public class SkeletalBandit extends Skeleton{
                     }
                 }
             }
+            else {
+                actions.add(new AreaAttackAction(targets, otherActor.getIntrinsicWeapon()));
+            }
         }
 
         return actions;
@@ -80,4 +75,20 @@ public class SkeletalBandit extends Skeleton{
 
 
 
+
+
+
+    @Override
+    public IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(693, "head slams", 90);
+    }
+
+
+    @Override
+    public void addRuneSource() {
+        RuneManager runeManager = RuneManager.getInstance();
+        runeManager.addRuneOwner(this, RandomNumberGenerator.getRandomInt(55, 1470));
+        runeManager.addRuneSource(this);
+    }
 }
+
