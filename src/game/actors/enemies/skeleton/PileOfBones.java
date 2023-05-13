@@ -24,7 +24,7 @@ import java.util.HashMap;
  * Class that represents the PileOfBones actor which will spawn when a Skeleton dies
  * @author Emily Jap
  * @version 1.0.0
- * @see skeleton
+ * @see Skeleton
  */
 public class PileOfBones extends Skeleton implements RuneSource {
 
@@ -96,20 +96,7 @@ public class PileOfBones extends Skeleton implements RuneSource {
             }
         }
 
-        // If player has a weapon with area attack capability, put area attack on list of allowable actions
-        if(otherActor.hasCapability(Status.PERFORM_AREA_ATTACK)){
-            HashMap<Actor, String> targets = Utils.getSurroundingActors(otherActor, map);
-            // check for AOE weapons, otherwise use intrinsic weapon
-            if(otherActor.getWeaponInventory() != null){
-                for(int i = 0; i<otherActor.getWeaponInventory().size(); i++){
-                    WeaponItem weapon = otherActor.getWeaponInventory().get(i);
-                    if (weapon.hasCapability(Status.PERFORM_AREA_ATTACK)){
-                        actions.add(new AreaAttackAction(targets, weapon));
-                    }
-                }
-            }
-        }
-
+        allowAreaAttack(otherActor, map, actions);
         return actions;
     }
 

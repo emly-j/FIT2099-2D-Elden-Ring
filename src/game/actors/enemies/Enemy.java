@@ -96,11 +96,23 @@ public abstract class Enemy extends Actor implements Resettable {
         }
 
         // If player has a weapon with area attack capability, put area attack on list of allowable actions
+        allowAreaAttack(otherActor, map, actions);
+        return actions;
+    }
+
+    /**
+     * A method to allow the actors with the capability Status.PERFORM_AREA_ATTACK to perform area attacks
+     * on the current enemy
+     * @param otherActor actor that may perform area attack
+     * @param map current GameMap
+     * @param actions list of allowable actions the current actor can take
+     */
+    protected void allowAreaAttack(Actor otherActor, GameMap map, ActionList actions) {
         if(otherActor.hasCapability(Status.PERFORM_AREA_ATTACK)){
             HashMap<Actor, String> targets = Utils.getSurroundingActors(otherActor, map);
             // check for AOE weapons, otherwise use intrinsic weapon
             if(otherActor.getWeaponInventory() != null){
-                for(int i = 0; i<otherActor.getWeaponInventory().size(); i++){
+                for(int i = 0; i< otherActor.getWeaponInventory().size(); i++){
                     WeaponItem weapon = otherActor.getWeaponInventory().get(i);
                     if (weapon.hasCapability(Status.PERFORM_AREA_ATTACK)){
                         actions.add(new AreaAttackAction(targets, weapon));
@@ -110,7 +122,6 @@ public abstract class Enemy extends Actor implements Resettable {
                 actions.add(new AreaAttackAction(targets, otherActor.getIntrinsicWeapon()));
             }
         }
-        return actions;
     }
 
     @Override
