@@ -47,7 +47,7 @@ public class AreaAttackBehaviour implements Behaviour {
         }
 
         // return area attack action
-        return new AreaAttackAction(actor, weapon);
+        return new AreaAttackAction(weapon);
 
     }
 }

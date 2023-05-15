@@ -115,11 +115,11 @@ public abstract class Enemy extends Actor implements Resettable {
                 for(int i = 0; i< otherActor.getWeaponInventory().size(); i++){
                     WeaponItem weapon = otherActor.getWeaponInventory().get(i);
                     if (weapon.hasCapability(Status.PERFORM_AREA_ATTACK)){
-                        actions.add(new AreaAttackAction(otherActor, weapon));
+                        actions.add(new AreaAttackAction(weapon));
                     }
                 }
             }else {
-                actions.add(new AreaAttackAction(otherActor, otherActor.getIntrinsicWeapon()));
+                actions.add(new AreaAttackAction(otherActor.getIntrinsicWeapon()));
             }
         }
     }

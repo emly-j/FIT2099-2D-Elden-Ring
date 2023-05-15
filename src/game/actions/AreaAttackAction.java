@@ -19,31 +19,22 @@ public class AreaAttackAction extends Action {
     private Weapon weapon;
 
     /**
-     * A hashmap of actors to be attacked and their direction.
-     */
-    private Actor attacker;
-
-    /**
      * Constructor with intrinsic weapon as default.
      */
-    public AreaAttackAction(Actor attacker){
-        this.attacker = attacker;
+    public AreaAttackAction(){
     }
 
     /**
      * Constructor.
-     *
-     * @param attacker the actor performing the area attack
      * @param weapon   the weapon used to perform the attack
      */
-    public AreaAttackAction(Actor attacker, Weapon weapon) {
-        this.attacker = attacker;
+    public AreaAttackAction(Weapon weapon) {
         this.weapon = weapon;
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        String result = attacker + " performs area attack \n";
+        String result = actor + " performs area attack \n";
 
         // get intrinsic weapon if possible
         if (weapon == null) {
@@ -51,7 +42,7 @@ public class AreaAttackAction extends Action {
         }
 
         // go through list of targets and create attack action for each
-        HashMap<Actor, String> targets = Utils.getSurroundingActors(attacker, map);
+        HashMap<Actor, String> targets = Utils.getSurroundingActors(actor, map);
 
         for(Actor target: targets.keySet()){
             AttackAction attackAction = new AttackAction(target, targets.get(target), weapon);
