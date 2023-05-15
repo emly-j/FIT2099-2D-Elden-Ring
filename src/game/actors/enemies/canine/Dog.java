@@ -15,6 +15,7 @@ public class Dog extends Canine implements RuneSource {
         super("Dog", 'a', 104);
         addCapability(AttackType.CANNOT_ATTACK_GODRICK_SOLDIERS);
         addCapability(AttackType.CANNOT_ATTACK_DOGS); // todo: check if dogs can attack other dogs
+        removeCapability(AttackType.CANNOT_ATTACK_CANINES);
     }
 
     /**

@@ -109,17 +109,17 @@ public abstract class Enemy extends Actor implements Resettable {
      */
     protected void allowAreaAttack(Actor otherActor, GameMap map, ActionList actions) {
         if(otherActor.hasCapability(Status.PERFORM_AREA_ATTACK)){
-            HashMap<Actor, String> targets = Utils.getSurroundingActors(otherActor, map);
+
             // check for AOE weapons, otherwise use intrinsic weapon
             if(otherActor.getWeaponInventory() != null){
                 for(int i = 0; i< otherActor.getWeaponInventory().size(); i++){
                     WeaponItem weapon = otherActor.getWeaponInventory().get(i);
                     if (weapon.hasCapability(Status.PERFORM_AREA_ATTACK)){
-                        actions.add(new AreaAttackAction(targets, weapon));
+                        actions.add(new AreaAttackAction(otherActor, weapon));
                     }
                 }
             }else {
-                actions.add(new AreaAttackAction(targets, otherActor.getIntrinsicWeapon()));
+                actions.add(new AreaAttackAction(otherActor, otherActor.getIntrinsicWeapon()));
             }
         }
     }
