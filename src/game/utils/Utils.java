@@ -30,6 +30,37 @@ public class Utils {
         return nearbyActors;
     }
 
+    public static HashMap<Location, String> getRangedLocations(Location source, GameMap map){
+        HashMap<Location, String> result = new HashMap<>();
+        int x = source.x();
+        int y = source.y();
+
+        result.put(map.at(x,y - 1), "North");
+        result.put(map.at(x + 1, y - 1), "North-East");
+        result.put(map.at(x + 1, y), "East");
+        result.put(map.at(x + 1, y + 1), "South-East");
+        result.put(map.at(x, y + 1), "South");
+        result.put(map.at(x - 1, y + 1), "South-West");
+        result.put(map.at(x - 1, y), "West");
+        result.put(map.at(x - 1, y - 1), "North-West");
+
+        return result;
+    }
+
+    public static HashMap<Actor, String> getRangedActors(Actor source, GameMap map) {
+        HashMap<Actor, String> result = new HashMap<>();
+        Location actorLocation = map.locationOf(source);
+        HashMap<Location, String> rangedLocations = getRangedLocations(actorLocation, map);
+
+        for (Location location: rangedLocations.keySet()){
+            if(location.containsAnActor()){
+                result.put(location.getActor(), rangedLocations.get(location));
+            }
+        }
+
+        return result;
+    }
+
     public static boolean isTraderNearby(Location currentLocation){
         List<Exit> exits = currentLocation.getExits();
         boolean hasTrader = false;

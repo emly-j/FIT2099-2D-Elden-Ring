@@ -5,8 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.AreaAttackAction;
 import game.utils.Status;
-import game.actions.AttackAction;
 import game.actions.SellAction;
 import game.items.Sellable;
 import game.utils.Utils;
@@ -48,7 +48,7 @@ public class Grossmesser extends WeaponItem implements Sellable {
 
     @Override
     public Action getSkill(Actor target, String direction) {
-        return new AttackAction(target, direction);
+        return new AreaAttackAction();
     }
 
     @Override
