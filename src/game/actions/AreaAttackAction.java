@@ -21,8 +21,7 @@ public class AreaAttackAction extends Action {
     /**
      * Constructor with intrinsic weapon as default.
      */
-    public AreaAttackAction(){
-    }
+    public AreaAttackAction(){}
 
     /**
      * Constructor.
@@ -43,7 +42,6 @@ public class AreaAttackAction extends Action {
 
         // go through list of targets and create attack action for each
         HashMap<Actor, String> targets = Utils.getSurroundingActors(actor, map);
-
         for(Actor target: targets.keySet()){
             AttackAction attackAction = new AttackAction(target, targets.get(target), weapon);
             result += attackAction.execute(actor, map) + "\n";

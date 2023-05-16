@@ -40,7 +40,6 @@ public class HeavySkeletalSwordsman extends Skeleton {
         // these behaviours occur when there are other actors in the surrounding area
         behaviours.put(998, new FollowBehaviour(otherActor));
         behaviours.put(10, new AttackBehaviour(new Grossmesser()));
-        behaviours.put(11, new AreaAttackBehaviour(new Grossmesser()));
 
         ActionList actions= new ActionList();
         // actions the player or other enemy types can do to this actor

@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.AreaAttackAction;
 import game.actions.BuyAction;
 import game.actions.SellAction;
 import game.items.Buyable;
@@ -25,8 +26,8 @@ public class Scimitar extends WeaponItem implements Sellable, Buyable {
     }
 
     @Override
-    public Action getSkill(Actor target, String direction){
-        return null;
+    public Action getSkill(Actor holder){
+        return new AreaAttackAction(this);
     }
 
     @Override

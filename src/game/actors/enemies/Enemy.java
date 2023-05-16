@@ -81,7 +81,7 @@ public abstract class Enemy extends Actor implements Resettable {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
         // these behaviours occur when there are other actors in the surrounding area
-        behaviours.put(510, new FollowBehaviour(otherActor));
+        behaviours.put(998, new FollowBehaviour(otherActor));
 
         // actions the player can do to an enemy
         ActionList actions = new ActionList();

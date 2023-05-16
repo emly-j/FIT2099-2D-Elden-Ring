@@ -41,8 +41,8 @@ public class GiantCrayfish extends Crustacean implements RuneSource {
 
         // these behaviours can occur when there are other actors in the surrounding area
         behaviours.put(998, new FollowBehaviour(otherActor));
-        behaviours.put(2, new AttackBehaviour(getIntrinsicWeapon()));
-        behaviours.put(3, new AreaAttackBehaviour(getIntrinsicWeapon()));
+        behaviours.put(2, new AttackBehaviour());
+        behaviours.put(3, new AreaAttackBehaviour());
 
         ActionList actions= new ActionList();
         // actions the player or other enemy types can do to this actor

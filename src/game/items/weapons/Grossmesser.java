@@ -47,8 +47,8 @@ public class Grossmesser extends WeaponItem implements Sellable {
     }
 
     @Override
-    public Action getSkill(Actor target, String direction) {
-        return new AreaAttackAction();
+    public Action getSkill(Actor holder) {
+        return new AreaAttackAction(this);
     }
 
     @Override
