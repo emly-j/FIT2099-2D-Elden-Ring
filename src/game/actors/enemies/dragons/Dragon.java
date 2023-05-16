@@ -1,5 +1,6 @@
 package game.actors.enemies.dragons;
 
+import game.actors.AttackType;
 import game.actors.enemies.Enemy;
 
 public abstract class Dragon extends Enemy {
@@ -13,5 +14,6 @@ public abstract class Dragon extends Enemy {
    */
   public Dragon(String name, char displayChar, int hitPoints) {
     super(name, displayChar, hitPoints);
+    addCapability(AttackType.CANNOT_ATTACK_DRAGONS);
   }
 }
