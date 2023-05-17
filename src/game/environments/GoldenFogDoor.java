@@ -2,22 +2,27 @@ package game.environments;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.RestAction;
+import game.actions.TravelAction;
 import game.utils.Status;
 
-/**
- * A class which represent TheFirstStep, which is our first Site of Lost Grace
- * @author Hayden Tran
- * @version 1.0.0
- */
-public class TheFirstStep extends Ground {
+public class GoldenFogDoor extends Ground {
+
+
+    Location teleportLocation;
+    GameMap gameMap;
+    String mapName;
     /**
-     * Constructor that instanatites the display value
+     * Constructor.
      */
-    public TheFirstStep() {
-        super('U');
+    public GoldenFogDoor(Location teleportLocation, GameMap gameMap, String mapName) {
+        super('D');
+        this.teleportLocation = teleportLocation;
+        this.gameMap = gameMap;
+        this.mapName = mapName;
     }
 
     /**
@@ -39,9 +44,8 @@ public class TheFirstStep extends Ground {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
-        if (location.containsAnActor()) {
-            actions.add(new RestAction(this, location));
+        if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+            actions.add(new TravelAction(this.teleportLocation, this.gameMap, this.mapName));
         } return actions;
     }
-
 }
