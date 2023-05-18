@@ -1,27 +1,27 @@
-package game.environments.spawningenvironments;
+package game.environments.spawning;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.NumberRange;
-import game.actors.enemies.crustacean.GiantCrab;
-import game.actors.enemies.crustacean.GiantCrayfish;
+import game.actors.enemies.skeleton.HeavySkeletalSwordsman;
+import game.actors.enemies.skeleton.SkeletalBandit;
 import game.utils.RandomNumberGenerator;
 
 /**
- * A class which represents the PuddleOfWater SpawningGround that spawns GiantCrabs and GiantCrayfish
+ * Class that represents the Graveyard SpawningGround which can spawn the HeavySkeletalSwordsman and SkeletalBandit
  * @author Emily Jap
  * @version 1.0.0
  * @see SpawningGround
  */
-public class PuddleOfWater extends SpawningGround {
+public class Graveyard extends SpawningGround {
 
     /**
-     * Constructor that instantiates the ground and adds actors that can be added with their spawn chance
+     * Constructor that instantiates the ground and adds actors that can be added with their spawn chance.
      */
-    public PuddleOfWater() {
-        super('~');
-        this.addActorThatSpawns(new GiantCrab(), 2);
-        this.addActorThatSpawns(new GiantCrayfish(), 1);
+    public Graveyard() {
+        super('n');
+        this.addActorThatSpawns(new HeavySkeletalSwordsman(), 27);
+        this.addActorThatSpawns(new SkeletalBandit(), 27);
     }
 
     @Override
@@ -33,9 +33,10 @@ public class PuddleOfWater extends SpawningGround {
         boolean canSpawn = RandomNumberGenerator.getRandomChance(getActorSpawnChance(actor));
 
         if (isWestSide && canSpawn) {
-            location.addActor(new GiantCrab());
+            location.addActor(new HeavySkeletalSwordsman());
         }else if (isEastSide && canSpawn) {
-            location.addActor(new GiantCrayfish());
+            location.addActor(new SkeletalBandit());
         }
     }
 }
+

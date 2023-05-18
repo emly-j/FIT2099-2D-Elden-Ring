@@ -8,6 +8,7 @@ import game.actions.AttackAction;
 import game.actors.AttackType;
 import game.behaviours.AreaAttackBehaviour;
 import game.behaviours.AttackBehaviour;
+import game.behaviours.BreatheFireBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.controllers.RuneManager;
 import game.controllers.RuneSource;
@@ -21,9 +22,7 @@ public class LesserDragon extends Dragon implements RuneSource {
    */
   public LesserDragon() {
     super("Lesser Dragon", 'd', 400);
-    this.addCapability(Status.PERFORM_AREA_ATTACK);
     addRuneSource();
-
   }
 
   @Override
@@ -31,7 +30,6 @@ public class LesserDragon extends Dragon implements RuneSource {
     // these behaviours can occur when there are other actors in the surrounding area
     behaviours.put(998, new FollowBehaviour(otherActor));
     behaviours.put(2, new AttackBehaviour());
-    behaviours.put(3, new AreaAttackBehaviour());
 
     ActionList actions= new ActionList();
     // actions the player or other enemy types can do to this actor

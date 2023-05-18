@@ -1,8 +1,9 @@
 package game;
 
-import game.environments.spawningenvironments.Graveyard;
-import game.environments.spawningenvironments.GustOfWind;
-import game.environments.spawningenvironments.PuddleOfWater;
+import game.environments.spawning.Dragonbarrow;
+import game.environments.spawning.Graveyard;
+import game.environments.spawning.GustOfWind;
+import game.environments.spawning.PuddleOfWater;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +13,6 @@ import game.actors.MerchantK;
 import game.actors.Player;
 import game.controllers.RestLocationManager;
 import game.environments.*;
-import game.items.consumable.FlaskOfCrimsonTears;
 import game.utils.FancyMessage;
 
 /**
@@ -28,7 +28,7 @@ public class Application {
 
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new Dragonbarrow());
 
 		List<String> map = Arrays.asList(
 				"..nnnn................................................~~~~~~~~~~~~~~~~~~~~~",
@@ -43,7 +43,7 @@ public class Application {
 				"~~~~~~~~~~~.......................###___###................................",
 				"~~~~~~~~~~~~......................________#....nnnn........................",
 				"~~~~~~~~~~~~~.....................#________................................",
-				"~~~~~~~~~~~~......................#_______#....nnnn........................",
+				"~~~~~~~~~~~~...........rr.........#_______#....nnnn........................",
 				"~~~~~~~~~~~.......................###___###................................",
 				"~~~~~~~~~~..........................#___#..................................",
 				"...........................................................................",

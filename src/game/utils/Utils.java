@@ -35,14 +35,14 @@ public class Utils {
         int x = source.x();
         int y = source.y();
 
-        result.put(map.at(x,y - 1), "North");
-        result.put(map.at(x + 1, y - 1), "North-East");
-        result.put(map.at(x + 1, y), "East");
-        result.put(map.at(x + 1, y + 1), "South-East");
-        result.put(map.at(x, y + 1), "South");
-        result.put(map.at(x - 1, y + 1), "South-West");
-        result.put(map.at(x - 1, y), "West");
-        result.put(map.at(x - 1, y - 1), "North-West");
+        result.put(map.at(x,y - 2), "North");
+        result.put(map.at(x + 2, y - 2), "North-East");
+        result.put(map.at(x + 2, y), "East");
+        result.put(map.at(x + 2, y + 2), "South-East");
+        result.put(map.at(x, y + 2), "South");
+        result.put(map.at(x - 2, y + 2), "South-West");
+        result.put(map.at(x - 2, y), "West");
+        result.put(map.at(x - 2, y - 2), "North-West");
 
         return result;
     }
