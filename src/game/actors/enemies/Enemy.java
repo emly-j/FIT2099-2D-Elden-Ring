@@ -40,7 +40,7 @@ public abstract class Enemy extends Actor implements Resettable {
         super(name, displayChar, hitPoints);
         behaviours.put(999, new WanderBehaviour());
         behaviours.put(500, new AttackBehaviour());
-        behaviours.put(511, new DespawnBehaviour());
+        behaviours.put(900, new DespawnBehaviour());
         ResetManager.getInstance().registerResettable(this);
     }
 
@@ -81,7 +81,7 @@ public abstract class Enemy extends Actor implements Resettable {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
         // these behaviours occur when there are other actors in the surrounding area
-        behaviours.put(998, new FollowBehaviour(otherActor));
+        behaviours.put(600, new FollowBehaviour(otherActor));
 
         // actions the player can do to an enemy
         ActionList actions = new ActionList();

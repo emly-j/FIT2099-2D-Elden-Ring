@@ -37,7 +37,7 @@ public class GiantDog extends Canine implements RuneSource {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
 
         // these behaviours can occur when there are other actors in the surrounding area
-        behaviours.put(998, new FollowBehaviour(otherActor));
+        behaviours.put(600, new FollowBehaviour(otherActor));
         behaviours.put(2, new AttackBehaviour());
         behaviours.put(3, new AreaAttackBehaviour());
 
