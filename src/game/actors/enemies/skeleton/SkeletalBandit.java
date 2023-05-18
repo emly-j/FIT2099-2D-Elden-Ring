@@ -11,8 +11,11 @@ import game.actors.enemies.skeleton.Skeleton;
 import game.behaviours.AreaAttackBehaviour;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
+import game.controllers.RuneManager;
+import game.controllers.RuneSource;
 import game.items.weapons.Grossmesser;
 import game.items.weapons.Scimitar;
+import game.utils.RandomNumberGenerator;
 import game.utils.Status;
 import game.utils.Utils;
 
@@ -25,46 +28,25 @@ import java.util.HashMap;
  * @version 1.0.0
  * @see Skeleton
  */
-public class SkeletalBandit extends Skeleton {
+public class SkeletalBandit extends Skeleton implements RuneSource {
     /**
      * Constructor that adds the required weapon Scimitar and instantiates the properties of the skeletal bandit
      */
     public SkeletalBandit() {
         super("Skeletal Bandit", 'b', 184);
         addWeaponToInventory(new Scimitar());
+        behaviours.put(10, new AttackBehaviour(new Scimitar()));
     }
 
     /**
-     * adds the required behaviours expected of an enemie
-     * adds new actions based on the capability that the other actors have
-     * @param otherActor the Actor that might be performing attack
-     * @param direction  String representing the direction of the other Actor
-     * @param map        current GameMap
-     * @return action list of allowable actions
+     * Adds rune source to lists/maps in RuneManager
+     *
+     * @see RuneManager
      */
     @Override
-    public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
-
-        // these behaviours occur when there are other actors in the surrounding area
-        behaviours.put(600, new FollowBehaviour(otherActor));
-        behaviours.put(10, new AttackBehaviour(new Grossmesser()));
-
-        ActionList actions= new ActionList();
-        // actions the player or other enemy types can do to this actor
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) && !otherActor.hasCapability(AttackType.CANNOT_ATTACK_SKELETONS)){
-            actions.add(new AttackAction(this, direction));
-
-            if(otherActor.getWeaponInventory() != null){
-                for(int i = 0; i<otherActor.getWeaponInventory().size(); i++){
-                    actions.add(new AttackAction(this, direction, otherActor.getWeaponInventory().get(i)));
-                }
-            }
-        }
-
-        allowAreaAttack(otherActor, map, actions);
-        return actions;
+    public void addRuneSource() {
+        RuneManager runeManager = RuneManager.getInstance();
+        runeManager.addRuneOwner(this, RandomNumberGenerator.getRandomInt(35, 892));
+        runeManager.addRuneSource(this);
     }
-
-
-
 }

@@ -33,32 +33,8 @@ public class GiantCrayfish extends Crustacean implements RuneSource {
     public GiantCrayfish() {
         super("Giant Crayfish", 'R', 4803);
         this.addCapability(Status.PERFORM_AREA_ATTACK);
-        addRuneSource();
-    }
-
-    @Override
-    public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
-
-        // these behaviours can occur when there are other actors in the surrounding area
-        behaviours.put(600, new FollowBehaviour(otherActor));
-        behaviours.put(2, new AttackBehaviour());
         behaviours.put(3, new AreaAttackBehaviour());
-
-        ActionList actions= new ActionList();
-        // actions the player or other enemy types can do to this actor
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) && !otherActor.hasCapability(
-            AttackType.CANNOT_ATTACK_CRUSTACEANS)){
-            actions.add(new AttackAction(this, direction));
-
-            if(otherActor.getWeaponInventory() != null){
-                for(int i = 0; i<otherActor.getWeaponInventory().size(); i++){
-                    actions.add(new AttackAction(this, direction, otherActor.getWeaponInventory().get(i)));
-                }
-            }
-        }
-
-        allowAreaAttack(otherActor, map, actions);
-        return actions;
+        addRuneSource();
     }
 
     @Override

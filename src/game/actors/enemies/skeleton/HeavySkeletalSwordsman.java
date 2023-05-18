@@ -5,6 +5,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.enemies.skeleton.Skeleton;
+import game.controllers.RuneManager;
+import game.controllers.RuneSource;
+import game.utils.RandomNumberGenerator;
 import game.utils.Utils;
 import game.actions.AreaAttackAction;
 import game.actors.AttackType;
@@ -24,7 +27,7 @@ import java.util.HashMap;
  * @version 1.0.0
  * @see Skeleton
  */
-public class HeavySkeletalSwordsman extends Skeleton {
+public class HeavySkeletalSwordsman extends Skeleton implements RuneSource {
 
     /**
      * Constructor that instantiates the actor with its starting weapon
@@ -32,29 +35,18 @@ public class HeavySkeletalSwordsman extends Skeleton {
     public HeavySkeletalSwordsman() {
         super("Heavy Skeletal Swordsman", 'q', 153);
         addWeaponToInventory(new Grossmesser());
-    }
-
-    @Override
-    public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
-
-        // these behaviours occur when there are other actors in the surrounding area
-        behaviours.put(600, new FollowBehaviour(otherActor));
         behaviours.put(10, new AttackBehaviour(new Grossmesser()));
-
-        ActionList actions= new ActionList();
-        // actions the player or other enemy types can do to this actor
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) && !otherActor.hasCapability(AttackType.CANNOT_ATTACK_SKELETONS)){
-            actions.add(new AttackAction(this, direction));
-
-            if(otherActor.getWeaponInventory() != null){
-                for(int i = 0; i<otherActor.getWeaponInventory().size(); i++){
-                    actions.add(new AttackAction(this, direction, otherActor.getWeaponInventory().get(i)));
-                }
-            }
-        }
-
-        allowAreaAttack(otherActor, map, actions);
-        return actions;
     }
 
+    /**
+     * Adds rune source to lists/maps in RuneManager
+     *
+     * @see RuneManager
+     */
+    @Override
+    public void addRuneSource() {
+        RuneManager runeManager = RuneManager.getInstance();
+        runeManager.addRuneOwner(this, RandomNumberGenerator.getRandomInt(35, 892));
+        runeManager.addRuneSource(this);
+    }
 }
