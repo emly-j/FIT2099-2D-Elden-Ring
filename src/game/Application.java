@@ -30,7 +30,7 @@ public class Application {
 
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new Cliff());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new Cliff(), new Dragonbarrow());
 
 		List<String> map1 = Arrays.asList(
 				"......................#.............#..........................+++.........", // x = 30, y = 0
@@ -53,7 +53,7 @@ public class Application {
 				"..............................................++...........................",
 				"..................++++......................+++...............######..##...",
 				"#####___######....++...........................+++............#....____....",
-				"_____________#.....++++..........................+..............__.....#...",
+				"_____________#.....++++.............rrrr.........+..............__.....#...",
 				"_____________#.....+....++........................++.........._.....__.#...",
 				"_____________#.........+..+.....................+++...........###..__###...",
 				"_____________#.............++.............................................."); /// x = 6 y = 24
