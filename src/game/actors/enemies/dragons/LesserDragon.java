@@ -6,10 +6,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.AttackAction;
 import game.actors.AttackType;
-import game.behaviours.AreaAttackBehaviour;
-import game.behaviours.AttackBehaviour;
-import game.behaviours.BreatheFireBehaviour;
-import game.behaviours.FollowBehaviour;
+import game.behaviours.*;
 import game.controllers.RuneManager;
 import game.controllers.RuneSource;
 import game.utils.RandomNumberGenerator;
@@ -30,6 +27,7 @@ public class LesserDragon extends Dragon implements RuneSource {
     // these behaviours can occur when there are other actors in the surrounding area
     behaviours.put(600, new FollowBehaviour(otherActor));
     behaviours.put(2, new AttackBehaviour());
+    behaviours.put(3, new RangedAttackBehaviour());
 
     ActionList actions= new ActionList();
     // actions the player or other enemy types can do to this actor

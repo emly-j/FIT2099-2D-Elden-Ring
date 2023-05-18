@@ -56,11 +56,11 @@ public class AttackBehaviour implements Behaviour {
         // check if target is nearby
         List<Exit> exits = map.locationOf(actor).getExits();
         for (Exit exit : exits){
-            Actor nearbyActor = exit.getDestination().getActor();
+            Actor target = exit.getDestination().getActor();
 
             // actor cannot attack another actor of the same type
-            if (nearbyActor != null){
-                List<AttackType> nearbyActorTypes = nearbyActor.findCapabilitiesByType(AttackType.class);
+            if (target != null){
+                List<AttackType> nearbyActorTypes = target.findCapabilitiesByType(AttackType.class);
                 for (AttackType attackType : attackTypes){
                     if (nearbyActorTypes.contains(attackType)){
                         return null;
@@ -69,7 +69,7 @@ public class AttackBehaviour implements Behaviour {
 
                 // initiate attack if there is a valid target nearby
                 String direction = exit.getName();
-                return new AttackAction(nearbyActor, direction, weapon);
+                return new AttackAction(target, direction, weapon);
             }
 
         }
