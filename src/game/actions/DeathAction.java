@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.controllers.LastLocationManager;
 import game.controllers.ResetManager;
 import game.controllers.RestLocationManager;
 import game.controllers.RuneManager;
@@ -63,7 +64,9 @@ public class DeathAction extends Action {
                     target.addCapability(Status.PLAYERDIED);
                 }
                 Rune runesDropped = new Rune(runesHeld, target); // creating new rune instance poklayer holds
-                map.at(map.locationOf(target).x(), map.locationOf(target).y()).addItem(runesDropped); //adds this item to the map
+
+                map.at(LastLocationManager.getLastRestedLocation().x(),LastLocationManager.getLastRestedLocation().y()).addItem(runesDropped);
+//                map.at(map.locationOf(target).x(), map.locationOf(target).y()).addItem(runesDropped); //adds this item to the map
                 runesDropped.setCounter(1); //setting counter to 1, next reset will = 0 and disappear
                 RuneManager.getInstance().subtractRunes(target, runesHeld);
                 System.out.println("RUNES ARE HOLDING " + runesDropped.getValue());

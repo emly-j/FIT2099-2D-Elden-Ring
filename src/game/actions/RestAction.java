@@ -6,13 +6,13 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.controllers.ResetManager;
-import game.controllers.Resettable;
 import game.controllers.RestLocationManager;
+import game.environments.sitesoflostgrace.TheFirstStep;
 import game.utils.Status;
 
 /**
  * A class that represents the 'rest action' implemented when standing on The First Step
- * @see game.environments.TheFirstStep
+ * @see TheFirstStep
  * @author Hayden Tran
  * @version 1.0.0
  * @see Action
@@ -21,16 +21,17 @@ public class RestAction extends Action {
 
     private Ground ground;
     private Location location;
-
+    private String name;
 
     /**
      * Constructor.
      * @param ground
      * @param location
      */
-    public RestAction(Ground ground, Location location){
+    public RestAction(Ground ground, Location location, String name){
         this.ground = ground;
         this.location = location;
+        this.name = name;
     }
 
 
@@ -41,12 +42,12 @@ public class RestAction extends Action {
         ResetManager.getInstance().runReset(); //runs everything to be reset from resetmanager
 
 
-        return "Game has been reset: " + actor + " has been moved to The First Step";
+        return "Game has been reset: " + actor + " has been moved to the " + this.name;
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return "Rest at The First Step (reset game)";
+        return "Rest at the " + this.name + " (reset game)";
     }
 
 

@@ -6,11 +6,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.controllers.ResetManager;
-import game.controllers.RuneManager;
-import game.controllers.Resettable;
-import game.controllers.RuneSource;
+import game.controllers.*;
 import game.items.consumable.FlaskOfCrimsonTears;
 import game.utils.Status;
 import game.items.weapons.Club;
@@ -29,6 +27,7 @@ import game.items.weapons.Club;
 public class Player extends Actor implements Resettable, RuneSource {
 	private final Menu menu = new Menu();
 
+
 	/**
 	 * Constructor that instantiates the player, registering it as a resettable instance, making it capable of holding runes
 	 *
@@ -39,6 +38,7 @@ public class Player extends Actor implements Resettable, RuneSource {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		this.addCapability(Status.PLAYER);
 		this.addWeaponToInventory(new Club());
 		this.addItemToInventory(new FlaskOfCrimsonTears());
 		ResetManager.getInstance().registerResettable(this);
@@ -49,6 +49,8 @@ public class Player extends Actor implements Resettable, RuneSource {
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		display.print(this + " (" + this.getHealth() + "/" + this.maxHitPoints + "), ");
 		display.println("runes: " + RuneManager.getInstance().getRunes(this));
+		LastLocationManager.storeLastLocation(map.locationOf(this));
+
 
 		// Handle multi-turn Actions
 		if (this.hasCapability(Status.RESETTABLE)){
@@ -70,7 +72,6 @@ public class Player extends Actor implements Resettable, RuneSource {
 	public int getHealth(){
 		return this.hitPoints;
 	}
-
 
 	@Override
 	public IntrinsicWeapon getIntrinsicWeapon() {

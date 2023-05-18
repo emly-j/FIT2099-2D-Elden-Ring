@@ -10,6 +10,7 @@ package game.utils;
  * @version 1.0.0
  */
 public enum Status {
+    PLAYER,
     HOSTILE_TO_ENEMY,
     RESTED,
     RESETTABLE,
