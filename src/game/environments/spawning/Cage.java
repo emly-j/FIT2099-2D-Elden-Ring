@@ -25,7 +25,7 @@ public class Cage extends SpawningGround {
         boolean canSpawn = RandomNumberGenerator.getRandomChance(getActorSpawnChance(actor));
 
         if(canSpawn){
-            location.addActor(actor);
+            location.addActor(new Dog());
         }
     }
 }
