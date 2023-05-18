@@ -4,10 +4,12 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.utils.RandomNumberGenerator;
 import game.utils.Utils;
 import game.actions.AreaAttackAction;
 
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Class the represents the area attack behaviour used by certain enemies
@@ -46,8 +48,12 @@ public class AreaAttackBehaviour implements Behaviour {
             weapon = actor.getIntrinsicWeapon();
         }
 
-        // return area attack action
-        return new AreaAttackAction(nearbyActors, weapon);
+        // 50% chance of using area attack skill
+        if(RandomNumberGenerator.getRandomChance(50)){
+            return new AreaAttackAction(weapon);
+        }
+
+        return null;
 
     }
 }

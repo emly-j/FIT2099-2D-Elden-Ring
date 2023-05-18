@@ -5,9 +5,11 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.actions.AreaAttackAction;
 import game.actions.AttackAction;
 import game.actors.AttackType;
 
+import game.utils.RandomNumberGenerator;
 import java.util.List;
 
 
@@ -41,6 +43,14 @@ public class AttackBehaviour implements Behaviour {
 
         if (weapon == null) {
             weapon = actor.getIntrinsicWeapon();
+        }
+
+        // 50% chance of using weapon skill
+        if(RandomNumberGenerator.getRandomChance(50)){
+            Action skillAction = weapon.getSkill(actor);
+            if (skillAction != null){
+                return skillAction;
+            }
         }
 
         // check if target is nearby

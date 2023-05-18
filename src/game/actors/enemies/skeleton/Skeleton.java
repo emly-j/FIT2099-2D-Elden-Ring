@@ -1,5 +1,6 @@
-package game.actors.enemies;
+package game.actors.enemies.skeleton;
 
+import game.actors.enemies.Enemy;
 import game.utils.Status;
 import game.actors.AttackType;
 import game.behaviours.BecomePileOfBonesBehaviour;

@@ -1,4 +1,4 @@
-package game.actors.enemies;
+package game.actors.enemies.crustacean;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -41,8 +41,8 @@ public class GiantCrab extends Crustacean implements RuneSource {
 
         // these behaviours can occur when there are other actors in the surrounding area
         behaviours.put(998, new FollowBehaviour(otherActor));
-        behaviours.put(2, new AttackBehaviour(getIntrinsicWeapon()));
-        behaviours.put(3, new AreaAttackBehaviour(getIntrinsicWeapon()));
+        behaviours.put(2, new AttackBehaviour());
+        behaviours.put(3, new AreaAttackBehaviour());
 
         ActionList actions= new ActionList();
         // actions the player or other enemy types can do to this actor
@@ -56,22 +56,7 @@ public class GiantCrab extends Crustacean implements RuneSource {
             }
         }
 
-        // If player has a weapon with area attack capability, put area attack on list of allowable actions
-        if(otherActor.hasCapability(Status.PERFORM_AREA_ATTACK)){
-            HashMap<Actor, String> targets = Utils.getSurroundingActors(otherActor, map);
-            // check for AOE weapons, otherwise use intrinsic weapon
-            if(otherActor.getWeaponInventory() != null){
-                for(int i = 0; i<otherActor.getWeaponInventory().size(); i++){
-                    WeaponItem weapon = otherActor.getWeaponInventory().get(i);
-                    if (weapon.hasCapability(Status.PERFORM_AREA_ATTACK)){
-                        actions.add(new AreaAttackAction(targets, weapon));
-                    }
-                }
-            } else {
-                actions.add(new AreaAttackAction(targets, otherActor.getIntrinsicWeapon()));
-            }
-        }
-
+        allowAreaAttack(otherActor, map, actions);
         return actions;
     }
 

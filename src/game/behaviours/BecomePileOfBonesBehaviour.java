@@ -7,7 +7,7 @@ import game.actions.BecomePileOfBonesAction;
 
 /**
  * class that represents the become pile of bones behaviour used in Skeletons
- * @see game.actors.enemies.Skeleton
+ * @see game.actors.enemies.skeleton
  * @author Emily Jap
  * @version 1.0.0
  */

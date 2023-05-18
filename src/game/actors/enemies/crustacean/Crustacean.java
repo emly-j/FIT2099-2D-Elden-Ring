@@ -1,6 +1,7 @@
-package game.actors.enemies;
+package game.actors.enemies.crustacean;
 
 import game.actors.AttackType;
+import game.actors.enemies.Enemy;
 
 
 /**

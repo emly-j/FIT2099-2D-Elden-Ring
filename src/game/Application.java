@@ -1,5 +1,9 @@
 package game;
 
+import game.environments.spawning.Dragonbarrow;
+import game.environments.spawning.Graveyard;
+import game.environments.spawning.GustOfWind;
+import game.environments.spawning.PuddleOfWater;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,7 +11,6 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.*;
 import game.actors.MerchantK;
 import game.actors.Player;
-import game.actors.enemies.LoneWolf;
 import game.controllers.RestLocationManager;
 import game.environments.*;
 import game.environments.sitesoflostgrace.TableOfLostGrace;

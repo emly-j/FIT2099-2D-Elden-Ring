@@ -1,15 +1,10 @@
-package game.environments;
+package game.environments.spawning;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.NumberRange;
-import game.actors.enemies.GiantCrab;
-import game.actors.enemies.GiantCrayfish;
-import game.actors.enemies.HeavySkeletalSwordsman;
-import game.actors.enemies.LoneWolf;
-//import game.actors.enemies.SkeletalBandit;
-import game.actors.enemies.SkeletalBandit;
-import game.actors.enemies.Skeleton;
+import game.actors.enemies.skeleton.HeavySkeletalSwordsman;
+import game.actors.enemies.skeleton.SkeletalBandit;
 import game.utils.RandomNumberGenerator;
 
 /**
@@ -35,8 +30,7 @@ public class Graveyard extends SpawningGround {
         boolean isWestSide = location.x() <= (mapWidthRange.max()/2);
         boolean isEastSide = location.x() > (mapWidthRange.max()/2);
 
-        int actorSpawnChance = getActorsThatSpawn().get(actor);
-        boolean canSpawn = RandomNumberGenerator.getRandomChance(actorSpawnChance);
+        boolean canSpawn = RandomNumberGenerator.getRandomChance(getActorSpawnChance(actor));
 
         if (isWestSide && canSpawn) {
             location.addActor(new HeavySkeletalSwordsman());

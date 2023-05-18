@@ -1,9 +1,10 @@
-package game.actors.enemies;
+package game.actors.enemies.skeleton;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actors.enemies.skeleton.Skeleton;
 import game.utils.Utils;
 import game.actions.AreaAttackAction;
 import game.actors.AttackType;
@@ -39,7 +40,6 @@ public class HeavySkeletalSwordsman extends Skeleton {
         // these behaviours occur when there are other actors in the surrounding area
         behaviours.put(998, new FollowBehaviour(otherActor));
         behaviours.put(10, new AttackBehaviour(new Grossmesser()));
-        behaviours.put(11, new AreaAttackBehaviour(new Grossmesser()));
 
         ActionList actions= new ActionList();
         // actions the player or other enemy types can do to this actor
@@ -53,22 +53,7 @@ public class HeavySkeletalSwordsman extends Skeleton {
             }
         }
 
-        // If player has a weapon with area attack capability, put area attack on list of allowable actions
-        if(otherActor.hasCapability(Status.PERFORM_AREA_ATTACK)){
-            HashMap<Actor, String> targets = Utils.getSurroundingActors(otherActor, map);
-            // check for AOE weapons, otherwise use intrinsic weapon
-            if(otherActor.getWeaponInventory() != null){
-                for(int i = 0; i<otherActor.getWeaponInventory().size(); i++){
-                    WeaponItem weapon = otherActor.getWeaponInventory().get(i);
-                    if (weapon.hasCapability(Status.PERFORM_AREA_ATTACK)){
-                        actions.add(new AreaAttackAction(targets, weapon));
-                    }
-                }
-            } else {
-                actions.add(new AreaAttackAction(targets, otherActor.getIntrinsicWeapon()));
-            }
-        }
-
+        allowAreaAttack(otherActor, map, actions);
         return actions;
     }
 

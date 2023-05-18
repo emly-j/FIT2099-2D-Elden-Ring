@@ -4,9 +4,8 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
-
+import game.utils.Utils;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * An action to perform an area attack
@@ -20,23 +19,15 @@ public class AreaAttackAction extends Action {
     private Weapon weapon;
 
     /**
-     * A hashmap of actors to be attacked and their direction.
-     */
-    private HashMap<Actor,String> targets;
-
-    /**
      * Constructor with intrinsic weapon as default.
      */
-    public AreaAttackAction(HashMap<Actor,String> targets){
-        this.targets = targets;
-    }
+    public AreaAttackAction(){}
 
     /**
      * Constructor.
-     * @param weapon the weapon used to perform the attack
+     * @param weapon   the weapon used to perform the attack
      */
-    public AreaAttackAction(HashMap<Actor,String> targets, Weapon weapon) {
-        this.targets = targets;
+    public AreaAttackAction(Weapon weapon) {
         this.weapon = weapon;
     }
 
@@ -50,6 +41,7 @@ public class AreaAttackAction extends Action {
         }
 
         // go through list of targets and create attack action for each
+        HashMap<Actor, String> targets = Utils.getSurroundingActors(actor, map);
         for(Actor target: targets.keySet()){
             AttackAction attackAction = new AttackAction(target, targets.get(target), weapon);
             result += attackAction.execute(actor, map) + "\n";
