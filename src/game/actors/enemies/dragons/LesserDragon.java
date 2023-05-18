@@ -50,7 +50,7 @@ public class LesserDragon extends Dragon implements RuneSource {
 
   @Override
   public IntrinsicWeapon getIntrinsicWeapon() {
-    return new IntrinsicWeapon(100, "flames", 100);
+    return new IntrinsicWeapon(100, "flames", 90);
   }
 
   @Override

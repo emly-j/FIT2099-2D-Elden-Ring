@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.environments.damage.FireGround;
 import game.utils.RandomNumberGenerator;
+import game.utils.Status;
 import game.utils.Utils;
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +23,10 @@ public class BreatheFireAction extends Action {
     HashMap<Location, String> rangedLocations = Utils.getRangedLocations(sourceLocation, map);
     for(Location location : rangedLocations.keySet()){
 
-      // if actor cant enter the ranged ground, don't set ground on fire
+      // if actor cant enter the ranged ground, or ground is fire immune, don't set ground on fire
       Ground ground = location.getGround();
-      if(RandomNumberGenerator.getRandomChance(50) && ground.canActorEnter(actor)){
+      if(RandomNumberGenerator.getRandomChance(50) && ground.canActorEnter(actor) && !ground.hasCapability(
+          Status.FIRE_IMMUNE)){
         location.setGround(new FireGround());
       }
     }
@@ -33,9 +35,10 @@ public class BreatheFireAction extends Action {
     List<Exit> exits = sourceLocation.getExits();
     for(Exit exit:exits){
 
-      // if actor cant enter the surrounding ground, don't set ground on fire
+      // if actor cant enter the surrounding ground, or ground is fire immune, don't set ground on fire
       Ground ground = exit.getDestination().getGround();
-      if(RandomNumberGenerator.getRandomChance(50) && ground.canActorEnter(actor)){
+      if(RandomNumberGenerator.getRandomChance(50) && ground.canActorEnter(actor) && !ground.hasCapability(
+          Status.FIRE_IMMUNE)){
         exit.getDestination().setGround(new FireGround());
       }
     }

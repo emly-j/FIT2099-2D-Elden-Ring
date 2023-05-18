@@ -26,7 +26,7 @@ public class FireGround extends DamageGround {
       location.setGround(new Dirt());
     }
 
-    // if there is an actor on this ground, deal damage, unless they're a fire type
+    // if there is an actor on this ground, deal damage, unless they're fire immune
     if (location.containsAnActor()){
       Actor actor = location.getActor();
 

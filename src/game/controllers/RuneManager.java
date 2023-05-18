@@ -159,7 +159,7 @@ public class RuneManager {
      * @return string indicating the result
      */
     public String transfer(Actor attacker, Actor target){
-        String result = null;
+        String result = "";
 
         // identify runeSource (target)
         if (actorIsRuneSource(target)){
