@@ -2,19 +2,20 @@ package game.actors.enemies.canine;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actors.AttackType;
+import game.actors.enemies.Enemy;
 import game.controllers.Resettable;
 import game.controllers.RuneManager;
 import game.controllers.RuneSource;
 import game.utils.RandomNumberGenerator;
 
-public class Dog extends Canine implements RuneSource {
+public class Dog extends Enemy implements RuneSource {
     /**
      * Constructor that instantiates the base canine with their capability of not being able to attack other canines
      */
     public Dog() {
         super("Dog", 'a', 104);
         addCapability(AttackType.CANNOT_ATTACK_GODRICK_SOLDIERS);
-        addCapability(AttackType.CANNOT_ATTACK_DOGS); // todo: check if dogs can attack other dogs
+        addCapability(AttackType.CANNOT_ATTACK_DOGS);
         removeCapability(AttackType.CANNOT_ATTACK_CANINES);
         addRuneSource();
     }

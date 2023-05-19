@@ -50,13 +50,21 @@ public class Utils {
         int y = source.y();
 
         addValidLocation(x,y - 2,"North", map, result);
+        addValidLocation(x + 1, y - 2, "North-North-East", map, result);
         addValidLocation(x + 2, y - 2, "North-East", map, result);
+        addValidLocation(x + 2, y - 1, "North-East-East", map, result);
         addValidLocation(x + 2, y, "East", map, result);
+        addValidLocation(x + 2, y + 1, "South-East-East", map, result);
         addValidLocation(x + 2, y + 2, "South-East", map, result);
+        addValidLocation(x + 1, y + 2, "South-South-East", map, result);
         addValidLocation(x, y + 2, "South", map, result);
+        addValidLocation(x - 1, y + 2, "South-South-West", map, result);
         addValidLocation(x - 2, y + 2, "South-West", map, result);
+        addValidLocation(x - 2, y + 1, "South-West-West", map, result);
         addValidLocation(x - 2, y, "West", map, result);
+        addValidLocation(x - 2, y - 1, "North-West-West", map, result);
         addValidLocation(x - 2, y - 2, "North-West", map, result);
+        addValidLocation(x - 1, y - 2, "North-North-West", map, result);
 
         return result;
     }

@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AreaAttackAction;
 import game.actions.AttackAction;
 import game.actors.AttackType;
+import game.actors.enemies.Enemy;
 import game.behaviours.AreaAttackBehaviour;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
@@ -24,13 +25,14 @@ import java.util.HashMap;
  * @author Emily Jap
  * @version 1.0.0
  */
-public class GiantDog extends Canine implements RuneSource {
+public class GiantDog extends Enemy implements RuneSource {
     /**
      * Constructor that instantiates the actor with being able to hold a random amount of runes
      */
     public GiantDog() {
         super("Giant Dog", 'G', 693);
         behaviours.put(3, new AreaAttackBehaviour());
+        addCapability(AttackType.CANNOT_ATTACK_CANINES);
         addRuneSource();
     }
 

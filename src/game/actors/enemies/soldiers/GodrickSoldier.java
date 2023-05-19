@@ -14,7 +14,7 @@ public class GodrickSoldier extends Soldier implements RuneSource {
     public GodrickSoldier() {
         super("Godrick Solder", 'p', 198);
         addCapability(AttackType.CANNOT_ATTACK_DOGS);
-        addCapability(AttackType.CANNOT_ATTACK_GODRICK_SOLDIERS); // todo: check if godrick soliders can attack other godrick soliders
+        addCapability(AttackType.CANNOT_ATTACK_GODRICK_SOLDIERS);
         addWeaponToInventory(new Club());
         addRuneSource();
     }
