@@ -20,23 +20,15 @@ public class GustOfWind extends SpawningGround {
      */
     public GustOfWind() {
         super('&');
-        this.addActorThatSpawns(new LoneWolf(), 33);
-        this.addActorThatSpawns(new GiantDog(), 4);
     }
 
     @Override
-    public void spawnActor(Actor actor, Location location) {
-        NumberRange mapWidthRange = location.map().getXRange();
-        boolean isWestSide = location.x() <= (mapWidthRange.max()/2);
-        boolean isEastSide = location.x() > (mapWidthRange.max()/2);
+    public void spawnActor(EnemyFactory enemyFactory, Location location) {
+        EnemyFactory east = new EastFactory();
+        EnemyFactory west = new WestFactory();
 
-        boolean canSpawn = RandomNumberGenerator.getRandomChance(getActorSpawnChance(actor));
-
-        if (isWestSide && canSpawn) {
-            location.addActor(new LoneWolf());
-        }else if (isEastSide && canSpawn) {
-            location.addActor(new GiantDog());
-        }
+        east.spawnCanine(location);
+        west.spawnCanine(location);
     }
 }
 

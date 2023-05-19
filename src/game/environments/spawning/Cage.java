@@ -11,21 +11,14 @@ public class Cage extends SpawningGround {
      */
     public Cage() {
         super('<');
-        this.addActorThatSpawns(new Dog(), 37);
     }
 
-    /**
-     * A factory method to spawn actors depending on their chance of spawning and the location on the map.
-     *
-     * @param actor    actor that may potentially spawn
-     * @param location location where the actor will spawn
-     */
     @Override
-    public void spawnActor(Actor actor, Location location) {
-        boolean canSpawn = RandomNumberGenerator.getRandomChance(getActorSpawnChance(actor));
+    public void spawnActor(EnemyFactory enemyFactory, Location location) {
+        EnemyFactory east = new EastFactory();
+        EnemyFactory west = new WestFactory();
 
-        if(canSpawn){
-            location.addActor(new Dog());
-        }
+        east.spawnDog(location);
+        west.spawnDog(location);
     }
 }

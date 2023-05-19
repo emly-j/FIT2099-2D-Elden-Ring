@@ -20,22 +20,14 @@ public class PuddleOfWater extends SpawningGround {
      */
     public PuddleOfWater() {
         super('~');
-        this.addActorThatSpawns(new GiantCrab(), 2);
-        this.addActorThatSpawns(new GiantCrayfish(), 1);
     }
 
     @Override
-    public void spawnActor(Actor actor, Location location) {
-        NumberRange mapWidthRange = location.map().getXRange();
-        boolean isWestSide = location.x() <= (mapWidthRange.max()/2);
-        boolean isEastSide = location.x() > (mapWidthRange.max()/2);
+    public void spawnActor(EnemyFactory enemyFactory, Location location) {
+        EnemyFactory east = new EastFactory();
+        EnemyFactory west = new WestFactory();
 
-        boolean canSpawn = RandomNumberGenerator.getRandomChance(getActorSpawnChance(actor));
-
-        if (isWestSide && canSpawn) {
-            location.addActor(new GiantCrab());
-        }else if (isEastSide && canSpawn) {
-            location.addActor(new GiantCrayfish());
-        }
+        east.spawnCrustacean(location);
+        west.spawnCrustacean(location);
     }
 }
