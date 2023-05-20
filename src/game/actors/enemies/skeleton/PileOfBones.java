@@ -12,6 +12,9 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AreaAttackAction;
 import game.actions.AttackAction;
 import game.actions.DeathAction;
+import game.actors.enemies.Enemy;
+import game.behaviours.Behaviour;
+import game.controllers.Resettable;
 import game.controllers.RuneManager;
 import game.controllers.RuneSource;
 import game.utils.RandomNumberGenerator;
@@ -19,14 +22,15 @@ import game.utils.Status;
 import game.utils.Utils;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Class that represents the PileOfBones actor which will spawn when a Skeleton dies
  * @author Emily Jap
- * @version 1.0.0
- * @see Skeleton
+ * @version 2.0.0
  */
-public class PileOfBones extends Skeleton implements RuneSource {
+public class PileOfBones extends Actor implements RuneSource, Resettable {
 
     /**
      * The actor the PileOfBones will revive into when it is not hit.
@@ -46,9 +50,6 @@ public class PileOfBones extends Skeleton implements RuneSource {
         super("Pile Of Bones", 'X', 1);
         this.revivableActor = revivableActor;
         removeCapability(Status.REVIVABLE);
-        behaviours.remove(1); // remove BecomePileOfBonesBehaviour
-        behaviours.remove(999); // remove WanderBehaviour
-        behaviours.remove(500); // remove AttackBehaviour
         addRuneSource();
 
         // transfer inventory from revivable actor (to be dropped when pile of bones dies)
@@ -96,7 +97,20 @@ public class PileOfBones extends Skeleton implements RuneSource {
             }
         }
 
-        allowAreaAttack(otherActor, map, actions);
+        if(otherActor.hasCapability(Status.PERFORM_AREA_ATTACK)){
+
+            // check for AOE weapons, otherwise use intrinsic weapon
+            if(otherActor.getWeaponInventory() != null){
+                for(int i = 0; i< otherActor.getWeaponInventory().size(); i++){
+                    WeaponItem weapon = otherActor.getWeaponInventory().get(i);
+                    if (weapon.hasCapability(Status.PERFORM_AREA_ATTACK)){
+                        actions.add(new AreaAttackAction(weapon));
+                    }
+                }
+            }else {
+                actions.add(new AreaAttackAction(otherActor.getIntrinsicWeapon()));
+            }
+        }
         return actions;
     }
 
@@ -105,5 +119,10 @@ public class PileOfBones extends Skeleton implements RuneSource {
         RuneManager runeManager = RuneManager.getInstance();
         runeManager.addRuneOwner(this, RandomNumberGenerator.getRandomInt(35, 892));
         runeManager.addRuneSource(this);
+    }
+
+    @Override
+    public void reset() {
+        this.addCapability(Status.RESETTABLE);
     }
 }
