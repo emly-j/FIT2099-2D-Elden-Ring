@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.positions.Location;
 /**
  * A class that represents the abstract class SpawningGround, representing all ground that will spawn an actor.
  * @author Emily Jap
- * @version 1.0.0
+ * @version 2.0.0
  */
 public abstract class SpawningGround extends Ground {
 
@@ -24,8 +24,7 @@ public abstract class SpawningGround extends Ground {
     }
 
     /**
-     * Iterates over the actorsThatSpawn HashMap at each turn.
-     * If the location doesn't contain an actor, then potentially spawn an actor at that location.
+     * If a location doesn't contain an actor, then potentially spawn an actor at that location.
      * @param location The location of the SpawningGround
      */
     @Override

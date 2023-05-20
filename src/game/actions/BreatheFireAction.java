@@ -13,6 +13,11 @@ import game.utils.Utils;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * An action to set surrounding ground on fire
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class BreatheFireAction extends Action {
 
   @Override

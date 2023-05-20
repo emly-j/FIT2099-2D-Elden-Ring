@@ -24,7 +24,7 @@ import java.util.TreeMap;
  * Class the represents the base enemy class and instantiates the behaviours that are similar to all enemies
  * @author Hayden Tran
  * @author Emily Jap
- * @version 1.0.0
+ * @version 2.0.0
  */
 public abstract class Enemy extends Actor implements Resettable {
 
@@ -85,19 +85,29 @@ public abstract class Enemy extends Actor implements Resettable {
 
         // actions the player can do to an enemy
         ActionList actions = new ActionList();
+        allowPlayerAttack(otherActor, direction, actions);
+        allowAreaAttack(otherActor, map, actions);
+
+        return actions;
+    }
+
+    /**
+     * A method to allow actors with Status.HOSTILE_TO_ENEMY capability to perform attacks on the enemy
+     * @param otherActor the actor that might be performing attacks
+     * @param direction String representing the direction of the other Actor
+     * @param actions list of allowable actions the other actor can to do the enemy
+     */
+    private void allowPlayerAttack(Actor otherActor, String direction, ActionList actions) {
+        // If player has a weapon with area attack capability, put area attack on list of allowable actions
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
 
             if(otherActor.getWeaponInventory() != null){
-                for(int i = 0; i<otherActor.getWeaponInventory().size(); i++){
+                for(int i = 0; i< otherActor.getWeaponInventory().size(); i++){
                     actions.add(new AttackAction(this, direction, otherActor.getWeaponInventory().get(i)));
                 }
             }
         }
-
-        // If player has a weapon with area attack capability, put area attack on list of allowable actions
-        allowAreaAttack(otherActor, map, actions);
-        return actions;
     }
 
     /**
@@ -105,7 +115,7 @@ public abstract class Enemy extends Actor implements Resettable {
      * on the current enemy
      * @param otherActor actor that may perform area attack
      * @param map current GameMap
-     * @param actions list of allowable actions the current actor can take
+     * @param actions list of allowable actions the other actor can to do the enemy
      */
     protected void allowAreaAttack(Actor otherActor, GameMap map, ActionList actions) {
         if(otherActor.hasCapability(Status.PERFORM_AREA_ATTACK)){

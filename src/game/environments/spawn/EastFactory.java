@@ -10,6 +10,11 @@ import game.actors.enemies.skeleton.SkeletalBandit;
 import game.actors.enemies.soldiers.GodrickSoldier;
 import game.utils.RandomNumberGenerator;
 
+/**
+ * A class for spawning enemies on the east side of the map
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class EastFactory implements EnemyFactory{
 
     /**

@@ -19,6 +19,24 @@ import java.util.HashMap;
  * @version 1.0.0
  */
 public class BreatheFireBehaviour implements Behaviour{
+
+    int chance;
+
+    /**
+     * Constructor with specified chance of breathing fire
+     * @param chance chance of breathing fire
+     */
+    public BreatheFireBehaviour(int chance) {
+        this.chance = chance;
+    }
+
+    /**
+     * Constructor with default chance of breathing fire (20%)
+     */
+    public BreatheFireBehaviour() {
+        this.chance = 20;
+    }
+
     /**
      * A factory for creating actions. Chaining these together can result in an actor performing more complex tasks.
      * <p>
@@ -43,9 +61,7 @@ public class BreatheFireBehaviour implements Behaviour{
     @Override
     public Action getAction(Actor actor, GameMap map) {
 
-        // the actor has a 20% chance of breathing fire
-        // todo: consider allowing chance of breathing fire to be a variable?
-        if(RandomNumberGenerator.getRandomChance(20)){
+        if(RandomNumberGenerator.getRandomChance(chance)){
             return new BreatheFireAction();
         }
         return null;

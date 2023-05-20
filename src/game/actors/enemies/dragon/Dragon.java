@@ -4,6 +4,12 @@ import game.actors.AttackType;
 import game.actors.enemies.Enemy;
 import game.behaviours.RangedAttackBehaviour;
 
+/**
+ * Abstract class that represents the Dragon class of enemies
+ * @author Emily Jap
+ * @version 1.0.0
+ * @see Enemy
+ */
 public abstract class Dragon extends Enemy {
 
   /**

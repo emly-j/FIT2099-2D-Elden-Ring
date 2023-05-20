@@ -6,6 +6,11 @@ import game.environments.Dirt;
 import game.environments.damage.DamageGround;
 import game.utils.Status;
 
+/**
+ * A ground that is on fire.
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class FireGround extends DamageGround {
 
   int counter;

@@ -2,6 +2,11 @@ package game.environments.spawn;
 
 import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * An interface for spawning enemies in the game
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public interface EnemyFactory {
 
     /**

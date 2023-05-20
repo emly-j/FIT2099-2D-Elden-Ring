@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * A class that represents the static methods that can be accessed in other classes for clarity
  * @author Emily Jap
- * @version 1.0.0
+ * @version 2.0.0
  */
 public class Utils {
 
@@ -89,7 +89,7 @@ public class Utils {
     }
 
     /**
-     * Returns actors that are within 2 blocks away (inclusive) from a source actor
+     * Returns actors that are 2 blocks away from a source actor
      * @param source the actor possibly being surrounded by other actors
      * @param map the map of the game
      * @return a hashmap representing the ranged actors and their position relative to the source actor
