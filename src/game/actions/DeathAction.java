@@ -3,6 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
@@ -69,7 +70,9 @@ public class DeathAction extends Action {
 //                map.at(map.locationOf(target).x(), map.locationOf(target).y()).addItem(runesDropped); //adds this item to the map
                 runesDropped.setCounter(1); //setting counter to 1, next reset will = 0 and disappear
                 RuneManager.getInstance().subtractRunes(target, runesHeld);
-                System.out.println("RUNES ARE HOLDING " + runesDropped.getValue());
+
+                Display display = new Display();
+                display.println("RUNES ARE HOLDING " + runesDropped.getValue());
                 map.moveActor(target, RestLocationManager.getLastRestedLocation());
 //                map.moveActor(target, map.at(30, 10)); //when die, want to move them to coords of siteoflostgrace
                 addCapabilityPlayerDeath(target);

@@ -1,9 +1,6 @@
-package game.environments.spawning;
+package game.environments.spawn;
 
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actors.enemies.canine.Dog;
-import game.utils.RandomNumberGenerator;
 
 public class Cage extends SpawningGround {
     /**

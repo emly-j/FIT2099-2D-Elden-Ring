@@ -1,8 +1,7 @@
-package game.actors.enemies.dragons;
+package game.actors.enemies.dragon;
 
 import game.actors.AttackType;
 import game.actors.enemies.Enemy;
-import game.behaviours.BreatheFireBehaviour;
 import game.behaviours.RangedAttackBehaviour;
 
 public abstract class Dragon extends Enemy {
@@ -17,7 +16,6 @@ public abstract class Dragon extends Enemy {
   public Dragon(String name, char displayChar, int hitPoints) {
     super(name, displayChar, hitPoints);
     addCapability(AttackType.CANNOT_ATTACK_DRAGONS);
-    behaviours.put(520, new BreatheFireBehaviour());
     behaviours.put(3, new RangedAttackBehaviour());
   }
 }

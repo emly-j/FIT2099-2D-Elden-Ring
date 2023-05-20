@@ -1,16 +1,10 @@
-package game.actors.enemies.dragons;
+package game.actors.enemies.dragon;
 
-import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.actions.AttackAction;
-import game.actors.AttackType;
 import game.behaviours.*;
 import game.controllers.RuneManager;
 import game.controllers.RuneSource;
 import game.utils.RandomNumberGenerator;
-import game.utils.Status;
 
 public class LesserDragon extends Dragon implements RuneSource {
 
@@ -20,6 +14,7 @@ public class LesserDragon extends Dragon implements RuneSource {
   public LesserDragon() {
     super("Lesser Dragon", 'd', 400);
     addRuneSource();
+    behaviours.put(520, new BreatheFireBehaviour());
   }
 
   @Override
