@@ -18,7 +18,7 @@ public class LastLocationManager {
      * static method that gets the stored location
      * @return
      */
-    public static Location getLastRestedLocation(){return lastLocation;}
+    public static Location getLastLocation(){return lastLocation;}
     }
 
 

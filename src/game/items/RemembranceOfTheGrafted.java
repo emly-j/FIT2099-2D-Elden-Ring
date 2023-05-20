@@ -15,31 +15,39 @@ public class RemembranceOfTheGrafted extends Item implements Exchangeable, Sella
     /***
      * Constructor.
      */
-    private Action exchangeAction;
+
     private Action axeExchange;
     private Action graftExchange;
+    private Action sellAction;
     public RemembranceOfTheGrafted() {
         super("Remembrance of the Grafted", 'O', true);
-        exchangeAction = null;
     }
 
 
     @Override
     public void tick(Location currentLocation, Actor actor) {
 
-        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(axeExchange))){
-            axeExchange = getExchangeAction().get(0);
-            graftExchange = getExchangeAction().get(1);
-            addAction(axeExchange);
-            addAction(graftExchange);
+        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))) {
+            sellAction = getSellAction();
+            addAction(sellAction);
+            System.out.println("ACTION ADDED");
+            if (Utils.isExchangeTraderNearby(currentLocation) && (!getAllowableActions().contains(axeExchange))) {
+//            sellAction = getSellAction();
+                axeExchange = getExchangeAction().get(0);
+                graftExchange = getExchangeAction().get(1);
+                addAction(axeExchange);
+                addAction(graftExchange);
+//            addAction(sellAction);
+            }
+        }else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))) {
+                System.out.println("this work");
+                removeAction(sellAction);
+                if (!Utils.isExchangeTraderNearby(currentLocation) && (getAllowableActions().contains(axeExchange))) {
+                    removeAction(graftExchange);
+                    removeAction(axeExchange);
+                }
+            }
         }
-
-        else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(axeExchange))){
-            removeAction(graftExchange);
-            removeAction(axeExchange);
-
-        }
-    }
         
 
 

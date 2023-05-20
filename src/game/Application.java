@@ -1,5 +1,7 @@
 package game;
 
+import game.actors.enemies.canine.LoneWolf;
+import game.actors.traders.FingerReaderEnia;
 import game.environments.spawn.Barrack;
 import game.environments.spawn.Cage;
 import game.environments.spawn.Dragonbarrow;
@@ -11,11 +13,12 @@ import java.util.List;
 
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.*;
-import game.actors.MerchantK;
+import game.actors.traders.MerchantK;
 import game.actors.Player;
 import game.controllers.RestLocationManager;
 import game.environments.*;
 import game.environments.sitesoflostgrace.TheFirstStep;
+import game.items.RemembranceOfTheGrafted;
 import game.utils.FancyMessage;
 
 /**
@@ -40,7 +43,7 @@ public class Application {
 				"......................#...........__#............................++........",
 				"......................#_____........#.............................+++......",
 				"......................#............_#..............................+++.....",
-				"......................######...######......................................",
+				"......................######___######......................................",
 				"...........................................................................",
 				"..........................._...............................................",
 				"........++++......................###___###................................",
@@ -95,53 +98,6 @@ public class Application {
 				exception.printStackTrace();
 			}
 		}
-//		initialMap.at(38,11).setGround(new TheFirstStep());
-//		RestLocationManager.storeLastLocation(initialMap.at(38,11));
-//		initialMap.at(40,12).addActor(new MerchantK());
-//		initialMap.at(30, 11).setGround(new Cliff());
-//		initialMap.at(35,10).setGround(new GoldenFogDoor(stormVeilCastle));
-//
-//
-//		// HINT: what does it mean to prefer composition to inheritance?
-//		Player player = new Player("Tarnished", '@', 300);
-//		world.addPlayer(player, initialMap.at(36, 10));
-//		world.run();
-//		/**
-//		 * LIMGRAVE
-//		 */
-//
-//		FancyGroundFactory groundFactory2 = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new Cliff());
-//
-//		List<String> map2 = Arrays.asList(
-//				"......................#.............#..........................+++.........",
-//				"......................#.............#.......................+++++..........",
-//				"......................#..___....____#.........................+++++........",
-//				"......................#...........__#............................++........",
-//				"......................#_____........#.............................+++......",
-//				"......................#............_#..............................+++.....",
-//				"......................######...######......................................",
-//				"...........................................................................",
-//				"...........................=...............................................",
-//				"........++++......................###___###................................",
-//				"........+++++++...................________#................................",
-//				"..........+++.....................#________................................",
-//				"............+++...................#_______#................................",
-//				".............+....................###___###................................",
-//				"............++......................#___#..................................",
-//				"..............+...................=........................................",
-//				"..............++.................................................=.........",
-//				"..............................................++...........................",
-//				"..................++++......................+++...............######..##...",
-//				"#####___######....++...........................+++............#....____....",
-//				"_____________#.....++++..........................+..............__.....#...",
-//				"_____________#.....+....++........................++.........._.....__.#...",
-//				"_____________#.........+..+.....................+++...........###..__###...",
-//				"_____________#.............++..............................................");
-//		GameMap limgrave = new GameMap(groundFactory2, map2);
-//		world.addGameMap(limgrave);
-//		world.run();
-//
-//
 
 		/**
 		 * STROMVEILCASTLE
@@ -177,9 +133,10 @@ public class Application {
 		GameMap stormVeilCastle = new GameMap(stormGroundFactory, stormVeilMap);
 		world.addGameMap(stormVeilCastle);
 
-			/**
-			 * ROUNDTABLE HOLD
-			 */
+
+		/**
+         * ROUNDTABLE HOLD
+         */
 
 		FancyGroundFactory roundGroundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new Cliff());
 
@@ -197,7 +154,6 @@ public class Application {
 				"########___#######"); //11 down,  10 accross
 		GameMap roundTableHold = new GameMap(roundGroundFactory, roundTableMap);
 		world.addGameMap(roundTableHold);
-		roundTableHold.at(9,10).setGround(new GoldenFogDoor(initialMap.at(6,23), initialMap, "Limgrave"));
 
 
 		/**
@@ -217,19 +173,25 @@ public class Application {
 				".........................",
 				"+++++++++++++++++++++++++");
 		GameMap bossRoom = new GameMap(bossGroundFactory, bossMap);
+		bossRoom.at(12,4).addItem(new RemembranceOfTheGrafted());
 		world.addGameMap(bossRoom);
 
 		initialMap.at(38,11).setGround(new TheFirstStep());
 		RestLocationManager.storeLastLocation(initialMap.at(38,11));
 		initialMap.at(40,12).addActor(new MerchantK());
 		initialMap.at(30, 11).setGround(new Cliff());
+
+		roundTableHold.at(9,1).addActor(new FingerReaderEnia());
+		// setting up the map teleporters
 		initialMap.at(30,0).setGround(new GoldenFogDoor(stormVeilCastle.at(38,23), stormVeilCastle, "Storm Veil Castle"));
 		initialMap.at(6,23).setGround(new GoldenFogDoor(roundTableHold.at(9,10), roundTableHold, "Roundtable Hold"));
+		stormVeilCastle.at(6,0).setGround(new GoldenFogDoor(bossRoom.at(0,4), bossRoom, "Godrick the Grafted's room"));
+		stormVeilCastle.at(38,23).setGround(new GoldenFogDoor(initialMap.at(30,0), initialMap, "Limgrave"));
 
-
-		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300);
+
 		world.addPlayer(player, initialMap.at(36, 10));
+		player.addItemToInventory(new RemembranceOfTheGrafted()); //this is here to test trading functionality
 		world.run();
 
 	}

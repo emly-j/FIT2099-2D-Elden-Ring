@@ -56,18 +56,5 @@ public class GraftedDragon extends WeaponItem implements Sellable {
         actor.removeWeaponFromInventory(this);
     }
 
-//    @Override
-//    public Item getExchangeableItem() {
-//        return this;
-//    }
-//
-//    @Override
-//    public void removeExchangeableFromInventory(Actor actor) {
-//        actor.removeWeaponFromInventory(this);
-//    }
 
-//    @Override
-//    public Action getExchangeAction() {
-//        return new ExchangeAction(this);
-//    }
 }

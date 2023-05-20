@@ -127,4 +127,25 @@ public class Utils {
 
         return hasTrader;
     }
+
+
+    /**
+     * A method that checks if a trader is within the exits of a location
+     * @param currentLocation the source location for which we are checking its exits
+     * @return boolean
+     */
+    public static boolean isExchangeTraderNearby(Location currentLocation){
+        List<Exit> exits = currentLocation.getExits();
+        boolean hasTrader = false;
+
+        for (Exit exit: exits){
+            if (exit.getDestination().getActor() != null){
+                if (exit.getDestination().getActor().hasCapability(Status.ACCEPT_GODRICK_DROP)){
+                    hasTrader = true;
+                }
+            }
+        }
+
+        return hasTrader;
+    }
 }

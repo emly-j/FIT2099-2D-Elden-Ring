@@ -53,11 +53,12 @@ public class DeathAction extends Action {
 
     @Override
     public String execute(Actor target, GameMap map) {
+        System.out.println("deathaction run");
         String result = "";
         ActionList dropActions = new ActionList();
         // drop all items
         if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) { //checks if it is a player
-
+            System.out.println("deathaction run");
             if (!target.hasCapability(Status.RESTED)){ //checks if actor has rested, this runs if NOT rested
                 runesHeld = RuneManager.getInstance().getRunes(target); //use to print amount dropped
                 if (target.hasCapability(Status.PLAYERDIEDTWICE)) {
@@ -66,28 +67,26 @@ public class DeathAction extends Action {
                 }
                 Rune runesDropped = new Rune(runesHeld, target); // creating new rune instance poklayer holds
 
-                map.at(LastLocationManager.getLastRestedLocation().x(),LastLocationManager.getLastRestedLocation().y()).addItem(runesDropped);
-//                map.at(map.locationOf(target).x(), map.locationOf(target).y()).addItem(runesDropped); //adds this item to the map
+                map.at(LastLocationManager.getLastLocation().x(),LastLocationManager.getLastLocation().y()).addItem(runesDropped);
                 runesDropped.setCounter(1); //setting counter to 1, next reset will = 0 and disappear
                 RuneManager.getInstance().subtractRunes(target, runesHeld);
 
                 Display display = new Display();
                 display.println("RUNES ARE HOLDING " + runesDropped.getValue());
                 map.moveActor(target, RestLocationManager.getLastRestedLocation());
-//                map.moveActor(target, map.at(30, 10)); //when die, want to move them to coords of siteoflostgrace
                 addCapabilityPlayerDeath(target);
                 ResetManager.getInstance().runReset(); //reset the game state as required
-
+                System.out.println("deathaction run3");
                 return System.lineSeparator() + YOU_DIED + System.lineSeparator() + target + " dropped " + runesHeld + " runes";
 
             }
             map.moveActor(target, RestLocationManager.getLastRestedLocation());
             ResetManager.getInstance().runReset(); //reset the game state as required
-
+            System.out.println("deathaction run4");
             return System.lineSeparator() + YOU_DIED;
 
         } else { //otherwise it is enemy who has death action and drops everything
-
+            System.out.println("deathaction run");
             // transfer runes to player when they kill a target
             if(attacker.hasCapability(Status.HOSTILE_TO_ENEMY)){
                 RuneManager runeManager = RuneManager.getInstance();

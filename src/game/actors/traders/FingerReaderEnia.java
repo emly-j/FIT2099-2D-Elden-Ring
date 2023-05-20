@@ -34,9 +34,6 @@ public class FingerReaderEnia extends Trader{
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions= new ActionList();
-
-//        actions.add(new ExchangeAction(new __))
-//todo, add an exhange action for 2 weapons
         return actions;
     }
 

@@ -61,7 +61,6 @@ public class Rune extends Item implements Resettable {
 
         if (currentLocation.containsAnActor() && !currentLocation.getActor().hasCapability(Status.CAN_RETRIEVE)){
             currentLocation.getActor().addCapability(Status.CAN_RETRIEVE);
-            display.println("ACTOR CAN NOW RETRIEVE");
             addAction(this.getRetrieveAction(currentLocation.getActor()));
         }
     }
