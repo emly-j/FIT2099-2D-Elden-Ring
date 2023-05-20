@@ -4,6 +4,11 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * An abstract ground class for grounds that damage actors standing on top of it
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public abstract class DamageGround extends Ground {
 
   /**

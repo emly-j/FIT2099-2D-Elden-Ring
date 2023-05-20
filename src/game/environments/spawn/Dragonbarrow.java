@@ -3,6 +3,12 @@ package game.environments.spawn;
 import edu.monash.fit2099.engine.positions.Location;
 import game.utils.Status;
 
+/**
+ * Class that represents the spawning environment for lesser dragons
+ * @author Emily Jap
+ * @version 1.0.0
+ * @see SpawningGround
+ */
 public class Dragonbarrow extends SpawningGround{
 
   /**

@@ -8,9 +8,14 @@ import game.controllers.RuneManager;
 import game.controllers.RuneSource;
 import game.utils.RandomNumberGenerator;
 
+/**
+ * Class that represents the Dog enemy
+ * @author Emily Jap
+ * @version 1.0.0
+ */
 public class Dog extends Enemy implements RuneSource {
     /**
-     * Constructor that instantiates the base canine with their capability of not being able to attack other canines
+     * Constructor.
      */
     public Dog() {
         super("Dog", 'a', 104);
