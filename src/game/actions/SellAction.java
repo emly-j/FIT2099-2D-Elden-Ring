@@ -39,7 +39,7 @@ public class SellAction extends Action {
         int runes = itemToSell.getSellPrice();
         RuneManager.getInstance().addRunes(actor, runes);
 
-        return itemToSell + " was sold by " + actor;
+        return itemToSell + " was sold by " + actor + " for " + itemToSell.getSellPrice();
     }
 
     @Override

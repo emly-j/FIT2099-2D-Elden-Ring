@@ -1,4 +1,4 @@
-package game.items;
+package game.items.runes;
 
 
 import edu.monash.fit2099.engine.actors.Actor;
