@@ -1,5 +1,6 @@
 package game.actions;
 
+import game.utils.RandomNumberGenerator;
 import java.util.Random;
 
 import edu.monash.fit2099.engine.actions.Action;
@@ -27,11 +28,6 @@ public class AttackAction extends Action {
 	 * The direction of incoming attack.
 	 */
 	private String direction;
-
-	/**
-	 * Random number generator
-	 */
-	private Random rand = new Random();
 
 	/**
 	 * Weapon used for the attack
@@ -76,7 +72,7 @@ public class AttackAction extends Action {
 			weapon = actor.getIntrinsicWeapon();
 		}
 
-		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
+		if (!(RandomNumberGenerator.getRandomInt(100) <= weapon.chanceToHit())) {
 			return actor + " misses " + target + ".";
 		}
 

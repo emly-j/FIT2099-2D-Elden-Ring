@@ -1,11 +1,11 @@
 package game;
 
-import game.environments.spawning.Barrack;
-import game.environments.spawning.Cage;
-import game.environments.spawning.Dragonbarrow;
-import game.environments.spawning.Graveyard;
-import game.environments.spawning.GustOfWind;
-import game.environments.spawning.PuddleOfWater;
+import game.environments.spawn.Barrack;
+import game.environments.spawn.Cage;
+import game.environments.spawn.Dragonbarrow;
+import game.environments.spawn.Graveyard;
+import game.environments.spawn.GustOfWind;
+import game.environments.spawn.PuddleOfWater;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +15,6 @@ import game.actors.MerchantK;
 import game.actors.Player;
 import game.controllers.RestLocationManager;
 import game.environments.*;
-import game.environments.sitesoflostgrace.TableOfLostGrace;
 import game.environments.sitesoflostgrace.TheFirstStep;
 import game.utils.FancyMessage;
 

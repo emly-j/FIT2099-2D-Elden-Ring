@@ -1,11 +1,6 @@
-package game.environments.spawning;
+package game.environments.spawn;
 
-import edu.monash.fit2099.engine.actors.Actor;
-import game.actors.enemies.canine.GiantDog;
 import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.positions.NumberRange;
-import game.actors.enemies.canine.LoneWolf;
-import game.utils.RandomNumberGenerator;
 
 /**
  * Class that represents the GustofWind SpawningGround which can spawn the LoneWolf and GiantDog

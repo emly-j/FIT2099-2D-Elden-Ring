@@ -1,15 +1,12 @@
-package game.environments.spawning;
+package game.environments.spawn;
 
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.NumberRange;
 import game.actors.enemies.canine.Dog;
-import game.actors.enemies.canine.GiantDog;
 import game.actors.enemies.canine.LoneWolf;
 import game.actors.enemies.crustacean.GiantCrab;
-import game.actors.enemies.crustacean.GiantCrayfish;
-import game.actors.enemies.dragons.LesserDragon;
+import game.actors.enemies.dragon.LesserDragon;
 import game.actors.enemies.skeleton.HeavySkeletalSwordsman;
-import game.actors.enemies.skeleton.SkeletalBandit;
 import game.actors.enemies.soldiers.GodrickSoldier;
 import game.utils.RandomNumberGenerator;
 
