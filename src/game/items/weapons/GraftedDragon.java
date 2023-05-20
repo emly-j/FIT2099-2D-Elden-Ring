@@ -5,55 +5,40 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.AreaAttackAction;
-import game.actions.BuyAction;
+import game.actions.ExchangeAction;
 import game.actions.SellAction;
-import game.items.Buyable;
+import game.items.Exchangeable;
+import game.items.RemembranceOfTheGrafted;
 import game.items.Sellable;
-import game.utils.Status;
 import game.utils.Utils;
 
-/**
- * Class that represents the Scimitar weapon held by the skeletal bandit, also can be bought from Trader K
- * @author Hayden Tran
- * @version 1.0.0
- */
-public class Scimitar extends WeaponItem implements Sellable, Buyable {
-
+public class GraftedDragon extends WeaponItem implements Sellable {
     /**
-     * SellAction for the Club. Ensures there is one instance of SellAction at a time.
+     * Constructor.
      */
-    private Action sellAction;
 
-    /***
-     * Constructor that instantiates the weapon and adds its capability
-     */
-    public Scimitar() {
-        super("Scimitar", 's', 118, "schiing", 88);
-        this.addCapability(Status.PERFORM_AREA_ATTACK);
+    private Action sellAction;
+    private Action exchangeAction;
+    public GraftedDragon() {
+        super("Grafted Dragon", 'N', 89, "vrooms", 90);
     }
 
     @Override
     public void tick(Location currentLocation, Actor actor){
-
         // if there is a trader nearby, allow this item to be sold
         if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))){
             sellAction = getSellAction();
             addAction(sellAction);
         }
+
         else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))){
             removeAction(sellAction);
         }
     }
 
     @Override
-    public Action getSkill(Actor holder){
-        return new AreaAttackAction(this);
-    }
-
-    @Override
     public int getSellPrice() {
-        return 100;
+        return 200;
     }
 
     @Override
@@ -71,24 +56,18 @@ public class Scimitar extends WeaponItem implements Sellable, Buyable {
         actor.removeWeaponFromInventory(this);
     }
 
+//    @Override
+//    public Item getExchangeableItem() {
+//        return this;
+//    }
+//
+//    @Override
+//    public void removeExchangeableFromInventory(Actor actor) {
+//        actor.removeWeaponFromInventory(this);
+//    }
 
-    @Override
-    public int getBuyPrice() {
-        return 600;
-    }
-
-    @Override
-    public Action getBuyAction() {
-        return new BuyAction(this);
-    }
-
-    @Override
-    public Item getBuyableItem() {
-        return this;
-    }
-
-    @Override
-    public void addBuyableToInventory(Actor actor) {
-        actor.addWeaponToInventory(this);
-    }
+//    @Override
+//    public Action getExchangeAction() {
+//        return new ExchangeAction(this);
+//    }
 }

@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.controllers.RuneManager;
 import game.items.Buyable;
-import game.items.Rune;
 
 /**
  * An action to allow actors to buy items that are buyable

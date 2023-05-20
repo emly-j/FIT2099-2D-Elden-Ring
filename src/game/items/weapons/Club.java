@@ -3,18 +3,13 @@ package game.items.weapons;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
-import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.BuyAction;
 import game.actions.SellAction;
-import game.actors.Trader;
 import game.items.Buyable;
 import game.items.Sellable;
-import game.utils.Status;
 import game.utils.Utils;
-
-import java.util.List;
 
 /**
  * A simple weapon that can be used to attack the enemy.

@@ -20,5 +20,6 @@ public enum Status {
     PLAYERDIED,
     PLAYERDIEDTWICE,
     IS_TRADER,
-    FIRE_IMMUNE
+    FIRE_IMMUNE,
+    ACCEPT_GODRICK_DROP,
 }

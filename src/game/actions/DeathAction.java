@@ -12,7 +12,7 @@ import game.controllers.ResetManager;
 import game.controllers.RestLocationManager;
 import game.controllers.RuneManager;
 import game.utils.Status;
-import game.items.Rune;
+import game.items.runes.Rune;
 
 import static game.utils.FancyMessage.YOU_DIED;
 
