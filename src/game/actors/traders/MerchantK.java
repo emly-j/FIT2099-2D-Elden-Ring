@@ -12,14 +12,14 @@ import game.items.weapons.Scimitar;
 
 /**
  * Class that represents Merchant Kale, a trader who allows the player to buy/sell items
+ *
  * @author Emily Jap
  * @version 1.0.0
  * @see Trader
  */
-public class MerchantK extends Trader{
+public class MerchantK extends Trader {
     /**
      * Constructor instantiating this specific trader
-     *
      */
     public MerchantK() {
         super("Merchant Kale", 'K', 1);
@@ -40,7 +40,7 @@ public class MerchantK extends Trader{
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        ActionList actions= new ActionList();
+        ActionList actions = new ActionList();
 
         actions.add(new BuyAction(new Club()));
         actions.add(new BuyAction(new Scimitar()));

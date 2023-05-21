@@ -2,28 +2,23 @@ package game.behaviours;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Ground;
-import edu.monash.fit2099.engine.positions.Location;
 import game.actions.BreatheFireAction;
-import game.environments.damage.FireGround;
 import game.utils.RandomNumberGenerator;
-import game.utils.Utils;
-
-import java.util.HashMap;
 
 /**
  * A behaviour for fire breathing actors to set the surrounding ground on fire.
+ *
  * @author Emily Jap
  * @version 1.0.0
  */
-public class BreatheFireBehaviour implements Behaviour{
+public class BreatheFireBehaviour implements Behaviour {
 
     int chance;
 
     /**
      * Constructor with specified chance of breathing fire
+     *
      * @param chance chance of breathing fire
      */
     public BreatheFireBehaviour(int chance) {
@@ -61,7 +56,7 @@ public class BreatheFireBehaviour implements Behaviour{
     @Override
     public Action getAction(Actor actor, GameMap map) {
 
-        if(RandomNumberGenerator.getRandomChance(chance)){
+        if (RandomNumberGenerator.getRandomChance(chance)) {
             return new BreatheFireAction();
         }
         return null;

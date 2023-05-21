@@ -14,7 +14,8 @@ public class GoldenRunes extends Item implements Consumable {
 
     private int charges;
 
-    private int value;
+    private final int value;
+
     public GoldenRunes() {
         super("Golden Rune", '*', true);
         this.value = RandomNumberGenerator.getRandomInt(200, 10000);
@@ -23,10 +24,10 @@ public class GoldenRunes extends Item implements Consumable {
     }
 
     public void tick(Location currentLocation, Actor actor) {
-        if (this.charges == 0){
+        if (this.charges == 0) {
             actor.removeItemFromInventory(this);
         }
-        if (actor.getItemInventory().contains(this)){
+        if (actor.getItemInventory().contains(this)) {
             this.addAction(new ConsumeRuneAction(this, value));
         }
     }

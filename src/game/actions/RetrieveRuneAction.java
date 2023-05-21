@@ -8,6 +8,7 @@ import game.utils.Status;
 
 /**
  * Class that represents a retrieve rune action
+ *
  * @author Hayden Tran
  * @version 1.0.0
  * @see RetrieveAction
@@ -17,6 +18,7 @@ public class RetrieveRuneAction extends RetrieveAction {
 
     /**
      * Constructor that takes in the rune to be retrieved
+     *
      * @param rune
      */
     public RetrieveRuneAction(Rune rune) {
@@ -28,10 +30,11 @@ public class RetrieveRuneAction extends RetrieveAction {
      * When executed, updates the players Rune hashmap with the amount of runes this rune was holding
      * then removes the rune from the map
      * and removes PLAYERDIED capability from the actor (this resets the death method in deathaction)
-     * @see DeathAction
+     *
      * @param actor The actor performing the action.
-     * @param map The map the actor is on.
+     * @param map   The map the actor is on.
      * @return
+     * @see DeathAction
      */
     @Override
     public String execute(Actor actor, GameMap map) {

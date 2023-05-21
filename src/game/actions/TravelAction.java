@@ -10,7 +10,8 @@ public class TravelAction extends Action {
     Location location;
     GameMap gameMap;
     String mapName;
-    public TravelAction(Location location, GameMap gameMap, String mapName){
+
+    public TravelAction(Location location, GameMap gameMap, String mapName) {
         this.location = location;
         this.gameMap = gameMap;
         this.mapName = mapName;

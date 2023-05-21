@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
  * Class that represents removal of actors when called
+ *
  * @author Hayden Tran
  * @version 1.0.0
  * @see Action

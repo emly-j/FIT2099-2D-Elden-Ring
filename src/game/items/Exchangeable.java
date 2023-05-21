@@ -8,12 +8,14 @@ public interface Exchangeable {
 
     /**
      * Returns the exchaneable item as instance of an item class
+     *
      * @return exchangeable item as an item object
      */
     Item getExchangeableItem();
 
     /**
      * Removes the item from inventory once exchanged
+     *
      * @param actor actor we remove item from
      */
     void removeExchangeableFromInventory(Actor actor);

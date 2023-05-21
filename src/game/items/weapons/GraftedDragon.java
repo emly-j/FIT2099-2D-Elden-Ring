@@ -5,10 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.ExchangeAction;
 import game.actions.SellAction;
-import game.items.Exchangeable;
-import game.items.RemembranceOfTheGrafted;
 import game.items.Sellable;
 import game.utils.Utils;
 
@@ -19,19 +16,18 @@ public class GraftedDragon extends WeaponItem implements Sellable {
 
     private Action sellAction;
     private Action exchangeAction;
+
     public GraftedDragon() {
         super("Grafted Dragon", 'N', 89, "vrooms", 90);
     }
 
     @Override
-    public void tick(Location currentLocation, Actor actor){
+    public void tick(Location currentLocation, Actor actor) {
         // if there is a trader nearby, allow this item to be sold
-        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))){
+        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))) {
             sellAction = getSellAction();
             addAction(sellAction);
-        }
-
-        else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))){
+        } else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))) {
             removeAction(sellAction);
         }
     }

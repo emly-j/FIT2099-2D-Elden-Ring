@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.RestAction;
 import game.actions.TravelAction;
 import game.utils.Status;
 
@@ -15,6 +14,7 @@ public class GoldenFogDoor extends Ground {
     Location teleportLocation;
     GameMap gameMap;
     String mapName;
+
     /**
      * Constructor.
      */
@@ -27,6 +27,7 @@ public class GoldenFogDoor extends Ground {
 
     /**
      * A boolean to check whether a PLAYER can enter or not
+     *
      * @param actor the Actor to check
      * @return true if has Status.HOSTILE_TO_ENEMY (player checker)
      */
@@ -36,8 +37,9 @@ public class GoldenFogDoor extends Ground {
 
     /**
      * The updates ActionList for the actor when they enter this ground
-     * @param actor the Actor acting
-     * @param location the current Location
+     *
+     * @param actor     the Actor acting
+     * @param location  the current Location
      * @param direction the direction of the Ground from the Actor
      * @return any actions added (Rest Action if possible)
      */
@@ -46,6 +48,7 @@ public class GoldenFogDoor extends Ground {
         ActionList actions = new ActionList();
         if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new TravelAction(this.teleportLocation, this.gameMap, this.mapName));
-        } return actions;
+        }
+        return actions;
     }
 }

@@ -11,7 +11,7 @@ import game.utils.Utils;
 import java.util.HashMap;
 import java.util.List;
 
-public class RangedAttackBehaviour implements Behaviour{
+public class RangedAttackBehaviour implements Behaviour {
 
     /**
      * Weapon used for the attack
@@ -21,7 +21,8 @@ public class RangedAttackBehaviour implements Behaviour{
     /**
      * Constructor with intrinsic weapon as default.
      */
-    public RangedAttackBehaviour(){}
+    public RangedAttackBehaviour() {
+    }
 
     /**
      * Constructor with specified weapon.
@@ -60,14 +61,14 @@ public class RangedAttackBehaviour implements Behaviour{
         }
 
         // check for targets nearby
-        HashMap<Actor, String> targets = Utils.getRangedActors(actor,map);
+        HashMap<Actor, String> targets = Utils.getRangedActors(actor, map);
 
-        for(Actor target: targets.keySet()){
+        for (Actor target : targets.keySet()) {
 
-            if (target != null){
+            if (target != null) {
                 List<AttackType> nearbyActorTypes = target.findCapabilitiesByType(AttackType.class);
-                for (AttackType attackType : attackTypes){
-                    if (nearbyActorTypes.contains(attackType)){
+                for (AttackType attackType : attackTypes) {
+                    if (nearbyActorTypes.contains(attackType)) {
                         return null;
                     }
                 }

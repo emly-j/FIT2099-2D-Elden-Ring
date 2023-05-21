@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
  * abstract class that represents all items that may be retrieved
+ *
  * @author Hayden Tran
  * @version 1.0.0
  * @see Action
@@ -17,9 +18,10 @@ public abstract class RetrieveAction extends Action {
 
     /**
      * Constructor that has item as an input and sets it
+     *
      * @param item
      */
-    public RetrieveAction(Item item){
+    public RetrieveAction(Item item) {
         this.item = item;
     }
 

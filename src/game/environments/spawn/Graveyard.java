@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.positions.Location;
 
 /**
  * Class that represents the Graveyard SpawningGround which can spawn the HeavySkeletalSwordsman and SkeletalBandit
+ *
  * @author Emily Jap
  * @version 2.0.0
  * @see SpawningGround

@@ -11,7 +11,7 @@ import game.items.weapons.AxeOfGodrick;
 import game.items.weapons.GraftedDragon;
 import game.utils.Utils;
 
-public class RemembranceOfTheGrafted extends Item implements Exchangeable, Sellable{
+public class RemembranceOfTheGrafted extends Item implements Exchangeable, Sellable {
     /***
      * Constructor.
      */
@@ -19,6 +19,7 @@ public class RemembranceOfTheGrafted extends Item implements Exchangeable, Sella
     private Action axeExchange;
     private Action graftExchange;
     private Action sellAction;
+
     public RemembranceOfTheGrafted() {
         super("Remembrance of the Grafted", 'O', true);
     }
@@ -39,16 +40,15 @@ public class RemembranceOfTheGrafted extends Item implements Exchangeable, Sella
                 addAction(graftExchange);
 //            addAction(sellAction);
             }
-        }else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))) {
-                System.out.println("this work");
-                removeAction(sellAction);
-                if (!Utils.isExchangeTraderNearby(currentLocation) && (getAllowableActions().contains(axeExchange))) {
-                    removeAction(graftExchange);
-                    removeAction(axeExchange);
-                }
+        } else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))) {
+            System.out.println("this work");
+            removeAction(sellAction);
+            if (!Utils.isExchangeTraderNearby(currentLocation) && (getAllowableActions().contains(axeExchange))) {
+                removeAction(graftExchange);
+                removeAction(axeExchange);
             }
         }
-        
+    }
 
 
     @Override
@@ -68,6 +68,7 @@ public class RemembranceOfTheGrafted extends Item implements Exchangeable, Sella
         exchangeActions.add(new ExchangeAction(this, new GraftedDragon()));
         return exchangeActions;
     }
+
     @Override
     public int getSellPrice() {
         return 20000;

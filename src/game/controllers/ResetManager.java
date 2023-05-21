@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * A reset manager class that manages a list of resettables.
  * Created by:
+ *
  * @author Adrian Kristanto
  * Modified by:
  * @author Hayden Tran
@@ -15,7 +16,7 @@ public class ResetManager {
     /**
      * we create a list of resettable instances here (players, items, runes)
      */
-    private List<Resettable> resettables;
+    private final List<Resettable> resettables;
     private static ResetManager instance;
 
     /**
@@ -28,9 +29,10 @@ public class ResetManager {
 
     /**
      * gets single instance of reset amanger
+     *
      * @return returns single instant of reset manager
      */
-    public static ResetManager getInstance(){
+    public static ResetManager getInstance() {
         if (instance == null) {
             instance = new ResetManager();
         }
@@ -41,13 +43,14 @@ public class ResetManager {
      * resets the game by going through all resettable objects in the list
      */
     public void runReset() {
-        for (Resettable object : this.resettables){
+        for (Resettable object : this.resettables) {
             object.reset();
         }
     }
 
     /**
      * adds the instance of resttable to the list
+     *
      * @param resettable
      */
     public void registerResettable(Resettable resettable) {
@@ -56,6 +59,7 @@ public class ResetManager {
 
     /**
      * remove the resttable instance from the list
+     *
      * @param resettable
      */
     public void removeResettable(Resettable resettable) {

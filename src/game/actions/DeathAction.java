@@ -11,14 +11,15 @@ import game.controllers.LastLocationManager;
 import game.controllers.ResetManager;
 import game.controllers.RestLocationManager;
 import game.controllers.RuneManager;
-import game.utils.Status;
 import game.items.runes.Rune;
+import game.utils.Status;
 
 import static game.utils.FancyMessage.YOU_DIED;
 
 /**
  * An action executed if an actor is killed.
  * Created by:
+ *
  * @author Adrian Kristanto
  * Modified by:
  * @author Hayden Tran
@@ -27,11 +28,12 @@ import static game.utils.FancyMessage.YOU_DIED;
  * @see Action
  */
 public class DeathAction extends Action {
-    private Actor attacker;
+    private final Actor attacker;
     private int runesHeld;
 
     /**
      * Constructor.
+     *
      * @param actor
      */
     public DeathAction(Actor actor) {
@@ -41,13 +43,14 @@ public class DeathAction extends Action {
     /**
      * When the target is killed, the items & weapons carried by target
      * will be dropped to the location in the game map where the target was
-     *
-     *When PLAYER (hostile to enemy) dies, creates an instance of runefloor to be a runesource that can hold the runes that player holds
+     * <p>
+     * When PLAYER (hostile to enemy) dies, creates an instance of runefloor to be a runesource that can hold the runes that player holds
      * sets the floor of location to hold the mount of runes and then subtract the player amount to be 0
      * move the player to location after dying
      * then runs the reesets as per the requirements
+     *
      * @param target The actor performing the action.
-     * @param map The map the actor is on.
+     * @param map    The map the actor is on.
      * @return result of the action to be displayed on the UI
      */
 
@@ -59,7 +62,7 @@ public class DeathAction extends Action {
         // drop all items
         if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) { //checks if it is a player
             System.out.println("deathaction run");
-            if (!target.hasCapability(Status.RESTED)){ //checks if actor has rested, this runs if NOT rested
+            if (!target.hasCapability(Status.RESTED)) { //checks if actor has rested, this runs if NOT rested
                 runesHeld = RuneManager.getInstance().getRunes(target); //use to print amount dropped
                 if (target.hasCapability(Status.PLAYERDIEDTWICE)) {
                     target.removeCapability(Status.PLAYERDIEDTWICE);
@@ -67,7 +70,7 @@ public class DeathAction extends Action {
                 }
                 Rune runesDropped = new Rune(runesHeld, target); // creating new rune instance poklayer holds
 
-                map.at(LastLocationManager.getLastLocation().x(),LastLocationManager.getLastLocation().y()).addItem(runesDropped);
+                map.at(LastLocationManager.getLastLocation().x(), LastLocationManager.getLastLocation().y()).addItem(runesDropped);
                 runesDropped.setCounter(1); //setting counter to 1, next reset will = 0 and disappear
                 RuneManager.getInstance().subtractRunes(target, runesHeld);
 
@@ -88,7 +91,7 @@ public class DeathAction extends Action {
         } else { //otherwise it is enemy who has death action and drops everything
             System.out.println("deathaction run");
             // transfer runes to player when they kill a target
-            if(attacker.hasCapability(Status.HOSTILE_TO_ENEMY)){
+            if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
                 RuneManager runeManager = RuneManager.getInstance();
                 result += runeManager.transfer(attacker, target);
             }
@@ -109,13 +112,13 @@ public class DeathAction extends Action {
 
     /**
      * A method that adds capabilities when the player has died
+     *
      * @param target
      */
-    public void addCapabilityPlayerDeath(Actor target){
+    public void addCapabilityPlayerDeath(Actor target) {
         if (!target.hasCapability(Status.PLAYERDIED) && !target.hasCapability(Status.PLAYERDIEDTWICE)) {
             target.addCapability(Status.PLAYERDIED); //indicate that player has died once.
-        }
-        else if(target.hasCapability(Status.PLAYERDIED) && !target.hasCapability(Status.PLAYERDIEDTWICE)){
+        } else if (target.hasCapability(Status.PLAYERDIED) && !target.hasCapability(Status.PLAYERDIEDTWICE)) {
             target.removeCapability(Status.PLAYERDIED);
             target.addCapability(Status.PLAYERDIEDTWICE);
         }

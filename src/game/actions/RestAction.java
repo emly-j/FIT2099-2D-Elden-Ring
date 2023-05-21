@@ -12,23 +12,25 @@ import game.utils.Status;
 
 /**
  * A class that represents the 'rest action' implemented when standing on The First Step
- * @see TheFirstStep
+ *
  * @author Hayden Tran
  * @version 1.0.0
+ * @see TheFirstStep
  * @see Action
  */
 public class RestAction extends Action {
 
-    private Ground ground;
-    private Location location;
-    private String name;
+    private final Ground ground;
+    private final Location location;
+    private final String name;
 
     /**
      * Constructor.
+     *
      * @param ground
      * @param location
      */
-    public RestAction(Ground ground, Location location, String name){
+    public RestAction(Ground ground, Location location, String name) {
         this.ground = ground;
         this.location = location;
         this.name = name;

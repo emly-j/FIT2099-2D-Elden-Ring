@@ -7,17 +7,17 @@ import game.actions.BecomePileOfBonesAction;
 
 /**
  * class that represents the become pile of bones behaviour used in Skeletons
- * @see game.actors.enemies.skeleton
+ *
  * @author Emily Jap
  * @version 1.0.0
+ * @see game.actors.enemies.skeleton
  */
 public class BecomePileOfBonesBehaviour implements Behaviour {
     @Override
     public Action getAction(Actor actor, GameMap map) {
-        if (!actor.isConscious()){
+        if (!actor.isConscious()) {
             return new BecomePileOfBonesAction(actor, map.locationOf(actor));
-        }
-        else {
+        } else {
             return null;
         }
     }

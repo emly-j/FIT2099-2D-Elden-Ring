@@ -6,13 +6,14 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AreaAttackAction;
-import game.utils.Status;
 import game.actions.SellAction;
 import game.items.Sellable;
+import game.utils.Status;
 import game.utils.Utils;
 
 /**
  * A weapon carried by HeavySkeletalSwordsman.
+ *
  * @author Emily
  * @version 1.0
  * @see WeaponItem
@@ -34,14 +35,13 @@ public class Grossmesser extends WeaponItem implements Sellable {
     }
 
     @Override
-    public void tick(Location currentLocation, Actor actor){
+    public void tick(Location currentLocation, Actor actor) {
 
         // if there is a trader nearby, allow this item to be sold
-        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))){
+        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))) {
             sellAction = getSellAction();
             addAction(sellAction);
-        }
-        else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))){
+        } else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))) {
             removeAction(sellAction);
         }
     }

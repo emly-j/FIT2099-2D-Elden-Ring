@@ -12,6 +12,7 @@ import game.utils.Status;
 
 /**
  * Class that represents the FLash of Crimson Tears item for our current implementation
+ *
  * @author Hayden Tran
  * @version 1.0.0
  */
@@ -24,12 +25,12 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable 
      * The maximum amount of charges in our current implementation
      */
     private final int MAX_USES = 2;
-    private int health = 250;
+    private final int health = 250;
 
     /**
      * Constructor that instantiates the item and adds the action and registers it as an instance of resettable
      */
-    public FlaskOfCrimsonTears(){
+    public FlaskOfCrimsonTears() {
         super("Flask Of Crimson Tears", 'c', false);
         this.addAction(new ConsumeAction(this, health));
         this.charges = MAX_USES;
@@ -38,11 +39,12 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable 
 
     /**
      * Updated the tick method so that whenever the reset() method is called, the item will reset its charges
+     *
      * @param currentLocation The location of the actor carrying this Item.
-     * @param actor The actor carrying this Item.
+     * @param actor           The actor carrying this Item.
      */
     public void tick(Location currentLocation, Actor actor) {
-        if (this.hasCapability(Status.RESETTABLE)){
+        if (this.hasCapability(Status.RESETTABLE)) {
             this.charges = MAX_USES;
             this.removeCapability(Status.RESETTABLE);
             Display display = new Display();

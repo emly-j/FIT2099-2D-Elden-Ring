@@ -15,19 +15,19 @@ public class AxeOfGodrick extends WeaponItem implements Sellable {
      */
 
     private Action sellAction;
+
     public AxeOfGodrick() {
         super("Axe of Godrick", 'T', 142, "axes", 84);
     }
 
     @Override
-    public void tick(Location currentLocation, Actor actor){
+    public void tick(Location currentLocation, Actor actor) {
 
         // if there is a trader nearby, allow this item to be sold
-        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))){
+        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))) {
             sellAction = getSellAction();
             addAction(sellAction);
-        }
-        else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))){
+        } else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))) {
             removeAction(sellAction);
         }
     }

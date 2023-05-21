@@ -8,17 +8,21 @@ public class LastLocationManager {
 
     /**
      * stores the location at the last rested site
+     *
      * @param lastAt location of the site
      */
-    public static void storeLastLocation(Location lastAt){
+    public static void storeLastLocation(Location lastAt) {
         lastLocation = lastAt;
     }
 
     /**
      * static method that gets the stored location
+     *
      * @return
      */
-    public static Location getLastLocation(){return lastLocation;}
+    public static Location getLastLocation() {
+        return lastLocation;
     }
+}
 
 

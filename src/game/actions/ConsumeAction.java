@@ -7,17 +7,19 @@ import game.controllers.Consumable;
 
 /**
  * A consume action which represents all item that should be consumed
+ *
  * @author Hayden Tran
  * @version 1.0.0
  * @see Action
  */
 public class ConsumeAction extends Action {
 
-    private Consumable itemToConsume;
-    private int health;
+    private final Consumable itemToConsume;
+    private final int health;
 
     /**
      * Constructor which takes in these parameters to determine which item to consume and how much to heal
+     *
      * @param itemToConsume
      * @param health
      */

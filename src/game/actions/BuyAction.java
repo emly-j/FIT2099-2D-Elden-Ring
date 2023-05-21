@@ -8,6 +8,7 @@ import game.items.Buyable;
 
 /**
  * An action to allow actors to buy items that are buyable
+ *
  * @author Emily Jap
  * @see Action
  */
@@ -16,10 +17,11 @@ public class BuyAction extends Action {
     /**
      * The item that is to be bought
      */
-    private Buyable itemToBuy;
+    private final Buyable itemToBuy;
 
     /**
      * Constructor.
+     *
      * @param itemToBuy The item that is to be bought
      */
     public BuyAction(Buyable itemToBuy) {
@@ -32,7 +34,7 @@ public class BuyAction extends Action {
         int buyPrice = itemToBuy.getBuyPrice();
         RuneManager runeManager = RuneManager.getInstance();
 
-        if (runeManager.getRunes(actor) >= buyPrice){
+        if (runeManager.getRunes(actor) >= buyPrice) {
             runeManager.subtractRunes(actor, buyPrice);
 
             // add item to actor's inventory

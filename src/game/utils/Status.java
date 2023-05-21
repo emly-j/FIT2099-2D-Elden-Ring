@@ -3,6 +3,7 @@ package game.utils;
 /**
  * Use this enum class to represent certain capabilities within classes.
  * Created by:
+ *
  * @author Riordan D. Alfredo
  * Modified by:
  * @author Hayden Tran

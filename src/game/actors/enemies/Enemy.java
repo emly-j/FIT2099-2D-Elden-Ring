@@ -6,22 +6,21 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.actions.RemoveAction;
-import game.controllers.ResetManager;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AreaAttackAction;
-import game.behaviours.*;
 import game.actions.AttackAction;
+import game.actions.RemoveAction;
+import game.behaviours.*;
+import game.controllers.ResetManager;
 import game.controllers.Resettable;
 import game.utils.Status;
-import game.utils.Utils;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 /**
  * Class the represents the base enemy class and instantiates the behaviours that are similar to all enemies
+ *
  * @author Hayden Tran
  * @author Emily Jap
  * @version 2.0.0
@@ -32,6 +31,7 @@ public abstract class Enemy extends Actor implements Resettable {
 
     /**
      * Constructor that instantiates the base Enemy behaviours and being a resettable instance
+     *
      * @param name        the name of the Actor
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
@@ -55,14 +55,14 @@ public abstract class Enemy extends Actor implements Resettable {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        if (this.hasCapability(Status.RESETTABLE)){
+        if (this.hasCapability(Status.RESETTABLE)) {
             return new RemoveAction();
         }
 
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
 
-            if(action != null) {
+            if (action != null) {
                 return action;
             }
         }
@@ -79,7 +79,7 @@ public abstract class Enemy extends Actor implements Resettable {
      * @return
      */
     @Override
-    public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         // add behaviours that require otherActor as input
         behaviours.put(600, new FollowBehaviour(otherActor));
 
@@ -93,17 +93,18 @@ public abstract class Enemy extends Actor implements Resettable {
 
     /**
      * A method to allow actors with Status.HOSTILE_TO_ENEMY capability to perform attacks on the enemy
+     *
      * @param otherActor the actor that might be performing attacks
-     * @param direction String representing the direction of the other Actor
-     * @param actions list of allowable actions the other actor can to do the enemy
+     * @param direction  String representing the direction of the other Actor
+     * @param actions    list of allowable actions the other actor can to do the enemy
      */
     private void allowPlayerAttack(Actor otherActor, String direction, ActionList actions) {
         // If player has a weapon with area attack capability, put area attack on list of allowable actions
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new AttackAction(this, direction));
 
-            if(otherActor.getWeaponInventory() != null){
-                for(int i = 0; i< otherActor.getWeaponInventory().size(); i++){
+            if (otherActor.getWeaponInventory() != null) {
+                for (int i = 0; i < otherActor.getWeaponInventory().size(); i++) {
                     actions.add(new AttackAction(this, direction, otherActor.getWeaponInventory().get(i)));
                 }
             }
@@ -113,22 +114,23 @@ public abstract class Enemy extends Actor implements Resettable {
     /**
      * A method to allow the actors with the capability Status.PERFORM_AREA_ATTACK to perform area attacks
      * on the current enemy
+     *
      * @param otherActor actor that may perform area attack
-     * @param map current GameMap
-     * @param actions list of allowable actions the other actor can to do the enemy
+     * @param map        current GameMap
+     * @param actions    list of allowable actions the other actor can to do the enemy
      */
     protected void allowAreaAttack(Actor otherActor, GameMap map, ActionList actions) {
-        if(otherActor.hasCapability(Status.PERFORM_AREA_ATTACK)){
+        if (otherActor.hasCapability(Status.PERFORM_AREA_ATTACK)) {
 
             // check for AOE weapons, otherwise use intrinsic weapon
-            if(otherActor.getWeaponInventory() != null){
-                for(int i = 0; i< otherActor.getWeaponInventory().size(); i++){
+            if (otherActor.getWeaponInventory() != null) {
+                for (int i = 0; i < otherActor.getWeaponInventory().size(); i++) {
                     WeaponItem weapon = otherActor.getWeaponInventory().get(i);
-                    if (weapon.hasCapability(Status.PERFORM_AREA_ATTACK)){
+                    if (weapon.hasCapability(Status.PERFORM_AREA_ATTACK)) {
                         actions.add(new AreaAttackAction(weapon));
                     }
                 }
-            }else {
+            } else {
                 actions.add(new AreaAttackAction(otherActor.getIntrinsicWeapon()));
             }
         }

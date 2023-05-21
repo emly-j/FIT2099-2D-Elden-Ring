@@ -4,6 +4,7 @@ import game.actors.enemies.Enemy;
 
 /**
  * Abstract class that represents the Soldier class of enemies
+ *
  * @author Emily Jap
  * @version 1.0.0
  * @see Enemy

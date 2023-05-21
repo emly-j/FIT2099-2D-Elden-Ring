@@ -15,12 +15,12 @@ import game.utils.Utils;
  * A simple weapon that can be used to attack the enemy.
  * It deals 103 damage with 80% hit rate
  * Created by:
+ *
  * @author Adrian Kristanto
  * Modified by: Emily Jap
  * @see WeaponItem
  * @see Buyable
  * @see Sellable
- *
  */
 public class Club extends WeaponItem implements Sellable, Buyable {
 
@@ -38,14 +38,13 @@ public class Club extends WeaponItem implements Sellable, Buyable {
     }
 
     @Override
-    public void tick(Location currentLocation, Actor actor){
+    public void tick(Location currentLocation, Actor actor) {
 
         // if there is a trader nearby, allow this item to be sold
-        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))){
+        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))) {
             sellAction = getSellAction();
             addAction(sellAction);
-        }
-        else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))){
+        } else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))) {
             removeAction(sellAction);
         }
     }

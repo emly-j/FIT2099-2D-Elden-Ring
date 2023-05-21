@@ -9,6 +9,7 @@ import game.items.Sellable;
 
 /**
  * Class that represents the action to sell an item
+ *
  * @author Emily Jap
  * @version 1.0.0
  * @see Action
@@ -19,10 +20,11 @@ public class SellAction extends Action {
     /**
      * Item to be sold.
      */
-    private Sellable itemToSell;
+    private final Sellable itemToSell;
 
     /**
      * Constructor.
+     *
      * @param itemToSell
      */
     public SellAction(Sellable itemToSell) {

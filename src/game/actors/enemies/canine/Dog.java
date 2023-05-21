@@ -3,13 +3,13 @@ package game.actors.enemies.canine;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actors.AttackType;
 import game.actors.enemies.Enemy;
-import game.controllers.Resettable;
 import game.controllers.RuneManager;
 import game.controllers.RuneSource;
 import game.utils.RandomNumberGenerator;
 
 /**
  * Class that represents the Dog enemy
+ *
  * @author Emily Jap
  * @version 1.0.0
  */

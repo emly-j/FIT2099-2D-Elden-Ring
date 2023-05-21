@@ -5,16 +5,16 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import game.actions.AreaAttackAction;
 import game.actions.AttackAction;
 import game.actors.AttackType;
-
 import game.utils.RandomNumberGenerator;
+
 import java.util.List;
 
 
 /**
  * Class that represents the attackbehaviour used by NPCS
+ *
  * @author Emily Jap
  * @version 1.0.0
  */
@@ -28,7 +28,8 @@ public class AttackBehaviour implements Behaviour {
     /**
      * Constructor with intrinsic weapon as default.
      */
-    public AttackBehaviour(){}
+    public AttackBehaviour() {
+    }
 
     /**
      * Constructor with specified weapon.
@@ -46,23 +47,23 @@ public class AttackBehaviour implements Behaviour {
         }
 
         // 50% chance of using weapon skill
-        if(RandomNumberGenerator.getRandomChance(50)){
+        if (RandomNumberGenerator.getRandomChance(50)) {
             Action skillAction = weapon.getSkill(actor);
-            if (skillAction != null){
+            if (skillAction != null) {
                 return skillAction;
             }
         }
 
         // check if target is nearby
         List<Exit> exits = map.locationOf(actor).getExits();
-        for (Exit exit : exits){
+        for (Exit exit : exits) {
             Actor target = exit.getDestination().getActor();
 
             // actor cannot attack another actor of the same type
-            if (target != null){
+            if (target != null) {
                 List<AttackType> nearbyActorTypes = target.findCapabilitiesByType(AttackType.class);
-                for (AttackType attackType : attackTypes){
-                    if (nearbyActorTypes.contains(attackType)){
+                for (AttackType attackType : attackTypes) {
+                    if (nearbyActorTypes.contains(attackType)) {
                         return null;
                     }
                 }

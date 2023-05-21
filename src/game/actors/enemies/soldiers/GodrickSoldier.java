@@ -1,15 +1,14 @@
 package game.actors.enemies.soldiers;
 
 import game.actors.AttackType;
-import game.actors.enemies.Enemy;
 import game.controllers.RuneManager;
 import game.controllers.RuneSource;
 import game.items.weapons.Club;
-import game.items.weapons.Scimitar;
 import game.utils.RandomNumberGenerator;
 
 /**
  * A class that represents the Godrick Soldier enemies
+ *
  * @author Emily Jap
  * @version 1.0.0
  * @see Soldier

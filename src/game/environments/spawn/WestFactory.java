@@ -12,19 +12,21 @@ import game.utils.RandomNumberGenerator;
 
 /**
  * A class for spawning enemies on the west side of the map
+ *
  * @author Emily Jap
  * @version 1.0.0
  */
-public class WestFactory implements EnemyFactory{
+public class WestFactory implements EnemyFactory {
 
     /**
      * Checks if a given location is on the west side of the map
+     *
      * @param location location we are checking the side of on the map
      * @return boolean
      */
-    private boolean isWestSide(Location location){
+    private boolean isWestSide(Location location) {
         NumberRange mapWidthRange = location.map().getXRange();
-        return location.x() <= (mapWidthRange.max()/2);
+        return location.x() <= (mapWidthRange.max() / 2);
     }
 
     /**
@@ -34,7 +36,7 @@ public class WestFactory implements EnemyFactory{
      */
     @Override
     public void spawnCanine(Location location) {
-        if (RandomNumberGenerator.getRandomChance(33) && isWestSide(location)){
+        if (RandomNumberGenerator.getRandomChance(33) && isWestSide(location)) {
             location.addActor(new LoneWolf());
         }
     }
@@ -46,7 +48,7 @@ public class WestFactory implements EnemyFactory{
      */
     @Override
     public void spawnCrustacean(Location location) {
-        if (RandomNumberGenerator.getRandomChance(2) && isWestSide(location)){
+        if (RandomNumberGenerator.getRandomChance(2) && isWestSide(location)) {
             location.addActor(new GiantCrab());
         }
     }
@@ -58,7 +60,7 @@ public class WestFactory implements EnemyFactory{
      */
     @Override
     public void spawnSkeleton(Location location) {
-        if (RandomNumberGenerator.getRandomChance(27) && isWestSide(location)){
+        if (RandomNumberGenerator.getRandomChance(27) && isWestSide(location)) {
             location.addActor(new HeavySkeletalSwordsman());
         }
     }
@@ -70,7 +72,7 @@ public class WestFactory implements EnemyFactory{
      */
     @Override
     public void spawnDragon(Location location) {
-        if (RandomNumberGenerator.getRandomChance(10) && isWestSide(location)){
+        if (RandomNumberGenerator.getRandomChance(10) && isWestSide(location)) {
             location.addActor(new LesserDragon());
         }
     }
@@ -82,7 +84,7 @@ public class WestFactory implements EnemyFactory{
      */
     @Override
     public void spawnDog(Location location) {
-        if (RandomNumberGenerator.getRandomChance(37) && isWestSide(location)){
+        if (RandomNumberGenerator.getRandomChance(37) && isWestSide(location)) {
             location.addActor(new Dog());
         }
     }
@@ -94,7 +96,7 @@ public class WestFactory implements EnemyFactory{
      */
     @Override
     public void spawnSoldier(Location location) {
-        if (RandomNumberGenerator.getRandomChance(45) && isWestSide(location)){
+        if (RandomNumberGenerator.getRandomChance(45) && isWestSide(location)) {
             location.addActor(new GodrickSoldier());
         }
     }

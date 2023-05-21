@@ -14,8 +14,9 @@ public class ConsumeRuneAction extends Action {
      * @param heal
      */
 
-    private Consumable itemToConsume;
-    private int runeAmount;
+    private final Consumable itemToConsume;
+    private final int runeAmount;
+
     public ConsumeRuneAction(Consumable itemToConsume, int runeAmount) {
         this.itemToConsume = itemToConsume;
         this.runeAmount = runeAmount;

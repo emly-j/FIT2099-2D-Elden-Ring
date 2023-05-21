@@ -12,19 +12,21 @@ import game.utils.RandomNumberGenerator;
 
 /**
  * A class for spawning enemies on the east side of the map
+ *
  * @author Emily Jap
  * @version 1.0.0
  */
-public class EastFactory implements EnemyFactory{
+public class EastFactory implements EnemyFactory {
 
     /**
      * Checks if a given location is on the east side of the map
+     *
      * @param location location we are checking the side of on the map
      * @return boolean
      */
-    private boolean isEastSide(Location location){
+    private boolean isEastSide(Location location) {
         NumberRange mapWidthRange = location.map().getXRange();
-        return location.x() > (mapWidthRange.max()/2);
+        return location.x() > (mapWidthRange.max() / 2);
     }
 
     /**
@@ -58,7 +60,7 @@ public class EastFactory implements EnemyFactory{
      */
     @Override
     public void spawnSkeleton(Location location) {
-        if (RandomNumberGenerator.getRandomChance(27) && isEastSide(location)){
+        if (RandomNumberGenerator.getRandomChance(27) && isEastSide(location)) {
             location.addActor(new SkeletalBandit());
         }
     }
@@ -70,7 +72,7 @@ public class EastFactory implements EnemyFactory{
      */
     @Override
     public void spawnDragon(Location location) {
-        if (RandomNumberGenerator.getRandomChance(10) && isEastSide(location)){
+        if (RandomNumberGenerator.getRandomChance(10) && isEastSide(location)) {
             location.addActor(new LesserDragon());
         }
     }
@@ -82,7 +84,7 @@ public class EastFactory implements EnemyFactory{
      */
     @Override
     public void spawnDog(Location location) {
-        if (RandomNumberGenerator.getRandomChance(37) && isEastSide(location)){
+        if (RandomNumberGenerator.getRandomChance(37) && isEastSide(location)) {
             location.addActor(new Dog());
         }
     }
@@ -94,7 +96,7 @@ public class EastFactory implements EnemyFactory{
      */
     @Override
     public void spawnSoldier(Location location) {
-        if (RandomNumberGenerator.getRandomChance(45) && isEastSide(location)){
+        if (RandomNumberGenerator.getRandomChance(45) && isEastSide(location)) {
             location.addActor(new GodrickSoldier());
         }
     }

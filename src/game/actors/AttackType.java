@@ -2,6 +2,7 @@ package game.actors;
 
 /**
  * Use this enum class to give actors factions based on who they can/cannot attack.
+ *
  * @author Emily Jap
  */
 public enum AttackType {

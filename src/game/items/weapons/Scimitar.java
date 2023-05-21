@@ -15,6 +15,7 @@ import game.utils.Utils;
 
 /**
  * Class that represents the Scimitar weapon held by the skeletal bandit, also can be bought from Trader K
+ *
  * @author Hayden Tran
  * @version 1.0.0
  */
@@ -34,20 +35,19 @@ public class Scimitar extends WeaponItem implements Sellable, Buyable {
     }
 
     @Override
-    public void tick(Location currentLocation, Actor actor){
+    public void tick(Location currentLocation, Actor actor) {
 
         // if there is a trader nearby, allow this item to be sold
-        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))){
+        if (Utils.isTraderNearby(currentLocation) && (!getAllowableActions().contains(sellAction))) {
             sellAction = getSellAction();
             addAction(sellAction);
-        }
-        else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))){
+        } else if (!Utils.isTraderNearby(currentLocation) && (getAllowableActions().contains(sellAction))) {
             removeAction(sellAction);
         }
     }
 
     @Override
-    public Action getSkill(Actor holder){
+    public Action getSkill(Actor holder) {
         return new AreaAttackAction(this);
     }
 
