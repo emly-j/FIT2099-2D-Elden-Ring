@@ -98,7 +98,7 @@ public abstract class Enemy extends Actor implements Resettable {
      * @param direction  String representing the direction of the other Actor
      * @param actions    list of allowable actions the other actor can to do the enemy
      */
-    private void allowPlayerAttack(Actor otherActor, String direction, ActionList actions) {
+    protected void allowPlayerAttack(Actor otherActor, String direction, ActionList actions) {
         // If player has a weapon with area attack capability, put area attack on list of allowable actions
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new AttackAction(this, direction));
