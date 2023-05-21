@@ -143,16 +143,16 @@ public class Utils {
      */
     public static boolean isExchangeTraderNearby(Location currentLocation) {
         List<Exit> exits = currentLocation.getExits();
-        boolean hasTrader = false;
+        boolean hasExchanger = false;
 
         for (Exit exit : exits) {
             if (exit.getDestination().getActor() != null) {
                 if (exit.getDestination().getActor().hasCapability(Status.ACCEPT_GODRICK_DROP)) {
-                    hasTrader = true;
+                    hasExchanger = true;
                 }
             }
         }
 
-        return hasTrader;
+        return hasExchanger;
     }
 }

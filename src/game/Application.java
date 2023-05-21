@@ -31,9 +31,8 @@ public class Application {
         World world = new World(new Display());
 
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new Cliff(), new Dragonbarrow(), new Cage());
-
         List<String> map1 = Arrays.asList(
-                "......................#.............#..........................+++.........", // x = 30, y = 0
+                "......................#.............#..........................+++.........",
                 "......................#.............#.......................+++++..........",
                 "......................#..___....____#.........................+++++........",
                 "......................#...........__#............................++........",
@@ -56,32 +55,8 @@ public class Application {
                 "_____________#.....++++.............rrrr.........+..............__.....#...",
                 "_____________#.....+....++........................++.........._.....__.#...",
                 "_____________#.........+..+.....................+++...........###..__###...",
-                "_____________#.............++.............................................."); /// x = 6 y = 24
+                "_____________#.............++..............................................");
 
-//				"..nnnn................................................~~~~~~~~~~~~~~~~~~~~~",
-//				"......................#####....######..................~~~~~~~~~~~~~~~~~~~~",
-//				"..nnnn................#..___....____#...................~~~~~~~~~~~~~~~~~~~",
-//				"..................................__#....................~~~~~~~~~~~~~~~~~~",
-//				"......................._____........#.....................~~~~~~~~~~~~~~~~~",
-//				"......................#............_#......................~~~~~~~~~~~~~~~~",
-//				"......................#...........###......................................",
-//				"...........................................................................",
-//				"...........................................................................",
-//				"~~~~~~~~~~~.......................###___###................................",
-//				"~~~~~~~~~~~~......................________#....nnnn........................",
-//				"~~~~~~~~~~~~~.....................#________................................",
-//				"~~~~~~~~~~~~......................#_______#....nnnn........................",
-//				"~~~~~~~~~~~.......................###___###................................",
-//				"~~~~~~~~~~..........................#___#..................................",
-//				"...........................................................................",
-//				"...........................................................................",
-//				"...........................................................................",
-//				"..####__##...........................................&&&......######..##...",
-//				"..#.....__...........................................&&&......#....____....",
-//				"..#___..............&&&..............................&&&........__.....#...",
-//				"..####__###.........&&&......................................._.....__.#...",
-//				"....................&&&.......................................###..__###...",
-//				"...........................................................................");
         GameMap initialMap = new GameMap(groundFactory, map1);
         world.addGameMap(initialMap);
 
@@ -95,12 +70,9 @@ public class Application {
             }
         }
 
-        /**
-         * STROMVEILCASTLE
-         */
+
         FancyGroundFactory stormGroundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new GustOfWind(), new Cage(), new Barrack(),
                 new Cliff());
-
         List<String> stormVeilMap = Arrays.asList(
                 "...........................................................................",
                 "..................<...............<........................................",
@@ -130,12 +102,7 @@ public class Application {
         world.addGameMap(stormVeilCastle);
 
 
-        /**
-         * ROUNDTABLE HOLD
-         */
-
         FancyGroundFactory roundGroundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new Cliff());
-
         List<String> roundTableMap = Arrays.asList(
                 "##################",
                 "#________________#",
@@ -152,12 +119,7 @@ public class Application {
         world.addGameMap(roundTableHold);
 
 
-        /**
-         * BOSS ROOM
-         */
-
         FancyGroundFactory bossGroundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new Cliff());
-
         List<String> bossMap = Arrays.asList(
                 "+++++++++++++++++++++++++",
                 ".........................",
@@ -175,7 +137,6 @@ public class Application {
         initialMap.at(38, 11).setGround(new TheFirstStep());
         RestLocationManager.storeLastLocation(initialMap.at(38, 11));
         initialMap.at(40, 12).addActor(new MerchantK());
-        initialMap.at(30, 11).setGround(new Cliff());
 
         roundTableHold.at(9, 1).addActor(new FingerReaderEnia());
         // setting up the map teleporters
@@ -187,7 +148,7 @@ public class Application {
         Player player = new Player("Tarnished", '@', 25555);
         bossRoom.at(24, 7).setGround(new GoldenFogDoor(initialMap.at(38, 11), initialMap, "Limgrave")); //set a tp in boss room as we have none
         world.addPlayer(player, initialMap.at(36, 10));
-        player.addItemToInventory(new RemembranceOfTheGrafted()); //this is here to test trading functionality
+
         world.run();
 
     }
