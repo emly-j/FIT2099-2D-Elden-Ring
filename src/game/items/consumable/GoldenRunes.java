@@ -1,10 +1,10 @@
-package game.items.runes;
+package game.items.consumable;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeRuneAction;
-import game.controllers.Consumable;
+import game.items.Consumable;
 import game.utils.RandomNumberGenerator;
 
 /**

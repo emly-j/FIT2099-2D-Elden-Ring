@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
-import game.controllers.Consumable;
+import game.items.Consumable;
 import game.controllers.ResetManager;
 import game.controllers.Resettable;
 import game.utils.Status;

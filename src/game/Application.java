@@ -9,11 +9,9 @@ import game.actors.traders.FingerReaderEnia;
 import game.actors.traders.MerchantK;
 import game.controllers.RestLocationManager;
 import game.environments.*;
-import game.environments.sitesoflostgrace.GodrickTheGrafted;
-import game.environments.sitesoflostgrace.StormveilMainGate;
 import game.environments.sitesoflostgrace.TheFirstStep;
 import game.environments.spawn.*;
-import game.items.RemembranceOfTheGrafted;
+import game.items.extra.RemembranceOfTheGrafted;
 import game.utils.FancyMessage;
 
 import java.util.Arrays;

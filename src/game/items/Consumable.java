@@ -1,4 +1,4 @@
-package game.controllers;
+package game.items;
 
 /**
  * A interface the represents all items that will be used to consume

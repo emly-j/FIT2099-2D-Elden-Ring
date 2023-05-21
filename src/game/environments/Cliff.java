@@ -42,7 +42,6 @@ public class Cliff extends Ground {
             Display display = new Display();
             result = "";
             location.getActor().hurt(999999999);
-            System.out.println(location.getActor());
             display.println(location.getActor() + " fell off a cliff");
             display.println(YOU_DIED);
             result += new DeathAction(location.getActor()).execute(location.getActor(), location.map());

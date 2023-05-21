@@ -3,7 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.controllers.Consumable;
+import game.items.Consumable;
 
 /**
  * A consume action which represents all item that should be consumed

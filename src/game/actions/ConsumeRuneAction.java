@@ -3,15 +3,16 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.controllers.Consumable;
+import game.items.Consumable;
 import game.controllers.RuneManager;
+import game.items.consumable.GoldenRunes;
 
 /**
  * An action that will give the actor a random amount of runes based on the runeAmount decided in the GoldeRunes class
  *
  * @author Hayden T ran
  * @see Action
- * @see game.items.runes.GoldenRunes
+ * @see GoldenRunes
  */
 public class ConsumeRuneAction extends Action {
 

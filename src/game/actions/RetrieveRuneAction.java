@@ -3,7 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.controllers.RuneManager;
-import game.items.runes.Rune;
+import game.items.extra.Rune;
 import game.utils.Status;
 
 /**
