@@ -9,13 +9,23 @@ import game.actions.SellAction;
 import game.items.Sellable;
 import game.utils.Utils;
 
+/**
+ * A weapon that has no special attacks in this implementation
+ * it deals 142 damage with an 84% hit rate
+ *
+ * @author Hayden Tran
+ * @see WeaponItem
+ * @see Sellable
+ */
 public class AxeOfGodrick extends WeaponItem implements Sellable {
     /**
-     * Constructor.
+     * SellAction for the AxeofGodrick
      */
-
     private Action sellAction;
 
+    /**
+     * Constructor that intantiates the item
+     */
     public AxeOfGodrick() {
         super("Axe of Godrick", 'T', 142, "axes", 84);
     }

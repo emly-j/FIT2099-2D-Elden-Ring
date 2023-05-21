@@ -9,6 +9,9 @@ import edu.monash.fit2099.engine.positions.Location;
  * @version 1.0.0
  */
 public class RestLocationManager {
+    /**
+     * Storing the last rested location
+     */
     private static Location lastRestedLocation;
 
     /**

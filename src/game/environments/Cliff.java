@@ -9,13 +9,16 @@ import game.utils.Status;
 
 import static game.utils.FancyMessage.YOU_DIED;
 
-//import static sun.net.www.http.KeepAliveCache.result;
-
+/**
+ * A ground that when stepped on, will result in the death of a player
+ *
+ * @author Hayden Tran
+ * @version 1.0.0
+ * @see Ground
+ */
 public class Cliff extends Ground {
     /**
-     * Constructor.
-     * <p>
-     * character to display for this type of terrain
+     * Constructor instantiting the display Character for this type of ground
      */
     public Cliff() {
         super('+');
@@ -28,10 +31,11 @@ public class Cliff extends Ground {
      * @param actor the Actor to check
      * @return true if has Status.HOSTILE_TO_ENEMY (player checker)
      */
+    @Override
     public boolean canActorEnter(Actor actor) {
         return actor.hasCapability(Status.PLAYER);
     }
-
+    @Override
     public void tick(Location location) {
         String result = null;
         if (location.containsAnActor()) {

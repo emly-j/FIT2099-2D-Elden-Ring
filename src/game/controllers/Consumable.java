@@ -1,7 +1,7 @@
 package game.controllers;
 
 /**
- * A interface the represents all items that will be used to heal
+ * A interface the represents all items that will be used to consume
  *
  * @author Hayden
  * @version 1.0.0
@@ -15,7 +15,7 @@ public interface Consumable {
     int getCharges();
 
     /**
-     * To decremnet the uses after using
+     * To decrement the uses after using
      */
     void reduceCharges();
 

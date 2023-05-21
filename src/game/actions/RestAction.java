@@ -19,13 +19,21 @@ import game.utils.Status;
  * @see Action
  */
 public class RestAction extends Action {
-
+    /**
+     * The ground that the actor rests on
+     */
     private final Ground ground;
+    /**
+     * The location of the actor to store where they rested
+     */
     private final Location location;
+    /**
+     * String to represent the specific ground they rested on
+     */
     private final String name;
 
     /**
-     * Constructor.
+     * Constructor to instantiate the parameters
      *
      * @param ground
      * @param location

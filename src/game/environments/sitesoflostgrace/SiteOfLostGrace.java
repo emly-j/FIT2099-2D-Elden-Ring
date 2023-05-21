@@ -7,16 +7,26 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.RestAction;
 import game.utils.Status;
 
+/**
+ * An abstract ground class that represents all grounds that will be a siteOfLostGrace, and have the same general capabilities
+ *
+ * @author Hayden Tran
+ * @version 1.0.0
+ * @see Ground
+ */
 public abstract class SiteOfLostGrace extends Ground {
     /**
-     * Constructor that instanatites the display value
+     * The name of the specific site so we can instantiate each one to a specific name while holding the same display character
      */
-    String name;
+    private final String name;
 
+    /**
+     * Constructor instantiating each site with its different name
+     * @param name
+     */
     public SiteOfLostGrace(String name) {
         super('U');
         this.name = name;
-
     }
 
     /**

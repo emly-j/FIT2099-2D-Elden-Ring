@@ -9,14 +9,25 @@ import game.actions.SellAction;
 import game.items.Sellable;
 import game.utils.Utils;
 
+/**
+ * A weapon that is received via exchanging the RemembranceOfTheGrafted
+ * It deals 89 damage with a 90% hitrate
+ *
+ * @author Hayden Tran
+ * @version 1.0.0
+ * @see WeaponItem
+ * @see Sellable
+ */
 public class GraftedDragon extends WeaponItem implements Sellable {
+
     /**
-     * Constructor.
+     * SellAction for the Grafted Dragon
      */
-
     private Action sellAction;
-    private Action exchangeAction;
 
+    /**
+     * Constructor to instantiate the item
+     */
     public GraftedDragon() {
         super("Grafted Dragon", 'N', 89, "vrooms", 90);
     }

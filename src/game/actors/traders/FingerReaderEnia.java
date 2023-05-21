@@ -8,8 +8,19 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.utils.Status;
 
+
+/**
+ * Class that represents the Finger Reader Enia, a trader that only allows the player to exchange the RembranceOfTheGrafted, or sell items
+ *
+ * @author Hayden Tran
+ * @version 1.0.0
+ * @see Trader
+ */
 public class FingerReaderEnia extends Trader {
 
+    /**
+     * Constructor instantiating this specific trader
+     */
     public FingerReaderEnia() {
         super("Finger Reader Enia", 'E', 1);
         this.addCapability(Status.ACCEPT_GODRICK_DROP);

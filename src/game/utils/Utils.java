@@ -136,7 +136,7 @@ public class Utils {
 
 
     /**
-     * A method that checks if a trader is within the exits of a location
+     * A method that checks if a trader with the capability Status.ACCEPT_GODRICK_DROP is within the exits of a location
      *
      * @param currentLocation the source location for which we are checking its exits
      * @return boolean

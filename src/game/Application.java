@@ -9,6 +9,8 @@ import game.actors.traders.FingerReaderEnia;
 import game.actors.traders.MerchantK;
 import game.controllers.RestLocationManager;
 import game.environments.*;
+import game.environments.sitesoflostgrace.GodrickTheGrafted;
+import game.environments.sitesoflostgrace.StormveilMainGate;
 import game.environments.sitesoflostgrace.TheFirstStep;
 import game.environments.spawn.*;
 import game.items.RemembranceOfTheGrafted;
@@ -153,7 +155,7 @@ public class Application {
 
 
         /**
-         * BOOS ROOM
+         * BOSS ROOM
          */
 
         FancyGroundFactory bossGroundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new Cliff());
@@ -183,9 +185,9 @@ public class Application {
         initialMap.at(6, 23).setGround(new GoldenFogDoor(roundTableHold.at(9, 10), roundTableHold, "Roundtable Hold"));
         stormVeilCastle.at(6, 0).setGround(new GoldenFogDoor(bossRoom.at(0, 4), bossRoom, "Godrick the Grafted's room"));
         stormVeilCastle.at(38, 23).setGround(new GoldenFogDoor(initialMap.at(30, 0), initialMap, "Limgrave"));
-
-        Player player = new Player("Tarnished", '@', 300);
-
+        roundTableHold.at(9,10).setGround(new GoldenFogDoor(initialMap.at(6,23), initialMap, "Limgrave"));
+        Player player = new Player("Tarnished", '@', 25555);
+        bossRoom.at(24,7).setGround(new GoldenFogDoor(initialMap.at(38,11), initialMap, "Limgrave")); //set a tp in boss room as we have none
         world.addPlayer(player, initialMap.at(36, 10));
         player.addItemToInventory(new RemembranceOfTheGrafted()); //this is here to test trading functionality
         world.run();

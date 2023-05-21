@@ -8,15 +8,29 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.TravelAction;
 import game.utils.Status;
 
+/**
+ * A class that represents the floor that adds a travelAction when next to for the player
+ *
+ * @author Hayden Tran
+ * @version 1.0.0
+ */
 public class GoldenFogDoor extends Ground {
 
-
-    Location teleportLocation;
-    GameMap gameMap;
-    String mapName;
+    /**
+     * The location that we wish to teleport to
+     */
+    private final Location teleportLocation;
+    /**
+     * The map of the location we wish to teleport to
+     */
+    private final GameMap gameMap;
+    /**
+     * The mapname in string format so we can use in menudescription
+     */
+    private final String mapName;
 
     /**
-     * Constructor.
+     * Constructor to instantiate the ground with its parameters
      */
     public GoldenFogDoor(Location teleportLocation, GameMap gameMap, String mapName) {
         super('D');

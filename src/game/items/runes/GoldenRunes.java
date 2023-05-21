@@ -7,22 +7,39 @@ import game.actions.ConsumeRuneAction;
 import game.controllers.Consumable;
 import game.utils.RandomNumberGenerator;
 
+/**
+ * A class that represents the Item that is consumable and will give a certain amount of runes when consumed
+ *
+ * @author Hayden Tran
+ * @version 1.0.0
+ * @see Item
+ * @see Consumable
+ */
 public class GoldenRunes extends Item implements Consumable {
-    /***
-     * Constructor.
+    /**
+     * Amount of charges that the item holds
      */
-
     private int charges;
-
+    /**
+     * The amount of runes that the rune gives when consumed
+     */
     private final int value;
 
+    /**
+     * Constructor which instantiates the item with the amount of runes it holds and charges
+     */
     public GoldenRunes() {
         super("Golden Rune", '*', true);
         this.value = RandomNumberGenerator.getRandomInt(200, 10000);
         this.charges = 1;
-
     }
 
+    /**
+     * Updated tick method so that whenever we are holding the item, we have the option to ConsumeRuneAction
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor The actor carrying this Item.
+     */
+    @Override
     public void tick(Location currentLocation, Actor actor) {
         if (this.charges == 0) {
             actor.removeItemFromInventory(this);
@@ -40,7 +57,6 @@ public class GoldenRunes extends Item implements Consumable {
     @Override
     public void reduceCharges() {
         this.charges -= 1;
-
     }
 
     @Override
