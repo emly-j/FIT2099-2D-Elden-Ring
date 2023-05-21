@@ -28,6 +28,7 @@ public class TravelAction extends Action {
 
     /**
      * A Constructor to instantiate all the parameters for this specific TravelAction
+     *
      * @param location
      * @param gameMap
      * @param mapName

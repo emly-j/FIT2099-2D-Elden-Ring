@@ -18,6 +18,7 @@ public class LastLocationManager {
 
     /**
      * stores the location at the last rested site
+     *
      * @param lastAt location of the site
      */
     public static void storeLastLocation(Location lastAt) {

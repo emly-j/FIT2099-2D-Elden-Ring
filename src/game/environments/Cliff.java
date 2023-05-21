@@ -35,6 +35,7 @@ public class Cliff extends Ground {
     public boolean canActorEnter(Actor actor) {
         return actor.hasCapability(Status.PLAYER);
     }
+
     @Override
     public void tick(Location location) {
         String result = null;

@@ -183,9 +183,9 @@ public class Application {
         initialMap.at(6, 23).setGround(new GoldenFogDoor(roundTableHold.at(9, 10), roundTableHold, "Roundtable Hold"));
         stormVeilCastle.at(6, 0).setGround(new GoldenFogDoor(bossRoom.at(0, 4), bossRoom, "Godrick the Grafted's room"));
         stormVeilCastle.at(38, 23).setGround(new GoldenFogDoor(initialMap.at(30, 0), initialMap, "Limgrave"));
-        roundTableHold.at(9,10).setGround(new GoldenFogDoor(initialMap.at(6,23), initialMap, "Limgrave"));
+        roundTableHold.at(9, 10).setGround(new GoldenFogDoor(initialMap.at(6, 23), initialMap, "Limgrave"));
         Player player = new Player("Tarnished", '@', 25555);
-        bossRoom.at(24,7).setGround(new GoldenFogDoor(initialMap.at(38,11), initialMap, "Limgrave")); //set a tp in boss room as we have none
+        bossRoom.at(24, 7).setGround(new GoldenFogDoor(initialMap.at(38, 11), initialMap, "Limgrave")); //set a tp in boss room as we have none
         world.addPlayer(player, initialMap.at(36, 10));
         player.addItemToInventory(new RemembranceOfTheGrafted()); //this is here to test trading functionality
         world.run();

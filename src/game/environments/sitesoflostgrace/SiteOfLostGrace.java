@@ -22,6 +22,7 @@ public abstract class SiteOfLostGrace extends Ground {
 
     /**
      * Constructor instantiating each site with its different name
+     *
      * @param name
      */
     public SiteOfLostGrace(String name) {

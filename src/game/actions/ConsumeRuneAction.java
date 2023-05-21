@@ -3,8 +3,8 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.items.Consumable;
 import game.controllers.RuneManager;
+import game.items.Consumable;
 import game.items.consumable.GoldenRunes;
 
 /**
@@ -27,6 +27,7 @@ public class ConsumeRuneAction extends Action {
 
     /**
      * Constructor to instantiate the parameters given
+     *
      * @param itemToConsume
      * @param runeAmount
      */

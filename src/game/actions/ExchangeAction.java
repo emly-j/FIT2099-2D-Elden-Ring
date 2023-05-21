@@ -10,9 +10,9 @@ import game.items.weapons.GraftedDragon;
 
 /**
  * Class that represents the action to exchange an item in exchange for 1 of 2 items in this implementation
+ *
  * @author Hayden Tran
  * @version 1.0.0
- *
  */
 public class ExchangeAction extends Action {
     /**
@@ -26,19 +26,21 @@ public class ExchangeAction extends Action {
 
     /**
      * Constructor to instantiate the items to exchange and receive
+     *
      * @param itemToExchange
      * @param itemToReceive
      */
 
-    public ExchangeAction(Exchangeable itemToExchange, Item itemToReceive){
+    public ExchangeAction(Exchangeable itemToExchange, Item itemToReceive) {
         this.itemToExchange = itemToExchange;
         this.itemToReceive = itemToReceive;
     }
 
     /**
      * Will remove item to exchange and adds an item toreceive based on user choice
+     *
      * @param actor The actor performing the action.
-     * @param map The map the actor is on.
+     * @param map   The map the actor is on.
      * @return string of what is returned
      */
     @Override
