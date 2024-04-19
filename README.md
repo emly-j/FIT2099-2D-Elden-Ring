@@ -1,7 +1,11 @@
-# FIT2099 Assignment (Semester 1, 2023)
-# Elden Ring
+# FIT2099 Elden Ring Assignment (Semester 1, 2023)
 
-## XX_LabYYTeamZZ
+This project was completed as part of a university team assignment in the unit FIT2099 - Object Oriented Design and Implementation. It was my first real attempt at applying object-oriented design principles and patterns, and also coding a game using Java.
+
+![image](https://github.com/emly-j/FIT2099-2D-Elden-Ring/assets/101861599/6fc0cbc4-aa70-45d3-a86c-b18a0c5f059a)
+
+
+## Team Information
 Team members:
 - Hayden Tran
 - Emily Jap
